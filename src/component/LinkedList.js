@@ -2,7 +2,7 @@ import React from 'react';
 
 class LinkedList extends React.Component{
     render(){
-        return null;
+        return (<h1>Yeps</h1>);
     }
 }
 
