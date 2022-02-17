@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <Nav/>
      <Array/>
-     <LinkedList></LinkedList>
+     <LinkedList></LinkedList> //Here for Testing LinkedList -James
     </div>
   );
 }
