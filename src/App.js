@@ -1,15 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-import Array from './component/Arrays.js'
-import Nav from './component/Nav'
+import React, { Component } from "react";
+import "./App.css";
+import Nav from "./component/Nav";
 
-function App() {
-  return (
-    <div className="App">
-      <Nav/>
-     <Array/>
-    </div>
-  );
+import { DataStructures, Algorithms } from "./component/DSA/exports";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    console.log(DataStructures, Algorithms);
+    return (
+      <div>
+        <Nav />
+      </div>
+    );
+  }
 }
 
 export default App;
