@@ -1,9 +1,9 @@
-export class SinglyLinkedListNode {
+export default class SinglyLinkedListNode {
   /**
    * @description Creates a SinglyLinkedList Node
    * @param {*} value
    * @param {*} next
-   * @returns {SinglyListNode} A Singly list instance
+   * @returns {SinglyListNode} A Singly list instance, of type 'Singly_List_Node'
    */
   constructor(value, next = null) {
     this.#value = value;
@@ -55,11 +55,28 @@ export class SinglyLinkedListNode {
     return this.#toHtml();
   }
 
+  /**
+   * @static
+   * @description a way to check the type of node this is
+   * @returns {String} type of this Node
+   */
+  static get __type() {
+    return "Singly_List_Node";
+  }
+
   //Private props/fields
   /**@private @description helper method to convert this node into an HTML String */
-  #toHtml() {}
+  #toHtml() {
+    return `<div class="jsavnode jsavlistnode"> 
+              <span class="jsavvalue">
+                <span class="jsavvaluelabel">${this.#value}</span>
+              </span>
+              <span class="jsavpointerarea"></span>
+            </div>`;
+  }
   /**@private @description the value of this node */
   #value;
+
   /**@private @description the reference to the next node */
   #next;
 }

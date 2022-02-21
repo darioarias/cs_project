@@ -1,7 +1,7 @@
 // const { SinglyLinkedListNode } = requrie("./singlyLinkedListNode.js");
-import { SinglyLinkedListNode } from "./singlyLinkedListNode";
+import { default as SinglyLinkedListNode } from "./singlyLinkedListNode";
 
-export class DoublyLinkedListNode extends SinglyLinkedListNode {
+export default class DoublyLinkedListNode extends SinglyLinkedListNode {
   /**
    * @param {*} value
    * @param {*} next
@@ -35,9 +35,20 @@ export class DoublyLinkedListNode extends SinglyLinkedListNode {
     return this.#toHtml();
   }
 
+  /**
+   * @static
+   * @description a way to check the type of node this is
+   * @returns {String} type of this Node
+   */
+  static get __type() {
+    return "Doubly_List_Node";
+  }
+
   //Private props/fields
   /**@private @description helper method to convert this node into an HTML String */
-  #toHtml() {}
+  #toHtml() {
+    console.log("hello fron doublylinkedlist");
+  }
 
   /**@private @description the reference to the previous node */
   #previous;
