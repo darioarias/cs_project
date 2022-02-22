@@ -33,35 +33,123 @@ export default class SinglyLinkedList {
    * @description Adds a value at the front of the list
    * @param {*} value
    */
-  push(value) {}
+  push(value) {
+    this.#head = new Node(value, this.#head);
+    if (!this.#tail) this.#tail = this.#head;
+  }
 
   /**
    * @description Adds a value at the end of the list
    * @param {*} value
    */
-  append(value) {}
+  append(value) {
+    if (this.isEmpty()) {
+      this.push(value);
+      return;
+    }
+
+    this.#tail.next = new Node(value);
+    this.#tail = this.#tail.next;
+  }
 
   /**
    * @description Adds a value after a particular list node
-   * @param {*} after_node_
+   * @param {Node} after_node
+   * @param {*} value
    */
-  insert(after_node_) {}
+  insert(after_node, value) {
+    if (!after_node) return;
+    if (after_node === this.#tail) {
+      this.append(value);
+      return;
+    }
+    let temp = new Node(value, after_node.next);
+    after_node.next = temp;
+    return;
+  }
 
   /**
    * @description Removes the value at the front of the list.
    */
-  pop() {}
+  pop() {
+    if (!this.#head) return null;
+    let { value } = this.#head;
+
+    if (this.#head === this.#tail) {
+      this.#head = null;
+      this.#tail = this.#head;
+      return value;
+    }
+
+    this.#head = this.#head.next ? this.#head.next : null;
+    return value;
+  }
 
   /**
    * @description Removes the value at the end of the list.
    */
-  removeLast() {}
+  removeLast() {
+    if (!this.#head) return null;
+    if (this.#head === this.#tail) {
+      let { value } = this.#head;
+      this.#head = null;
+      this.#tail = this.#head;
+      return value;
+    }
+    let beforeLast = this.#beforeTail();
+    let { value } = beforeLast.next;
+    beforeLast.next = null;
+
+    this.#tail = beforeLast;
+    return value;
+  }
 
   /**
    * @description Removes a value anywhere in the list.
    * @param {Number} at_index
    */
-  remove(at_index) {}
+  remove(at_index) {
+    if (at_index === 0) {
+      return this.pop();
+    }
+
+    let index = 0,
+      previous = null,
+      current = this.#head;
+
+    while (current) {
+      if (at_index === index++) {
+        if (current === this.#tail) {
+          return this.removeLast();
+        }
+        let { value } = current;
+        previous.next = current.next;
+        return value;
+      }
+      previous = current;
+      current = current.next;
+    }
+    return null;
+  }
+
+  /**
+   * @description A way to verify if the list is empty
+   */
+  isEmpty() {
+    return !this.#head;
+  }
+
+  node(index) {
+    let current = this.#head,
+      idx = 0;
+    while (current) {
+      if (idx === index) return current;
+      idx += 1;
+      current = current.next;
+    }
+
+    return null;
+  }
 
   /**
    * @static
@@ -70,6 +158,10 @@ export default class SinglyLinkedList {
    */
   static get __type() {
     return "Singly_Linked_list";
+  }
+
+  toString() {
+    return this.#toHtmlString();
   }
 
   //private properties / methods
@@ -84,9 +176,15 @@ export default class SinglyLinkedList {
 
     return current;
   }
+
   #validate_node(value) {
     if ((value || value === 0) && value.__type !== Node.__type)
       return new Node(value);
     return value;
+  }
+
+  #toHtmlString() {
+    //Front-end team needs to tell us what they want this to look like
+    return "SinlgyLinkedList: no toString method defined";
   }
 }

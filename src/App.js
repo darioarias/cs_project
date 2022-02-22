@@ -17,8 +17,26 @@ class App extends Component {
   }
 
   render() {
-    console.log(new DList(null), DList.__type);
+    let ls = new List();
+    // console.log(ls.node(0));
+    ls.push("1");
+    ls.append("2");
+    // let node = new Node("Dario");
+    ls.append("3");
+    // ls.insert(ls.node(2), 4);
+    // ls.append("Arias");
+    // ls.push("HELLO");
+    // ls.append(node);
+    // console.log(ls.removeLast());
+    // console.log(ls.removeLast());
+    // console.log(ls.removeLast());
+    // console.log(ls.removeLast());
+    console.log(ls.remove(2));
+    console.log(ls.remove(1));
+    console.log(ls.remove(0));
+    console.log(ls.toString());
 
+    console.log(ls, ls.isEmpty() ? "LIST IS EMPTY" : "LIST IS NOT EMPTY");
     let n1 = new Node(1);
     let n2 = new Node(2);
 
@@ -29,7 +47,7 @@ class App extends Component {
         <Nav />
         <div
           dangerouslySetInnerHTML={{
-            __html: n2.toString(),
+            __html: n1.toString(),
           }}
         />
       </div>
