@@ -40,6 +40,9 @@ class App extends Component {
     let n1 = new Node(1);
     let n2 = new Node(2);
 
+    // n1.appendClass(["jsavnode", "jsavlistnode"]);
+    // n2.appendClass(["jsavnode", "jsavlistnode"]);
+    n1.appendClass("test1");
     n1.value = 20;
 
     return (
@@ -47,7 +50,7 @@ class App extends Component {
         <Nav />
         <div
           dangerouslySetInnerHTML={{
-            __html: n1.toString(),
+            __html: n1.toString() + n2.toString(),
           }}
         />
       </div>

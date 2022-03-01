@@ -8,6 +8,7 @@ export default class SinglyLinkedListNode {
   constructor(value, next = null) {
     this.#value = value;
     this.#next = next;
+    this.#classes = ["jsavnode", "jsavlistnode"];
   }
 
   //Getters
@@ -56,6 +57,15 @@ export default class SinglyLinkedListNode {
   }
 
   /**
+   * @description allows to insert html classes into the node
+   * @param {String | [String]} values
+   */
+  appendClass(values) {
+    if (Array.isArray(values)) this.#classes.push(...values);
+    else this.#classes.push(values);
+  }
+
+  /**
    * @static
    * @description a way to check the type of node this is
    * @returns {String} type of this Node
@@ -67,16 +77,21 @@ export default class SinglyLinkedListNode {
   //Private props/fields
   /**@private @description helper method to convert this node into an HTML String */
   #toHtml() {
-    return `<div class="jsavnode jsavlistnode"> 
-              <span class="jsavvalue">
-                <span class="jsavvaluelabel">${this.#value}</span>
-              </span>
-              <span class="jsavpointerarea"></span>
-            </div>`;
+    //jsavnode jsavlistnode
+    // return `<div class="${this.#classes.join(" ")}">
+    //           <span class="jsavvalue">
+    //             <span class="jsavvaluelabel">${this.#value}</span>
+    //           </span>
+    //           <span class="jsavpointerarea"></span>
+    //         </div>`;
+    return `<div class="jsavnode jsavlistnode jsavhighlight" id="jsav-d15e0cee3da0465e8978b0dcb4126c01" data-value="4" data-value-type="number" style="left: 0px; top: 0px;"><span class="jsavvalue"><span class="jsavvaluelabel">4</span></span><span class="jsavpointerarea"></span></div>`;
   }
   /**@private @description the value of this node */
   #value;
 
   /**@private @description the reference to the next node */
   #next;
+
+  /**@private @description classes object */
+  #classes;
 }
