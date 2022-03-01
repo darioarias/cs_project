@@ -36,7 +36,7 @@ class SinglyLinkedListComponent extends react.Component {
   }
 
   remove() {
-    this.state.list.remove(this.state.value);
+    this.state.list.remove(Number(this.state.value));
     this.forceUpdate();
   }
 
