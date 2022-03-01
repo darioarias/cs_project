@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Nav from "./component/Nav";
-
+import SinglyLinkedListComponent from "./component/React/SinglyLinkedList";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
 
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
@@ -68,6 +68,7 @@ class App extends Component {
             __html: n1.toString() + n2.toString(),
           }}
         />
+        <SinglyLinkedListComponent></SinglyLinkedListComponent>
       </div>
     );
   }
