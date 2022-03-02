@@ -182,6 +182,14 @@ export default class SinglyLinkedList {
     return this.#toHtmlString();
   }
 
+  toArr() {
+    const _res = [];
+    for (let current = this.#head; current; current = current.next)
+      _res.push(current);
+
+    return _res;
+  }
+
   //private properties / methods
   #head;
   #tail;

@@ -9,6 +9,7 @@ import { DataStructures, Algorithms } from "./component/DSA/exports";
 const {
   Nodes: { SinglyLinkedListNode: Node },
   LinkedLists: { SinglyLinkedList: List, DoublyLinkedList: DList },
+  Stack: { Stack },
 } = DataStructures; // for testing only, will not be used in production.
 
 class App extends Component {
@@ -17,18 +18,25 @@ class App extends Component {
   }
 
   render() {
-    let ls = new DList();
-
+    const ls = new List();
     ls.append("0");
     ls.append("1");
     ls.append("2");
     ls.append("3");
     ls.append("4");
-    ls.append("5");
+    console.log(ls.toArr()); // [SinglyLinkedListNode, etc]
+    // const s = new Stack();
+    // s.push("1");
+    // s.push("2");
+    // s.push("3");
+    // s.push("4");
 
-    console.log(ls.toString());
+    // console.log(s.pop());
+    // console.log(s.pop());
+    // console.log(s.pop());
+    // console.log(s.pop());
 
-    // console.log(ls);
+    // console.log(s.toString());
 
     // console.log(ls, ls.isEmpty() ? "LIST IS EMPTY" : "LIST IS NOT EMPTY");
     let n1 = new Node(1);
