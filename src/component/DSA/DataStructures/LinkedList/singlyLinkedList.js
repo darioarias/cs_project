@@ -182,6 +182,10 @@ export default class SinglyLinkedList {
     return this.#toHtmlString();
   }
 
+  /**
+   * @description this method combines all of the node in a list
+   * @returns an array of all of the nodes in the list
+   */
   toArr() {
     const _res = [];
     for (let current = this.#head; current; current = current.next)
