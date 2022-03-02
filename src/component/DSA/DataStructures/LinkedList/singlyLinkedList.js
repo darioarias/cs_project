@@ -22,11 +22,29 @@ export default class SinglyLinkedList {
 
   /**
    * @property
+   * @param {*} value
+   * @description Updates the reference of head
+   */
+  set head(value) {
+    this.#head = value;
+  }
+
+  /**
+   * @property
    * @description returns a reference to the tail--last node--of the list
    * @return {Node}
    */
   get tail() {
     return this.#tail;
+  }
+
+  /**
+   * @property
+   * @param {*} value
+   * @description Updates the reference of tail
+   */
+  set tail(value) {
+    this.#tail = value;
   }
 
   /**
