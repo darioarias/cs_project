@@ -50,11 +50,6 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        <div
-          dangerouslySetInnerHTML={{
-            __html: n1.toString() + n2.toString(),
-          }}
-        />
         <SinglyLinkedListComponent></SinglyLinkedListComponent>
       </div>
     );
