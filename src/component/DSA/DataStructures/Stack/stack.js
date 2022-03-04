@@ -40,10 +40,9 @@ export default class Stack {
     return this.#list.tail ? this.#list.tail.value : null;
   }
 
-  toString() {
-    return this.#toHtmlString();
+  toArr() {
+    return this.#list.toArr();
   }
-
   /**
    * @static
    * @description a way to check the type identifier
@@ -55,7 +54,4 @@ export default class Stack {
 
   //private method/properties
   #list;
-  #toHtmlString() {
-    return "STACK does not have toString";
-  }
 }

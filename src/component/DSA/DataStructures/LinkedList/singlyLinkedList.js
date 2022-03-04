@@ -178,10 +178,6 @@ export default class SinglyLinkedList {
     return "Singly_Linked_list";
   }
 
-  toString() {
-    return this.#toHtmlString();
-  }
-
   /**
    * @description this method combines all of the node in a list
    * @returns an array of all of the nodes in the list
@@ -190,7 +186,6 @@ export default class SinglyLinkedList {
     const _res = [];
     for (let current = this.#head; current; current = current.next)
       _res.push(current);
-
     return _res;
   }
 
@@ -211,10 +206,5 @@ export default class SinglyLinkedList {
     if ((value || value === 0) && value.__type !== Node.__type)
       return new Node(value);
     return value;
-  }
-
-  #toHtmlString() {
-    //Front-end team needs to tell us what they want this to look like
-    return "SinlgyLinkedList: no toString method defined";
   }
 }

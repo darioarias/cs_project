@@ -48,13 +48,9 @@ export default class Queue {
     return "Queue";
   }
 
-  toString() {
-    return this.#toHtmlString();
+  toArr() {
+    return this.#list.toArr();
   }
-
   //private methods/properties
   #list;
-  #toHtmlString() {
-    return "toString not implemented";
-  }
 }

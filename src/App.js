@@ -20,11 +20,6 @@ class App extends Component {
   }
 
   render() {
-    const t = new BinaryTree();
-    t.add("Dario");
-    t.add("Arias");
-    t.add("Danna");
-    console.log(t);
     return (
       <div>
         <Nav />

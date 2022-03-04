@@ -47,24 +47,6 @@ export default class SinglyLinkedListNode {
     this.#next = value;
   }
 
-  //main interface
-  /**
-   * @description this methods converts the node from a class to a string-html representation
-   * @returns {String} a string html representation of this node
-   */
-  toString() {
-    return this.#toHtml();
-  }
-
-  /**
-   * @description allows to insert html classes into the node
-   * @param {String | [String]} values
-   */
-  appendClass(values) {
-    if (Array.isArray(values)) this.#classes.push(...values);
-    else this.#classes.push(values);
-  }
-
   /**
    * @static
    * @description a way to check the type of node this is
@@ -75,17 +57,7 @@ export default class SinglyLinkedListNode {
   }
 
   //Private props/fields
-  /**@private @description helper method to convert this node into an HTML String */
-  #toHtml() {
-    //jsavnode jsavlistnode
-    // return `<div class="${this.#classes.join(" ")}">
-    //           <span class="jsavvalue">
-    //             <span class="jsavvaluelabel">${this.#value}</span>
-    //           </span>
-    //           <span class="jsavpointerarea"></span>
-    //         </div>`;
-    return `<div class="jsavnode jsavlistnode jsavhighlight centerBox" id="jsav-d15e0cee3da0465e8978b0dcb4126c01" data-value="4" data-value-type="number" "><span class="jsavvalue"><span class="jsavvaluelabel">`+this.value+`</span></span><span class="jsavpointerarea"></span></div>`;
-  }
+
   /**@private @description the value of this node */
   #value;
 

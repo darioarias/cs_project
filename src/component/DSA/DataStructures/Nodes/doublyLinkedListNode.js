@@ -27,13 +27,6 @@ export default class DoublyLinkedListNode extends SinglyLinkedListNode {
   }
 
   //main interface
-  /**
-   * @description this methods converts the node from a class to a string-html representation
-   * @returns {String} a string html representation of this node
-   */
-  toString() {
-    return this.#toHtml();
-  }
 
   /**
    * @static
@@ -46,9 +39,6 @@ export default class DoublyLinkedListNode extends SinglyLinkedListNode {
 
   //Private props/fields
   /**@private @description helper method to convert this node into an HTML String */
-  #toHtml() {
-    console.log("hello fron doublylinkedlist");
-  }
 
   /**@private @description the reference to the previous node */
   #previous;

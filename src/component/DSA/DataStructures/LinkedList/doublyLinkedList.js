@@ -87,10 +87,6 @@ export default class DoublyLinkedList extends SinglyLinkedList {
     return null;
   }
 
-  toString() {
-    return this.#toHtmlString();
-  }
-
   /**
    * @static
    * @description a way to check the type of list this is
@@ -101,7 +97,4 @@ export default class DoublyLinkedList extends SinglyLinkedList {
   }
 
   //private properties / methods
-  #toHtmlString() {
-    return "DoublyLinkedList: no toString method defined";
-  }
 }
