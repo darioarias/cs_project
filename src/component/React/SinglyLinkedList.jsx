@@ -45,6 +45,11 @@ class SinglyLinkedListComponent extends react.Component {
     this.forceUpdate();
   }
 
+  search(){
+    this.state.list.search((this.state.value));
+    this.forceUpdate();
+  }
+  
   removeLast() {
     this.state.list.removeLast();
     this.forceUpdate();
@@ -90,6 +95,7 @@ class SinglyLinkedListComponent extends react.Component {
           <button onClick={() => this.remove()}> Remove at Index</button>
           <button onClick={() => this.pop()}> Pop Value</button>
           <button onClick={() => this.removeLast()}> Remove Last</button>
+          <button onClick={() => this.search()}>Seacrh for Value</button>
         </div>
         
         <div
