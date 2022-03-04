@@ -31,7 +31,7 @@ class SinglyLinkedListComponent extends react.Component {
   }
 
   append() {
-    this.state.list.push(this.state.value);
+    this.state.list.append(this.state.value);
     this.forceUpdate();
   }
 
@@ -87,7 +87,7 @@ class SinglyLinkedListComponent extends react.Component {
           <input value={this.state.value} onChange={this.onChangeValue} />
           <button onClick={() => this.push()}> Push Value </button>
           <button onClick={() => this.append()}> Append Value </button>
-          <button onClick={() => this.remove()}> Remove Value</button>
+          <button onClick={() => this.remove()}> Remove at Index</button>
           <button onClick={() => this.pop()}> Pop Value</button>
           <button onClick={() => this.removeLast()}> Remove Last</button>
         </div>

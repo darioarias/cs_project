@@ -1,5 +1,4 @@
 const SinglyLinkedListNode = (props) => {
-  console.log(props.data.value);
   if (props.data.value != null) {
     return (
       <div id="1" style={{padding: "40px", display: "inline-block"}}>
