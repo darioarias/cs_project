@@ -84,7 +84,7 @@ export default class SinglyLinkedListNode {
     //           </span>
     //           <span class="jsavpointerarea"></span>
     //         </div>`;
-    return `<div class="jsavnode jsavlistnode jsavhighlight" id="jsav-d15e0cee3da0465e8978b0dcb4126c01" data-value="4" data-value-type="number" style="left: 0px; top: 0px;"><span class="jsavvalue"><span class="jsavvaluelabel">4</span></span><span class="jsavpointerarea"></span></div>`;
+    return `<div class="jsavnode jsavlistnode jsavhighlight centerBox" id="jsav-d15e0cee3da0465e8978b0dcb4126c01" data-value="4" data-value-type="number" "><span class="jsavvalue"><span class="jsavvaluelabel">`+this.value+`</span></span><span class="jsavpointerarea"></span></div>`;
   }
   /**@private @description the value of this node */
   #value;

@@ -93,7 +93,7 @@ class SinglyLinkedListComponent extends react.Component {
         </div>
         
         <div
-          className="jsavlist jsavautoresize jsavhorizontallist"
+          className="jsavlist jsavautoresize jsavhorizontallist scroller"
           data-visible="true"
           data-nodegap="40"
           data-autoresize="true"
