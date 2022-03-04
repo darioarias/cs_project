@@ -150,6 +150,22 @@ export default class SinglyLinkedList {
     return null;
   }
 
+
+  search(valueIn){
+    if (this.#head == null){
+      return null
+    }
+    var index = 0;
+    var temp = this.#head;
+    while (temp.value !== valueIn){
+      index += 1;
+      temp = temp.next;
+      if (temp == null){
+        return null
+      }
+    }
+    return index 
+  }
   /**
    * @description A way to verify if the list is empty
    */
