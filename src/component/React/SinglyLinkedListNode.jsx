@@ -1,13 +1,18 @@
+const node_style = {
+  flexShrink: '0'
+};
+
 const SinglyLinkedListNode = (props) => {
-  if (props.data.value != null) {
-    return (
-      <div id="1" style={{padding: "40px", display: "inline-block"}}>
-        <div dangerouslySetInnerHTML={{ __html: props.data.toString() }}></div>
-      </div>
-    );
-  } else {
-    return <div></div>;
-  }
+  return (
+    <div
+      className="jsavnode jsavlistnode centerBox" style = {node_style}
+    >
+      <span className="jsavvalue">
+        <span className="jsavvaluelabel">{props.data.value}</span>
+      </span>
+      <span className="jsavpointerarea"></span>
+    </div>
+  );
 };
 
 export default SinglyLinkedListNode;

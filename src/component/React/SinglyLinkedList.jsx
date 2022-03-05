@@ -67,24 +67,16 @@ class SinglyLinkedListComponent extends react.Component {
 
   render() {
     let Nodes = () => {
-      let values = [];
       if (this.state.list !== null) {
-        let headptr = this.getHead();
-        while (headptr != null) {
-          values.push(headptr);
-          headptr = headptr.next;
-        }
         return (
-          <div>
-            {values.map((node) => (
-              <SinglyLinkedListNode key={Math.random()} data={node}></SinglyLinkedListNode>
+          <>
+            {this.state.list.toArr().map((node, index) => (
+              <SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>
             ))}
-          </div>
+          </>
         );
-      } else {
-        return;
       }
-    };
+    }
     return (
       <div>
         <button onClick={() => this.resetList()}>Reset List</button>
@@ -103,6 +95,7 @@ class SinglyLinkedListComponent extends react.Component {
           data-visible="true"
           data-nodegap="40"
           data-autoresize="true"
+          style={{padding: "40px", display:"flex", gap:"50px"}}
         >
           {Nodes()}
         </div>
