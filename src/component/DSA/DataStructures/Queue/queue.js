@@ -1,6 +1,7 @@
 import { default as List } from "../LinkedList/doublyLinkedList";
+import { default as Interface } from "../../Interface/interface.js";
 
-export default class Queue {
+export default class Queue extends Interface {
   constructor(items = []) {
     this.#list = new List();
 
@@ -51,6 +52,7 @@ export default class Queue {
   toArr() {
     return this.#list.toArr();
   }
+
   //private methods/properties
   #list;
 }

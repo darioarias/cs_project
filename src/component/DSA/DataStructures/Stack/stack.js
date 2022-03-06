@@ -1,6 +1,7 @@
 import { default as List } from "../LinkedList/doublyLinkedList";
+import { default as Interface } from "../../Interface/interface.js";
 
-export default class Stack {
+export default class Stack extends Interface {
   constructor(items = []) {
     this.#list = new List();
 

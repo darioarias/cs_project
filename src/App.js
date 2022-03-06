@@ -23,7 +23,9 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        <SinglyLinkedListComponent></SinglyLinkedListComponent>
+        <div className="container-fluid">
+          <SinglyLinkedListComponent></SinglyLinkedListComponent>
+        </div>
       </div>
     );
   }

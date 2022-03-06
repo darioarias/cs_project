@@ -1,12 +1,14 @@
 import { default as Node } from "../Nodes/singlyLinkedListNode";
+import { default as Interface } from "../../Interface/interface.js";
 
-export default class SinglyLinkedList {
+export default class SinglyLinkedList extends Interface {
   /**
    * @description creates an instance of SinglyLinedList and returns a reference
    * @param {*} head optional value to start the list.
    * @returns {SinglyLinkedList}
    */
   constructor(head = null) {
+    super();
     this.#head = this.#validate_node(head);
     this.#tail = this.#head;
   }
@@ -150,21 +152,20 @@ export default class SinglyLinkedList {
     return null;
   }
 
-
-  search(valueIn){
-    if (this.#head == null){
-      return null
+  search(valueIn) {
+    if (this.#head == null) {
+      return null;
     }
     var index = 0;
     var temp = this.#head;
-    while (temp.value !== valueIn){
+    while (temp.value !== valueIn) {
       index += 1;
       temp = temp.next;
-      if (temp == null){
-        return null
+      if (temp == null) {
+        return null;
       }
     }
-    return index 
+    return index;
   }
   /**
    * @description A way to verify if the list is empty

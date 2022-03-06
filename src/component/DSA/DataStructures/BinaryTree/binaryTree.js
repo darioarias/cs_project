@@ -1,8 +1,12 @@
 import { default as Node } from "../Nodes/binaryTreeNode.js";
 import { default as Queue } from "../Queue/queue";
+import { default as Interface } from "../../Interface/interface.js";
 
-export default class BinaryTree {
+// const {}
+
+export default class BinaryTree extends Interface {
   constructor() {
+    super();
     this.#root = null;
   }
 
