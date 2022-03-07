@@ -65,14 +65,24 @@ class SinglyLinkedListComponent extends react.Component {
     this.setState({ value: data.target.value });
   }
 
+  tests(pol){
+    let listNodes = [];
+    let output = []
+    pol.map((node, index) => (listNodes.push(<SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>)))
+    for (let i = 0; i < listNodes.length; i++){
+      output.push(listNodes[i])
+      if (i + 1 < listNodes.length)
+      output.push(<div class="arrow-1"></div>)
+    }
+    return (output)
+  }
+
   render() {
     let Nodes = () => {
-      if (this.state.list !== null) {
+      if (this.state.list !== null) {     
         return (
           <>
-            {this.state.list.toArr().map((node, index) => (
-              <SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>
-            ))}
+            {this.tests(this.state.list.toArr())}
           </>
         );
       }
