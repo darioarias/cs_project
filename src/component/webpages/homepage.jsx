@@ -50,7 +50,7 @@ const binaryTFalse = () => {
        <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={llFalse}>
            <Button.Content visible>Linked List</Button.Content>
        </Button>
-       <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}}>
+       <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={stackFalse}>
            <Button.Content visible>Stack</Button.Content>
        </Button>
        <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={queueFalse}>
