@@ -1,6 +1,15 @@
 import { default as Node } from "../Nodes/singlyLinkedListNode";
 import { default as Interface } from "../../Interface/interface.js";
 
+
+class Test {
+  constructor(message) {
+    this.mes = message;
+  }
+  toString() {
+    return `${this.mes}`
+  }
+}
 export default class SinglyLinkedList extends Interface {
   /**
    * @description creates an instance of SinglyLinedList and returns a reference
@@ -54,6 +63,10 @@ export default class SinglyLinkedList extends Interface {
    * @param {*} value
    */
   push(value) {
+    if (true){
+      // throw new Test("Unable to push due to max size")
+      throw new Error("Unable to push due to max size")
+    }
     this.#head = new Node(value, this.#head);
     if (!this.#tail) this.#tail = this.#head;
   }
