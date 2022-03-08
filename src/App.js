@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Nav from "./component/Nav";
+import Nav from "./component/webpages/Navbar";
 import SinglyLinkedListComponent from "./component/React/SinglyLinkedList";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
 
