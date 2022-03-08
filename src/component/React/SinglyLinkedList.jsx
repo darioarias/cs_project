@@ -2,7 +2,6 @@ import { default as SinglyLinkedList } from "../DSA/DataStructures/LinkedList/si
 import react from "react";
 import SinglyLinkedListNode from "./SinglyLinkedListNode.jsx";
 
-
 class SinglyLinkedListComponent extends react.Component {
   constructor(props) {
     super(props);
@@ -45,11 +44,11 @@ class SinglyLinkedListComponent extends react.Component {
     this.forceUpdate();
   }
 
-  search(){
-    this.state.list.search((this.state.value));
+  search() {
+    this.state.list.search(this.state.value);
     this.forceUpdate();
   }
-  
+
   removeLast() {
     this.state.list.removeLast();
     this.forceUpdate();
@@ -71,8 +70,8 @@ class SinglyLinkedListComponent extends react.Component {
     pol.map((node, index) => (listNodes.push(<SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>)))
     for (let i = 0; i < listNodes.length; i++){
       output.push(listNodes[i])
-      if (i + 1 < listNodes.length)
-      output.push(<div class="arrow-1"></div>)
+      //if (i + 1 < listNodes.length)
+      //output.push(<div class="arrow-1"></div>)
     }
     return (output)
   }
@@ -86,7 +85,7 @@ class SinglyLinkedListComponent extends react.Component {
           </>
         );
       }
-    }
+    };
     return (
       <div>
         <button onClick={() => this.resetList()}>Reset List</button>
@@ -99,13 +98,13 @@ class SinglyLinkedListComponent extends react.Component {
           <button onClick={() => this.removeLast()}> Remove Last</button>
           <button onClick={() => this.search()}>Seacrh for Value</button>
         </div>
-        
+
         <div
           className="jsavlist jsavautoresize jsavhorizontallist scroller"
           data-visible="true"
           data-nodegap="40"
           data-autoresize="true"
-          style={{padding: "40px", display:"flex", gap:"50px"}}
+          style={{ padding: "10px", display: "flex", gap: "0px", alignItems: "flex-start"}}
         >
           {Nodes()}
         </div>
