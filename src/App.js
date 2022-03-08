@@ -3,6 +3,7 @@ import "./App.css";
 import Nav from "./component/Nav";
 import SinglyLinkedListComponent from "./component/React/SinglyLinkedList";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
+import Home from "./component/webpages/homepage";
 
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
 
@@ -23,8 +24,11 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        <div className="container-fluid">
+        {/* <div className="container-fluid">
           <SinglyLinkedListComponent></SinglyLinkedListComponent>
+        </div> */}
+        <div>
+          <Home/>
         </div>
       </div>
     );
