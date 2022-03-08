@@ -2,8 +2,9 @@ import { default as List } from "../LinkedList/doublyLinkedList";
 import { default as Interface } from "../../Interface/interface.js";
 
 export default class Queue extends Interface {
-  constructor(items = []) {
-    this.#list = new List();
+  constructor(items = [], maxLength = 5) {
+    super(maxLength);
+    this.#list = new List(null, maxLength);
 
     if (items && Array.isArray(items))
       items.forEach((item) => this.enqueue(item));
@@ -15,7 +16,12 @@ export default class Queue extends Interface {
    * @param {*} value
    */
   enqueue(value) {
-    this.#list.append(value);
+    try {
+      this.#list.append(value);
+      return true;
+    } catch (e) {
+      throw this.makeErr("Queue has reached its max-size");
+    }
   }
 
   /**

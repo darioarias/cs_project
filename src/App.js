@@ -28,7 +28,7 @@ class App extends Component {
           <SinglyLinkedListComponent></SinglyLinkedListComponent>
         </div> */}
         <div>
-          <Home/>
+          <Home />
         </div>
       </div>
     );

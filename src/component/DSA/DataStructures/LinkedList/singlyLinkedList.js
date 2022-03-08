@@ -7,10 +7,13 @@ export default class SinglyLinkedList extends Interface {
    * @param {*} head optional value to start the list.
    * @returns {SinglyLinkedList}
    */
-  constructor(head = null) {
-    super();
+  constructor(head = null, maxLength = 5) {
+    super(maxLength);
     this.#head = this.#validate_node(head);
     this.#tail = this.#head;
+    this.#length = 0;
+
+    this.#maxSizeErr = this.makeErr("List max-length reached.");
   }
 
   /**
@@ -54,7 +57,9 @@ export default class SinglyLinkedList extends Interface {
    * @param {*} value
    */
   push(value) {
-    this.#head = new Node(value, this.#head);
+    if (this.#length >= this.max) throw this.#maxSizeErr;
+    this.#length += 1;
+    if (this.max) this.#head = new Node(value, this.#head);
     if (!this.#tail) this.#tail = this.#head;
   }
 
@@ -63,6 +68,8 @@ export default class SinglyLinkedList extends Interface {
    * @param {*} value
    */
   append(value) {
+    if (this.#length >= this.max) throw this.#maxSizeErr;
+    this.#length += 1;
     if (this.isEmpty()) {
       this.push(value);
       return;
@@ -79,6 +86,8 @@ export default class SinglyLinkedList extends Interface {
    */
   insert(after_node, value) {
     if (!after_node) return;
+    if (this.#length >= this.max) throw this.#maxSizeErr;
+    this.#length += 1;
     if (after_node === this.#tail) {
       this.append(value);
       return;
@@ -93,6 +102,7 @@ export default class SinglyLinkedList extends Interface {
    */
   pop() {
     if (!this.#head) return null;
+    this.#length -= 1;
     let { value } = this.#head;
 
     if (this.#head === this.#tail) {
@@ -110,6 +120,7 @@ export default class SinglyLinkedList extends Interface {
    */
   removeLast() {
     if (!this.#head) return null;
+    this.#length -= 1;
     if (this.#head === this.#tail) {
       let { value } = this.#head;
       this.#head = null;
@@ -142,6 +153,7 @@ export default class SinglyLinkedList extends Interface {
         if (current === this.#tail) {
           return this.removeLast();
         }
+        this.#length -= 1;
         let { value } = current;
         previous.next = current.next;
         return value;
@@ -152,21 +164,27 @@ export default class SinglyLinkedList extends Interface {
     return null;
   }
 
-  search(valueIn) {
-    if (this.#head == null) {
-      return null;
+  /**
+   * @method
+   * @description seaches the list for a value.
+   * @param {*} value the value to search for
+   * @returns the index of the value if found.
+   */
+  search(value) {
+    if (!this.#head || (!value && value !== 0)) return null;
+    if (this.#head.value === value) return 0;
+    if (this.#tail.value === value) return this.#length - 1;
+    let current = this.#head,
+      indx = 0;
+
+    while ((current = current.next) && current !== this.#tail) {
+      if (current.value === value) return ++indx;
+      else indx++;
     }
-    var index = 0;
-    var temp = this.#head;
-    while (temp.value !== valueIn) {
-      index += 1;
-      temp = temp.next;
-      if (temp == null) {
-        return null;
-      }
-    }
-    return index;
+
+    return null;
   }
+
   /**
    * @description A way to verify if the list is empty
    */
@@ -209,6 +227,8 @@ export default class SinglyLinkedList extends Interface {
   //private properties / methods
   #head;
   #tail;
+  #length;
+  #maxSizeErr;
   #beforeTail() {
     if (!this.#head) return null;
     if (!this.#head.next) return this.#head;

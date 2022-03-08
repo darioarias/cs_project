@@ -7,12 +7,17 @@ export default class DoublyLinkedList extends SinglyLinkedList {
    * @param {*} head optional value to start the list.
    * @returns {DoublyLinkedList}
    */
-  constructor(head = null) {
-    super(head);
+  constructor(head = null, maxLength = 5) {
+    super(head, maxLength);
+    this.#length = 0;
   }
 
   push(value) {
+    if (this.#length >= this.max)
+      throw this.makeErr("List has reached it's max-length");
+
     const tempNode = new Node(value, this.head);
+    this.#length += 1;
     if (!this.head) {
       this.head = tempNode;
       this.tail = this.head;
@@ -23,18 +28,26 @@ export default class DoublyLinkedList extends SinglyLinkedList {
   }
 
   append(value) {
+    if (this.#length >= this.max)
+      throw this.makeErr("List has reached it's max-length");
+
     if (!this.tail) {
       return this.push(value);
     }
 
+    this.#length += 1;
     const tempNode = new Node(value, null, this.tail);
     this.tail.next = tempNode;
     this.tail = tempNode;
   }
 
   insert(after_node, value) {
+    if (this.#length >= this.max)
+      throw this.makeErr("List has reached it's max-length");
+
     if (after_node === this.tail) return this.append(value);
 
+    this.#length += 1;
     const tempNode = new Node(value, after_node.next, after_node);
     let next = after_node.next;
     next.previous = tempNode;
@@ -44,6 +57,7 @@ export default class DoublyLinkedList extends SinglyLinkedList {
   pop() {
     if (!this.head) return null;
     const { value } = this.head;
+    this.#length -= 1;
     if (!this.head.next) {
       this.head = null;
       this.tail = null;
@@ -57,6 +71,7 @@ export default class DoublyLinkedList extends SinglyLinkedList {
   removeLast() {
     if (!this.tail) return null;
     const { value } = this.tail;
+    this.#length -= 1;
     if (this.head === this.tail) {
       this.head = null;
       this.tail = null;
@@ -81,6 +96,7 @@ export default class DoublyLinkedList extends SinglyLinkedList {
         let prev = current.previous;
         prev.next = current.next;
         current.next = current.next ? prev : null;
+        this.#length -= 1;
         return value;
       }
     }
@@ -97,4 +113,5 @@ export default class DoublyLinkedList extends SinglyLinkedList {
   }
 
   //private properties / methods
+  #length = 0;
 }

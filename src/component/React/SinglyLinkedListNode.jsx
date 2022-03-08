@@ -19,7 +19,7 @@ const SinglyLinkedListNode = (props) => {
         width="40px"
         height="50px"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ flexShrink: "0"}}
+        style={{ flexShrink: "0" }}
       >
         <defs>
           <marker
@@ -31,7 +31,7 @@ const SinglyLinkedListNode = (props) => {
             orient="auto"
             markerUnits="strokeWidth"
           >
-            <path d="M0,0 L0,6 L9,3 z"/>
+            <path d="M0,0 L0,6 L9,3 z" />
           </marker>
         </defs>
 
@@ -41,8 +41,8 @@ const SinglyLinkedListNode = (props) => {
           x2="33"
           y2="20"
           stroke="#000"
-          stroke-width="1"
-          marker-end="url(#arrow)"
+          strokeWidth="1"
+          markerEnd="url(#arrow)"
         />
       </svg>
     </>

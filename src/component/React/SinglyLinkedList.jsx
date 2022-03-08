@@ -25,12 +25,20 @@ class SinglyLinkedListComponent extends react.Component {
   }
 
   push() {
-    this.state.list.push(this.state.value);
-    this.forceUpdate();
+    try {
+      this.state.list.push(this.state.value);
+      this.forceUpdate();
+    } catch (e) {
+      console.log(e.toString());
+    }
   }
 
   append() {
-    this.state.list.append(this.state.value);
+    try {
+      this.state.list.append(this.state.value);
+    } catch (e) {
+      console.log(e.toString());
+    }
     this.forceUpdate();
   }
 
@@ -45,7 +53,7 @@ class SinglyLinkedListComponent extends react.Component {
   }
 
   search() {
-    this.state.list.search(this.state.value);
+    console.log(this.state.list.search(this.state.value));
     this.forceUpdate();
   }
 
@@ -64,26 +72,26 @@ class SinglyLinkedListComponent extends react.Component {
     this.setState({ value: data.target.value });
   }
 
-  tests(pol){
+  tests(pol) {
     let listNodes = [];
-    let output = []
-    pol.map((node, index) => (listNodes.push(<SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>)))
-    for (let i = 0; i < listNodes.length; i++){
-      output.push(listNodes[i])
+    let output = [];
+    pol.map((node, index) =>
+      listNodes.push(
+        <SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>
+      )
+    );
+    for (let i = 0; i < listNodes.length; i++) {
+      output.push(listNodes[i]);
       //if (i + 1 < listNodes.length)
       //output.push(<div class="arrow-1"></div>)
     }
-    return (output)
+    return output;
   }
 
   render() {
     let Nodes = () => {
-      if (this.state.list !== null) {     
-        return (
-          <>
-            {this.tests(this.state.list.toArr())}
-          </>
-        );
+      if (this.state.list !== null) {
+        return <>{this.tests(this.state.list.toArr())}</>;
       }
     };
     return (
@@ -96,7 +104,7 @@ class SinglyLinkedListComponent extends react.Component {
           <button onClick={() => this.remove()}> Remove at Index</button>
           <button onClick={() => this.pop()}> Pop Value</button>
           <button onClick={() => this.removeLast()}> Remove Last</button>
-          <button onClick={() => this.search()}>Seacrh for Value</button>
+          <button onClick={() => this.search()}>Search for Value</button>
         </div>
 
         <div
@@ -104,7 +112,12 @@ class SinglyLinkedListComponent extends react.Component {
           data-visible="true"
           data-nodegap="40"
           data-autoresize="true"
-          style={{ padding: "10px", display: "flex", gap: "0px", alignItems: "flex-start"}}
+          style={{
+            padding: "10px",
+            display: "flex",
+            gap: "0px",
+            alignItems: "flex-start",
+          }}
         >
           {Nodes()}
         </div>
