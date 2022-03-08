@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {Button} from 'semantic-ui-react'
 import SinglyLinkedListComponent from "../React/SinglyLinkedList"
 
 const Home = () => {
@@ -47,21 +46,21 @@ const binaryTFalse = () => {
    return (
        <div>
  
-       <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={llFalse}>
-           <Button.Content visible>Linked List</Button.Content>
-       </Button>
-       <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={stackFalse}>
-           <Button.Content visible>Stack</Button.Content>
-       </Button>
-       <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={queueFalse}>
-           <Button.Content visible>Queue</Button.Content>
-       </Button>
-       <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={nodesFalse}>
-           <Button.Content visible>Nodes</Button.Content>
-       </Button>
-       <Button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 110, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={binaryTFalse}>
-           <Button.Content visible>Binary Trees</Button.Content>
-       </Button>
+       <button style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={llFalse}>
+         Linked List
+       </button>
+       <button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={stackFalse}>
+           Stack
+       </button>
+       <button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={queueFalse}>
+            Queue
+       </button>
+       <button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 100, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={nodesFalse}>
+          Nodes
+       </button>
+       <button animated style={{marginTop: 50, marginLeft: 50, height:50, width: 110, boxShadow: "0 4px 8px 0 rgba(0,0,0,0.2)", marginBottom: 50, transition: "0.3s"}} onClick={binaryTFalse}>
+           Binary Trees
+       </button>
        {
            linkedList ? <SinglyLinkedListComponent/> : ""
        }
