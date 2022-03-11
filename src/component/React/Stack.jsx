@@ -82,7 +82,9 @@ class StackComponent extends react.Component{
             alignItems: "flex-start",
           }}
         >
+          <div>Top of Stack</div>
           {Nodes()}
+          <div>Buttom of Stack</div>
         </div>
         </div>
         );
