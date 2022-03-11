@@ -108,7 +108,7 @@ export default class BinarySearchTree extends Interface {
   #root;
   #items;
   #toString(node, top = "", root = "", bottom = "") {
-    if (!node) return `${root}nill\n`;
+    if (!node) return `${root}null\n`;
     if (!node.left && !node.right) return `${root}${node.value}\n`;
 
     return (
