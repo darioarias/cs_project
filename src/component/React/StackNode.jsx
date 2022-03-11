@@ -2,7 +2,7 @@ const node_style = {
     flexShrink: "0",
   };
   
-const SinglyLinkedListNode = (props) => {
+const StackNode = (props) => {
     return (
         <>
         <div
@@ -19,5 +19,5 @@ const SinglyLinkedListNode = (props) => {
     );
 };
   
-  export default SinglyLinkedListNode;
+  export default StackNode;
   
