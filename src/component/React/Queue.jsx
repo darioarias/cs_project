@@ -50,7 +50,7 @@ render() {
     }
     return (
       <div>
-        <button onClick={() => this.resetTree()}>Reset Queue</button>
+        <button onClick={() => this.resetQueue()}>Reset Queue</button>
         <div>
           <input value={this.state.value} onChange={this.onChangeValue} />
           <button onClick={() => this.Enqueue()}> Enqueue </button>
