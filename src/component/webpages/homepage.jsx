@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import SinglyLinkedListComponent from "../React/SinglyLinkedList";
+import BinaryTreeComponent from "../React/BinaryTree"
+import QueueComponent from "../React/Queue"
 
 const Home = () => {
   const [linkedList, setlinkedList] = useState(false);
@@ -121,9 +123,9 @@ const Home = () => {
       </button>
       {linkedList ? <SinglyLinkedListComponent /> : ""}
       {stack ? <p>Stack</p> : ""}
-      {queue && <p>Queue</p>}
+      {queue ? <QueueComponent/> : ""}
       {nodes && <p>Nodes</p>}
-      {binaryTrees && <p>Binary Trees</p>}
+      {binaryTrees ? <BinaryTreeComponent/> : ""}
     </div>
   );
 };
