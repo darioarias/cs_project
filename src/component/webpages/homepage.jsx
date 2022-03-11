@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SinglyLinkedListComponent from "../React/SinglyLinkedList";
+import BinaryTreeComponent from "../React/BinaryTree"
 
 const Home = () => {
   const [linkedList, setlinkedList] = useState(false);
@@ -123,7 +124,7 @@ const Home = () => {
       {stack ? <p>Stack</p> : ""}
       {queue && <p>Queue</p>}
       {nodes && <p>Nodes</p>}
-      {binaryTrees && <p>Binary Trees</p>}
+      {binaryTrees ? <BinaryTreeComponent/> : ""}
     </div>
   );
 };
