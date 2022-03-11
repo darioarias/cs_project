@@ -1,7 +1,6 @@
 import { default as  Stack} from "../DSA/DataStructures/Stack/stack.js";
 import react from "react";
-import SinglyLinkedListComponent from "./SinglyLinkedList.jsx";
-
+import StackNode from "./StackNode";
 class StackComponent extends react.Component{
     constructor(props){
         super(props);
@@ -10,6 +9,7 @@ class StackComponent extends react.Component{
             value: 0,
             list: null,
         };
+        this.onChangeValue = this.onChangeValue.bind(this);
     }
 
     componentDidMount(){
@@ -40,17 +40,50 @@ class StackComponent extends react.Component{
         this.forceUpdate();
     }
 
+    tests(pol) {
+        let listNodes = [];
+        let output = [];
+        pol.map((node, index) =>
+          listNodes.push(
+            //<SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>
+            <StackNode key={index} data = {node}></StackNode>
+            )
+        );
+        for (let i = 0; i < listNodes.length; i++) {
+          output.push(listNodes[i]);
+        }
+        return output;
+      }
+
     render(){
-        console.log(this.state.list.toArr());
+        let Nodes = () => {
+            if (this.state.list !== null) {
+                return <>{this.tests(this.state.list.toArr())}</>;
+            }
+        };
         return (
         <div>
-            <button> Reset List</button>  
+            <button onClick={() => this.resetList()}> Reset List</button>  
             <div>
                 <input value={this.state.value} onChange={this.onChangeValue}/>
                 <button onClick={() => this.push()}>Push Value</button>
                 <button onClick={() => this.pop()}>Pop Value</button>
                 <button onClick={() => this.peek()}>Peek Value</button>
             </div>  
+            <div
+          className="jsavlist jsavautoresize jsavhorizontallist scroller"
+          data-visible="true"
+          data-nodegap="40"
+          data-autoresize="true"
+          style={{
+            padding: "10px",
+            display: "flex",
+            gap: "0px",
+            alignItems: "flex-start",
+          }}
+        >
+          {Nodes()}
+        </div>
         </div>
         );
     }
