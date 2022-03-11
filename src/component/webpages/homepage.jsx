@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SinglyLinkedListComponent from "../React/SinglyLinkedList";
+import StackComponent from "../React/Stack";
 
 const Home = () => {
   const [linkedList, setlinkedList] = useState(false);
@@ -120,7 +121,7 @@ const Home = () => {
         Binary Trees
       </button>
       {linkedList ? <SinglyLinkedListComponent /> : ""}
-      {stack ? <p>Stack</p> : ""}
+      {stack ? <StackComponent/> : ""}
       {queue && <p>Queue</p>}
       {nodes && <p>Nodes</p>}
       {binaryTrees && <p>Binary Trees</p>}
