@@ -7,7 +7,7 @@ export default class SinglyLinkedList extends Interface {
    * @param {*} head optional value to start the list.
    * @returns {SinglyLinkedList}
    */
-  constructor(head = null, maxLength = 5) {
+  constructor(head = null, maxLength = Infinity) {
     super(maxLength);
     this.#head = this.#validate_node(head);
     this.#tail = this.#head;

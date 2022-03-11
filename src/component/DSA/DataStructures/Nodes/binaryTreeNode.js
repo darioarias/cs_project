@@ -38,7 +38,7 @@ export default class BinaryTreeNode {
    * @param {*} value
    */
   set right(value) {
-    this.#value = value;
+    this.#right = value;
   }
 
   /**

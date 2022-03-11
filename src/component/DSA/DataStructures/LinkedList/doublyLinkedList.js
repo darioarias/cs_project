@@ -7,7 +7,7 @@ export default class DoublyLinkedList extends SinglyLinkedList {
    * @param {*} head optional value to start the list.
    * @returns {DoublyLinkedList}
    */
-  constructor(head = null, maxLength = 5) {
+  constructor(head = null, maxLength = Infinity) {
     super(head, maxLength);
     this.#length = 0;
   }

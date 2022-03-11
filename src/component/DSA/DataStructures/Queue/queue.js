@@ -2,7 +2,7 @@ import { default as List } from "../LinkedList/doublyLinkedList";
 import { default as Interface } from "../../Interface/interface.js";
 
 export default class Queue extends Interface {
-  constructor(items = [], maxLength = 5) {
+  constructor(items = [], maxLength = Infinity) {
     super(maxLength);
     this.#list = new List(null, maxLength);
 

@@ -29,7 +29,7 @@ class Error {
 }
 
 export default class Interface {
-  constructor(max_size = 0) {
+  constructor(max_size = Infinity) {
     this.#MAX_SIZE = typeof max_size === "number" ? max_size : 0;
   }
 
@@ -41,7 +41,7 @@ export default class Interface {
     this.#MAX_SIZE = value;
   }
 
-  makeErr(message = "") {
+  makeErr(message = "Error-deafult") {
     return new Error(message);
   }
 
