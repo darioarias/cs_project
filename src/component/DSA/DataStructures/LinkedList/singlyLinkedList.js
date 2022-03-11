@@ -69,12 +69,11 @@ export default class SinglyLinkedList extends Interface {
    */
   append(value) {
     if (this.#length >= this.max) throw this.#maxSizeErr;
-    this.#length += 1;
     if (this.isEmpty()) {
       this.push(value);
       return;
     }
-
+    this.#length += 1;
     this.#tail.next = new Node(value);
     this.#tail = this.#tail.next;
   }
