@@ -8,6 +8,14 @@ export default class BinarySearchTree extends Interface {
     this.#items = 0;
   }
 
+  get itemsCount() {
+    return this.#items;
+  }
+
+  set itemsCount(value) {
+    this.#items = value;
+  }
+
   /**
    * @property
    * @description Access the root of the tree

@@ -4,6 +4,7 @@ import Stack from "./Stack/export";
 import Queue from "./Queue/export";
 import BinaryTree from "./BinaryTree/export";
 import BinarySearchTree from "./BinarySearchTree/export";
+import AVLTree from "./AdelsonVelsky_Landis_Tree/export";
 
 export default {
   Nodes,
@@ -12,4 +13,5 @@ export default {
   Queue,
   BinaryTree,
   BinarySearchTree,
+  AVLTree,
 };

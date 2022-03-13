@@ -12,6 +12,7 @@ class VirtualUndef {
 class Error {
   constructor(message = "") {
     this.#message = message;
+    this.#time = Date.now();
   }
 
   get message() {
@@ -23,9 +24,10 @@ class Error {
   }
 
   toString() {
-    return `${this.#message}`;
+    return `${this.#message} - ${this.#time}`;
   }
   #message;
+  #time;
 }
 
 export default class Interface {
