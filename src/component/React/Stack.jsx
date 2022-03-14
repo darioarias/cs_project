@@ -40,17 +40,16 @@ class StackComponent extends react.Component{
         this.forceUpdate();
     }
 
-    tests(pol) {
-        let listNodes = [];
+    outputting(stackNodes) {
+        let listStackNodes = [];
         let output = [];
-        pol.map((node, index) =>
-          listNodes.push(
-            //<SinglyLinkedListNode key={index} data={node}></SinglyLinkedListNode>
+        stackNodes.map((node, index) =>
+          listStackNodes.push(
             <StackNode key={index} data = {node}></StackNode>
             )
         );
-        for (let i = 0; i < listNodes.length; i++) {
-          output.push(listNodes[i]);
+        for (let i = 0; i < listStackNodes.length; i++) {
+          output.push(listStackNodes[i]);
         }
         return output;
       }
@@ -58,7 +57,7 @@ class StackComponent extends react.Component{
     render(){
         let Nodes = () => {
             if (this.state.list !== null) {
-                return <>{this.tests(this.state.list.toArr())}</>;
+                return <>{this.outputting(this.state.list.toArr())}</>;
             }
         };
         return (
@@ -71,7 +70,7 @@ class StackComponent extends react.Component{
                 <button onClick={() => this.peek()}>Peek Value</button>
             </div>  
             <div
-          className="jsavlist jsavautoresize jsavhorizontallist scroller"
+          className="jsavlist jsavautoresize jsavverticallist vertical"
           data-visible="true"
           data-nodegap="40"
           data-autoresize="true"
@@ -80,11 +79,13 @@ class StackComponent extends react.Component{
             display: "flex",
             gap: "0px",
             alignItems: "flex-start",
+            position: "static",
+            display: "block",
           }}
         >
-          <div>Top of Stack</div>
+          <div className="verticalNodes">Top of Stack</div>
           {Nodes()}
-          <div>Buttom of Stack</div>
+          <div className="verticalNodes">Bottom of Stack</div>
         </div>
         </div>
         );
