@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
 import Nav from "./component/webpages/Navbar";
-import SinglyLinkedListComponent from "./component/React/SinglyLinkedList";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
 import Home from "./component/webpages/homepage";
 
@@ -14,7 +13,7 @@ const {
   Queue: { Queue },
   BinaryTree: { BinaryTree },
   BinarySearchTree: { BinarySearchTree: BST },
-  AVLTree: { AVLTree },
+  //AVLTree: { AVLTree },
 } = DataStructures; // for testing only, will not be used in production.
 
 class App extends Component {
@@ -23,6 +22,7 @@ class App extends Component {
   }
 
   render() {
+    /*
     const avl = new AVLTree();
     avl.insert(20);
     avl.insert(15);
@@ -58,7 +58,7 @@ class App extends Component {
     avl.remove(10);
     avl.print();
     console.log(avl);
-
+    */
     return (
       <div>
         <Nav />
