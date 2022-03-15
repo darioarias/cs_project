@@ -23,3 +23,9 @@ export const QueueContainer = styled.div`
     overflow: auto;
     border: 1px solid black;
 `
+export const CircleNode = styled.div`
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+`

@@ -2,7 +2,7 @@ import { Node } from "./styles";
 const QueueNode = (props) => {
   return (
     <>
-      <Node order={props.index} id={props.data.value}>
+      <Node className = "QueueNode" order={props.index} id={props.index}>
         {props.data.value}
       </Node>
     </>

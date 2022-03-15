@@ -10,6 +10,7 @@ class QueueComponent extends react.Component {
     this.state = {
       value: 0,
       queue: null,
+      animate: '',
     };
 
     this.onChangeValue = this.onChangeValue.bind(this);
@@ -17,6 +18,13 @@ class QueueComponent extends react.Component {
 
   componentDidMount() {
     this.resetQueue();
+  }
+
+  componentDidUpdate() {
+    if (this.state.animate == 'Enqueue') {
+      const element = document.getElementById("0");
+      element.style.backgroundColor = "#FF0000";
+    }
   }
 
   resetQueue() {
@@ -30,6 +38,7 @@ class QueueComponent extends react.Component {
 
   Enqueue() {
     this.state.queue.enqueue(this.state.value);
+    this.setState({ animate: 'Enqueue' });
     this.forceUpdate();
   }
 
