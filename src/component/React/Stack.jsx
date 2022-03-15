@@ -81,6 +81,8 @@ class StackComponent extends react.Component{
             alignItems: "flex-start",
             position: "static",
             display: "block",
+            maxWidth: "10%",
+            margin: "auto", 
           }}
         >
           <div className="verticalNodes">Top of Stack</div>
