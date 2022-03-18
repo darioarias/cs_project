@@ -902,6 +902,7 @@ ul.jsavcode {
 
 .centerBox {
   position: relative;
+  width: 10%;
   top: 0;
   right: 0;
 }
