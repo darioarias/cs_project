@@ -1,7 +1,9 @@
 const node_style = {
   flexShrink: "0",
 };
-
+/*
+The html structure for each node in the frontend
+*/
 const StackNode = (props) => {
   return (
     <>

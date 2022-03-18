@@ -72,6 +72,11 @@ class SinglyLinkedListComponent extends react.Component {
     this.setState({ value: data.target.value });
   }
 
+  /**
+   * @description instantiate nodes from the linked list for the visuals
+   * @param {*} pol : list of nodes
+   * @returns array of instantiated node components
+   */
   tests(pol) {
     let listNodes = [];
     let output = [];
