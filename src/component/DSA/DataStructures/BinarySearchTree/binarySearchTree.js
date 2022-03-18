@@ -1,6 +1,7 @@
 import { default as Node } from "../Nodes/binarySearchTreeNode";
 import { default as Queue } from "../Queue/queue";
 import { default as Interface } from "../../Interface/interface";
+
 export default class BinarySearchTree extends Interface {
   constructor(max_size = Infinity) {
     super(max_size);
@@ -106,7 +107,7 @@ export default class BinarySearchTree extends Interface {
     }
 
     return result;
-  }
+  } // In-order?
 
   print() {
     console.log(this.#toString(this.#root));

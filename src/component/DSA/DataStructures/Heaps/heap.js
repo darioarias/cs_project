@@ -176,7 +176,7 @@ export default class Heap extends Interface {
    * @param {String} heap_type the type of heap
    * @returns {Heap} Partially built heap
    */
-  static builtHeap(values = [], max_size = Infinity, heap_type = "min") {
+  static build_heap(values = [], max_size = Infinity, heap_type = "min") {
     if (!Array.isArray(values) || values.length === 0)
       throw Interface.newErr(
         "A values-array must be provided to construct a heap"
