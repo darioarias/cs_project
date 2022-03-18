@@ -7,6 +7,11 @@ export default class AVLTree extends BST {
     super(max_size);
   }
 
+  /**
+   * @method
+   * @description Inserts a value into the tree, then re-balances the tree when needed
+   * @param {*} value value to be inserted into the tree
+   */
   insert(value) {
     /**
      * @description Recursively tries to insert a value
@@ -30,6 +35,11 @@ export default class AVLTree extends BST {
     this.itemsCount += 1;
   }
 
+  /**
+   * @method
+   * @description removes a given value from the tree and re-balance the tree if needed.
+   * @param {*} value - value to be removed
+   */
   remove(value) {
     const helper = (node, value) => {
       if (!node) return null;

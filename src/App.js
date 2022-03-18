@@ -2,12 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import Nav from "./component/webpages/Navbar";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
-<<<<<<< HEAD
-import Home from "./component/webpages/homepage";
-import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
-=======
 import Home from "./component/webpages/Home";
->>>>>>> 9e3a99dfec84f0ba4862372539035f741d7165b1
+import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
 
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
 
