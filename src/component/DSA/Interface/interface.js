@@ -3,11 +3,13 @@ class VirtualUndef {
     message = "Check that all inhereted virtual functions are defined"
   ) {
     this.#message = message;
+    this.#time = Date.now();
   }
   toString() {
-    return `undefinedVirtual: ${this.#message}`;
+    return `undefinedVirtual: ${this.#message} - ${this.#time}`;
   }
   #message;
+  #time;
 }
 class Error {
   constructor(message = "") {
@@ -17,6 +19,10 @@ class Error {
 
   get message() {
     return this.#message;
+  }
+
+  get time() {
+    return this.#time;
   }
 
   set message(value) {
@@ -43,10 +49,6 @@ export default class Interface {
     this.#MAX_SIZE = value;
   }
 
-  makeErr(message = "Error-deafult") {
-    return new Error(message);
-  }
-
   /**
    * @virtual
    * @description breaks down Data Structure into an array format
@@ -56,6 +58,15 @@ export default class Interface {
     throw new VirtualUndef(
       `${this.constructor.name} has no implementation of a virtual-inherented method`
     );
+  }
+
+  /**
+   * Creates an Error with a message to be used as a reason for breaking the app
+   * @param {String} message the message for the error
+   * @returns {Error} Error instance
+   */
+  static newErr(message = "Error Building Data Strucuture") {
+    return new Error(message);
   }
 
   #MAX_SIZE;

@@ -9,9 +9,7 @@
 JSAV
 test.html
 
-#not ready
-**/src/component/DSA/DataStructures/AdelsonVelsky_Landis_Tree
-/src/component/DSA/DataStructures/Nodes/AVLTreeNode.js
+# not ready to commit
 
 # testing
 /coverage

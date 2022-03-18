@@ -20,7 +20,7 @@ export default class Queue extends Interface {
       this.#list.append(value);
       return true;
     } catch (e) {
-      throw this.makeErr("Queue has reached its max-size");
+      throw Interface.newErr("Queue has reached its max-size");
     }
   }
 

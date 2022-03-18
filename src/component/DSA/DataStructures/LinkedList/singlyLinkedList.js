@@ -13,7 +13,7 @@ export default class SinglyLinkedList extends Interface {
     this.#tail = this.#head;
     this.#length = 0;
 
-    this.#maxSizeErr = this.makeErr("List max-length reached.");
+    this.#maxSizeErr = Interface.newErr("List max-length reached.");
   }
 
   /**

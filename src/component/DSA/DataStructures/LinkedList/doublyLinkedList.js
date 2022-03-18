@@ -1,5 +1,6 @@
 import { default as SinglyLinkedList } from "./singlyLinkedList";
 import { default as Node } from "../Nodes/doublyLinkedListNode";
+import Interface from "../../Interface/interface";
 
 export default class DoublyLinkedList extends SinglyLinkedList {
   /**
@@ -14,7 +15,7 @@ export default class DoublyLinkedList extends SinglyLinkedList {
 
   push(value) {
     if (this.#length >= this.max)
-      throw this.makeErr("List has reached it's max-length");
+      throw Interface.newErr("List has reached it's max-length");
 
     const tempNode = new Node(value, this.head);
     this.#length += 1;
@@ -29,7 +30,7 @@ export default class DoublyLinkedList extends SinglyLinkedList {
 
   append(value) {
     if (this.#length >= this.max)
-      throw this.makeErr("List has reached it's max-length");
+      throw Interface.newErr("List has reached it's max-length");
 
     if (!this.tail) {
       return this.push(value);
@@ -43,7 +44,7 @@ export default class DoublyLinkedList extends SinglyLinkedList {
 
   insert(after_node, value) {
     if (this.#length >= this.max)
-      throw this.makeErr("List has reached it's max-length");
+      throw Interface.newErr("List has reached it's max-length");
 
     if (after_node === this.tail) return this.append(value);
 

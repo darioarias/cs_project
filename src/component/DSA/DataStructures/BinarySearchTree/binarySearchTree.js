@@ -66,7 +66,7 @@ export default class BinarySearchTree extends Interface {
       return node;
     };
     if (this.#items >= this.max)
-      throw this.makeErr("Binary Tree cannot hold any more values");
+      throw Interface.newErr("Binary Tree cannot hold any more values");
     this.#root = helper(this.#root);
   }
 

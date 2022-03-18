@@ -18,7 +18,7 @@ export default class Stack extends Interface {
       this.#list.append(value);
       return true;
     } catch (e) {
-      throw this.makeErr("Stack has reached its max-size");
+      throw Interface.newErr("Stack has reached its max-size");
     }
   }
 
