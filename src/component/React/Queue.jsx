@@ -10,7 +10,8 @@ class QueueComponent extends react.Component {
     this.state = {
       value: 0,
       queue: null,
-      animate: '',
+      animate: "",
+      max: 5,
     };
 
     this.onChangeValue = this.onChangeValue.bind(this);
@@ -21,15 +22,17 @@ class QueueComponent extends react.Component {
   }
 
   componentDidUpdate() {
-    if (this.state.animate == 'Enqueue') {
+    const { queue } = this.state;
+    // if (this.state.animate == "Enqueue" && !queue.isEmpty()) { //one way to fix the error, check if the queue is empty, which means getElementById('0') will return nothing.
+    if (this.state.animate == "Enqueue") {
       const element = document.getElementById("0");
-      element.style.backgroundColor = "#FF0000";
+      if (element) element.style.backgroundColor = "#FF0000"; // another way to fix the error, check to make sure that getElementById('0') returned something
     }
   }
 
   resetQueue() {
-    let newQueue = new Queue();
-    this.setState({ queue: newQueue });
+    // let newQueue = new Queue();
+    this.setState({ queue: new Queue(null, this.state.max) });
   }
 
   onChangeValue(data) {
@@ -38,12 +41,14 @@ class QueueComponent extends react.Component {
 
   Enqueue() {
     this.state.queue.enqueue(this.state.value);
-    this.setState({ animate: 'Enqueue' });
+    this.setState({ animate: "Enqueue" });
     this.forceUpdate();
   }
 
   Dequeue() {
-    this.state.queue.dequeue();
+    const { queue } = this.state;
+    // this.state.queue.dequeue();
+    queue.dequeue();
     this.forceUpdate();
   }
   render() {
