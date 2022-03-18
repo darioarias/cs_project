@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
 import Nav from "./component/webpages/Navbar";
-import SinglyLinkedListComponent from "./component/React/SinglyLinkedList";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
-import Home from "./component/webpages/homepage";
+import Home from "./component/webpages/Home";
+import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
 
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
 
@@ -13,6 +13,9 @@ const {
   Stack: { Stack },
   Queue: { Queue },
   BinaryTree: { BinaryTree },
+  BinarySearchTree: { BinarySearchTree: BST },
+  AVLTree: { AVLTree },
+  Heaps: { Heap },
 } = DataStructures; // for testing only, will not be used in production.
 
 class App extends Component {

@@ -2,7 +2,7 @@ import { default as List } from "../LinkedList/doublyLinkedList";
 import { default as Interface } from "../../Interface/interface.js";
 
 export default class Stack extends Interface {
-  constructor(items = [], maxLength = 5) {
+  constructor(items = [], maxLength = Infinity) {
     super(maxLength);
     this.#list = new List(null, maxLength);
     if (items && Array.isArray(items)) items.forEach((item) => this.push(item));
@@ -18,7 +18,7 @@ export default class Stack extends Interface {
       this.#list.append(value);
       return true;
     } catch (e) {
-      throw this.makeErr("Stack has reached its max-size");
+      throw Interface.newErr("Stack has reached its max-size");
     }
   }
 

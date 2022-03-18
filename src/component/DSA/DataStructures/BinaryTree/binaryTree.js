@@ -5,8 +5,8 @@ import { default as Interface } from "../../Interface/interface.js";
 // const {}
 
 export default class BinaryTree extends Interface {
-  constructor() {
-    super();
+  constructor(max_length = Infinity) {
+    super(max_length);
     this.#root = null;
   }
 

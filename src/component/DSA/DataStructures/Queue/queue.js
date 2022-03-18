@@ -2,7 +2,7 @@ import { default as List } from "../LinkedList/doublyLinkedList";
 import { default as Interface } from "../../Interface/interface.js";
 
 export default class Queue extends Interface {
-  constructor(items = [], maxLength = 5) {
+  constructor(items = [], maxLength = Infinity) {
     super(maxLength);
     this.#list = new List(null, maxLength);
 
@@ -20,7 +20,7 @@ export default class Queue extends Interface {
       this.#list.append(value);
       return true;
     } catch (e) {
-      throw this.makeErr("Queue has reached its max-size");
+      throw Interface.newErr("Queue has reached its max-size");
     }
   }
 

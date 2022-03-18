@@ -7,13 +7,13 @@ export default class SinglyLinkedList extends Interface {
    * @param {*} head optional value to start the list.
    * @returns {SinglyLinkedList}
    */
-  constructor(head = null, maxLength = 5) {
+  constructor(head = null, maxLength = Infinity) {
     super(maxLength);
     this.#head = this.#validate_node(head);
     this.#tail = this.#head;
     this.#length = 0;
 
-    this.#maxSizeErr = this.makeErr("List max-length reached.");
+    this.#maxSizeErr = Interface.newErr("List max-length reached.");
   }
 
   /**
