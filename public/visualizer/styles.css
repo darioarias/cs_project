@@ -936,20 +936,6 @@ ul.jsavcode {
   }
 }
 
-@media screen and (prefers-color-scheme: light) {
-  body {
-    background-color: orangered;
-    color: black;
-  }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  body {
-    background-color: #566573;
-    color: #f8f9f9;
-  }
-}
-
 button:not(.navbar-toggler) {
   --green: #1bfd9c;
   font-size: 15px;
@@ -1000,7 +986,6 @@ button:not(.navbar-toggler):before {
 
 button:not(.navbar-toggler):hover:before {
   transform: translateX(15em);
-<<<<<<< HEAD
 }
 
 input {
@@ -1009,7 +994,6 @@ input {
   margin-left: 20px;
   color: rgb(217, 176, 255);
 }
-=======
  }
 
  input{
@@ -1083,4 +1067,3 @@ input:checked + .slider:before {
 body{
   background-color: var(--bg-color);
 }
->>>>>>> 484b519a44be1d8313e422d982e0f2a80ab94ad5
