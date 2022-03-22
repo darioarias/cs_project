@@ -34,7 +34,7 @@ class App extends Component {
     bt.add("Lugo");
     bt.add("Rosario");
 
-    console.log(bt.toArr());
+    // console.log(bt.toArr());
 
     // const pq = new PriorityQueue("max", 10);
     // console.log(pq);

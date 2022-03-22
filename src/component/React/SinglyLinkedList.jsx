@@ -20,8 +20,8 @@ class SinglyLinkedListComponent extends react.Component {
   }
 
   resetList() {
-    let newlist = new SinglyLinkedList();
-    this.setState({ list: newlist });
+    // let newlist = new SinglyLinkedList(null, 5);
+    this.setState({ list: new SinglyLinkedList(null, 5) });
   }
 
   push() {

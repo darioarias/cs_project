@@ -1,4 +1,5 @@
 import React from "react";
+import Dark from "../webpages/Dark"
 
 class Nav extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class Nav extends React.Component {
           <a className="navbar-brand" href="/">
             Home
           </a>
+          <Dark></Dark>
           <button
             className="navbar-toggler"
             type="button"

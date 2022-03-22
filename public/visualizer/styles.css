@@ -1000,6 +1000,7 @@ button:not(.navbar-toggler):before {
 
 button:not(.navbar-toggler):hover:before {
   transform: translateX(15em);
+<<<<<<< HEAD
 }
 
 input {
@@ -1008,3 +1009,78 @@ input {
   margin-left: 20px;
   color: rgb(217, 176, 255);
 }
+=======
+ }
+
+ input{
+   outline: none;
+   background-color: #212121;
+   margin-left: 20px;
+   color: rgb(217, 176, 255);
+ }
+
+ .theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+.theme-switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #66bb6a;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+:root {
+  --bg-color: #fff;
+}
+
+.dark-mode {
+  --bg-color: #3e4c59;
+}
+
+body{
+  background-color: var(--bg-color);
+}
+>>>>>>> 484b519a44be1d8313e422d982e0f2a80ab94ad5
