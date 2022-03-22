@@ -25,8 +25,15 @@ class App extends Component {
   }
 
   render() {
-    const pq = PriorityQueue.build_queue([3, 2, 1], 2);
-    console.log(pq);
+    // const pq = new PriorityQueue("max", 10);
+    // console.log(pq);
+    let vals = new Array(10).fill().map(() => Math.floor(Math.random() * 11));
+    const pq = PriorityQueue.build_queue(vals, 10);
+
+    // vals.forEach((el) => pq.enqueue(el));
+
+    while (!pq.isEmpty()) console.log(pq.dequeue());
+
     return (
       <div>
         <Nav />
