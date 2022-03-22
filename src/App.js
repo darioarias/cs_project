@@ -25,6 +25,17 @@ class App extends Component {
   }
 
   render() {
+    const bt = new BinaryTree();
+    bt.add("Dario");
+    bt.add("Arias");
+    bt.add("Lopz");
+    bt.add("Rosa");
+    bt.add("Maria");
+    bt.add("Lugo");
+    bt.add("Rosario");
+
+    console.log(bt.toArr());
+
     // const pq = new PriorityQueue("max", 10);
     // console.log(pq);
     //let vals = new Array(10).fill().map(() => Math.floor(Math.random() * 11));
