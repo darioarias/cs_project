@@ -103,7 +103,7 @@ export default class Interface {
   /**
    * @virtual
    * @description breaks down Data Structure into an array format
-   * @returns {Array}
+   * @returns {Array} Elements in Data Structure
    */
   toArr() {
     throw new VirtualUndef(
