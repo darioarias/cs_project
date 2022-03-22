@@ -24,8 +24,13 @@ export const QueueContainer = styled.div`
     border: 1px solid black;
 `
 export const CircleNode = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 1px solid black;
     border-radius: 50%;
     width: 50px;
     height: 50px;
+    flex-shrink: 0;
 `
+

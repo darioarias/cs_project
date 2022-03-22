@@ -51,6 +51,34 @@ export default class BinaryTree extends Interface {
     node.right = new Node(value);
   }
 
+  height(node)
+  {
+    if (node == null)
+      return 0;
+    return 1 + Math.max(this.height(node.left), this.height(node.right));
+  }
+
+  levelTreeOrder(node = this.#root)
+  {
+    if (!this.root) return [];
+
+    const levels = []
+    const q = [this.#root]
+    while (q.length){
+      const length = q.length
+      const level = []
+      for (var i = 0; i < length; i++)
+      {
+        const node = q.shift();
+        level.push(node.value);
+        if (node.left) q.push(node.left);
+        if (node.right) q.push(node.right);
+      }
+      levels.push(level);
+    }
+    return levels;
+  }
+
   // private methods/properties
   #root;
 }
