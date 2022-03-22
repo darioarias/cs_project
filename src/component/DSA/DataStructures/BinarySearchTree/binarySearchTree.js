@@ -2,6 +2,12 @@ import { default as Node } from "../Nodes/binarySearchTreeNode";
 import { default as Queue } from "../Queue/queue";
 import { default as Interface } from "../../Interface/interface";
 
+/**
+ * Creates a Binary Search Tree (BST) Instance and manages data manipulation
+ * @param {Number} max_size {optional} Maximum number of element this tree can hold
+ * @returns {BinarySearchTree} Instance of tree
+ * @extends {Interface} Contract between Front-end and Back-end
+ */
 export default class BinarySearchTree extends Interface {
   constructor(max_size = Infinity) {
     super(max_size);
@@ -9,10 +15,17 @@ export default class BinarySearchTree extends Interface {
     this.#items = 0;
   }
 
+  /**
+   * @getter The number of elements currently in the tree
+   * @returns {Number} Number of Elements in Tree
+   */
   get itemsCount() {
     return this.#items;
   }
 
+  /**
+   * @setter Updates the number of elements in the Tree
+   */
   set itemsCount(value) {
     this.#items = value;
   }
@@ -107,15 +120,28 @@ export default class BinarySearchTree extends Interface {
     }
 
     return result;
-  } // In-order?
+  }
 
+  /**
+   * @method
+   * Prints a string representation of this tree instance
+   */
   print() {
     console.log(this.#toString(this.#root));
   }
 
   //privates properties/methods
+  /**@private Holds a reference to the root of this tree  */
   #root;
+
+  /**@private Keeps track of the number of elements in this tree */
   #items;
+
+  /**
+   * Creates a string representation of a Binary tree
+   * @param {Node} node root where to start building string representation of tree
+   * @returns {String} Representation of Binary tree
+   */
   #toString(node, top = "", root = "", bottom = "") {
     if (!node) return `${root}null\n`;
     if (!node.left && !node.right) return `${root}${node.value}\n`;
