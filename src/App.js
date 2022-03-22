@@ -16,7 +16,7 @@ const {
   BinarySearchTree: { BinarySearchTree: BST },
   AVLTree: { AVLTree },
   Heaps: { Heap },
-  PriorityQueues: { PriorityQueue },
+  //PriorityQueues: { PriorityQueue },
 } = DataStructures; // for testing only, will not be used in production.
 
 class App extends Component {

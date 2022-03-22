@@ -8,9 +8,18 @@ class StackComponent extends react.Component {
     this.state = {
       value: 0,
       list: null,
+      animate: "",
       max: 5, //set max limit to the stack to 5 nodes
     };
     this.onChangeValue = this.onChangeValue.bind(this);
+  }
+
+  componentDidUpdate() {
+    const { stack } = this.state;
+    if (this.state.animate == "push") {
+      const element = document.getElementById("0");
+      if (element) element.style.backgroundColor = "#1e90ff";
+    }
   }
 
   /*Instantiate the stack when the stack page is loaded*/
@@ -32,6 +41,7 @@ class StackComponent extends react.Component {
   //Push the node into the top of the stack the user entered in the input fields
   push() {
     this.state.list.push(this.state.value);
+    this.setState({animate:"push"});
     this.forceUpdate();
   }
 
@@ -56,7 +66,7 @@ class StackComponent extends react.Component {
     let listStackNodes = [];
     let output = [];
     stackNodes.map((node, index) =>
-      listStackNodes.push(<StackNode key={index} data={node}></StackNode>)
+      listStackNodes.push(<StackNode key={index} data={node} index={index}></StackNode>)
     );
     for (let i = 0; i < listStackNodes.length; i++) {
       output.push(listStackNodes[i]);
@@ -99,7 +109,6 @@ class StackComponent extends react.Component {
         >
           <div className="verticalNodes">Top of Stack</div>
           {Nodes()}
-          <div className="verticalNodes">Bottom of Stack</div>
         </div>
       </div>
     );
