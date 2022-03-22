@@ -974,13 +974,6 @@ button:not(.navbar-toggler) {
   transform: translateX(15em);
  }
 
- input{
-   outline: none;
-   background-color: #212121;
-   margin-left: 20px;
-   color: rgb(217, 176, 255);
- }
-
  .theme-switch-wrapper {
   display: flex;
   align-items: center;
