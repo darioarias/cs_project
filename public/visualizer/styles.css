@@ -996,13 +996,6 @@ input {
 }
  }
 
- input{
-   outline: none;
-   background-color: #212121;
-   margin-left: 20px;
-   color: rgb(217, 176, 255);
- }
-
  .theme-switch-wrapper {
   display: flex;
   align-items: center;
@@ -1054,16 +1047,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-:root {
-  --bg-color: #fff;
-}
-
-.dark-mode {
-  --bg-color: #3e4c59;
-}
-
-body{
-  background-color: var(--bg-color);
 }
