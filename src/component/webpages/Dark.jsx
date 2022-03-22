@@ -44,4 +44,4 @@ class Dark extends React.Component {
     }
 }
 
-export default Dark
+export default Dark;
