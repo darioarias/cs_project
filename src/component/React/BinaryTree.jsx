@@ -34,11 +34,11 @@ class BinaryTreeComponent extends react.Component {
   render() {
     let Nodes = () => {
       if (this.state.tree != null) {
-        let LevelOrder = this.state.tree.levelTreeOrder();
+        let LevelOrder = this.state.tree.toArr();
         return (
           <>
             {LevelOrder.map((subArray, Index) => (
-              <TreeLevel key={Index} data={subArray} level= {Index}></TreeLevel>
+              <TreeLevel key={Index} data={subArray} level={Index}></TreeLevel>
             ))}
           </>
         );
@@ -51,9 +51,7 @@ class BinaryTreeComponent extends react.Component {
           <input value={this.state.value} onChange={this.onChangeValue} />
           <button onClick={() => this.add()}> Add Value </button>
         </div>
-        <div className= "BinaryTree">
-          {Nodes()}
-        </div>
+        <div className="BinaryTree">{Nodes()}</div>
       </div>
     );
   }
