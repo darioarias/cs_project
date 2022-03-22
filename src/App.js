@@ -16,7 +16,7 @@ const {
   BinarySearchTree: { BinarySearchTree: BST },
   AVLTree: { AVLTree },
   Heaps: { Heap },
-  PriorityQueues: { PriorityQueue },
+  //PriorityQueues: { PriorityQueue },
 } = DataStructures; // for testing only, will not be used in production.
 
 class App extends Component {
@@ -25,8 +25,8 @@ class App extends Component {
   }
 
   render() {
-    const pq = PriorityQueue.build_queue([3, 2, 1], 2);
-    console.log(pq);
+    //const pq = PriorityQueue.build_queue([3, 2, 1], 2);
+    //console.log(pq);
     return (
       <div>
         <Nav />

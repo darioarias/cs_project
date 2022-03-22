@@ -15,7 +15,7 @@ export default class Stack extends Interface {
    */
   push(value) {
     try {
-      this.#list.append(value);
+      this.#list.push(value);
       return true;
     } catch (e) {
       throw Interface.newErr("Stack has reached its max-size");
@@ -27,7 +27,7 @@ export default class Stack extends Interface {
    * @returns the top element of the stack
    */
   pop() {
-    return this.#list.removeLast();
+    return this.#list.pop();
   }
 
   /**
