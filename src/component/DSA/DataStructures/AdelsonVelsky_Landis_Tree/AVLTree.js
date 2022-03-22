@@ -2,6 +2,12 @@ import { default as Node } from "../Nodes/AVLTreeNode.js";
 import { default as BST } from "../BinarySearchTree/binarySearchTree";
 import Interface from "../../Interface/interface.js";
 
+/**
+ * Creates a Adelson Velsky Landis Tree (AVL - Tree) Interface and manages data manipulation
+ * @param {Number} max_size {optional} Maximum number of element this tree can hold
+ * @extends {BST} Binary Search Tree
+ * @returns {AVLTree} AVL Tree Instace
+ */
 export default class AVLTree extends BST {
   constructor(max_size = Infinity) {
     super(max_size);
