@@ -936,21 +936,7 @@ ul.jsavcode {
   }
 }
 
-@media screen and (prefers-color-scheme: light) {
-  body {
-    background-color: white;
-    color: black;
-  }
-}
-
-@media screen and (prefers-color-scheme: dark) {
-  body {
-    background-color: #566573;
-    color: #f8f9f9;
-  }
-}
-
-button:not(.navbar-toggler)  {
+button:not(.navbar-toggler) {
   --green: #1BFD9C;
   font-size: 15px;
   letter-spacing: 0.06em;
@@ -1046,16 +1032,4 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
-}
-
-:root {
-  --bg-color: #fff;
-}
-
-.dark-mode {
-  --bg-color: #3e4c59;
-}
-
-body{
-  background-color: var(--bg-color);
 }
