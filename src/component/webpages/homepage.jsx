@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import SinglyLinkedListComponent from "../React/SinglyLinkedList";
 import StackComponent from "../React/Stack";
+import HeapComponent from "../React/Heap";
 
 const Home = () => {
   const [linkedList, setlinkedList] = useState(false);
@@ -8,6 +9,7 @@ const Home = () => {
   const [queue, setQueue] = useState(false);
   const [nodes, setNodes] = useState(false);
   const [binaryTrees, setbinaryTrees] = useState(false);
+  const [heap, setHeap] = useState(false);
 
   const llFalse = () => {
     setlinkedList(true);
@@ -15,6 +17,7 @@ const Home = () => {
     setQueue(false);
     setNodes(false);
     setbinaryTrees(false);
+    setHeap(false);
   };
   const stackFalse = () => {
     setlinkedList(false);
@@ -22,6 +25,7 @@ const Home = () => {
     setQueue(false);
     setNodes(false);
     setbinaryTrees(false);
+    setHeap(false);
   };
   const queueFalse = () => {
     setlinkedList(false);
@@ -29,6 +33,7 @@ const Home = () => {
     setQueue(true);
     setNodes(false);
     setbinaryTrees(false);
+    setHeap(false);
   };
   const nodesFalse = () => {
     setlinkedList(false);
@@ -36,6 +41,7 @@ const Home = () => {
     setQueue(false);
     setNodes(true);
     setbinaryTrees(false);
+    setHeap(false);
   };
   const binaryTFalse = () => {
     setlinkedList(false);
@@ -43,6 +49,16 @@ const Home = () => {
     setQueue(false);
     setNodes(false);
     setbinaryTrees(true);
+    setHeap(false);
+  };
+
+  const heapsFalse = () => {
+    setlinkedList(false);
+    setStack(false);
+    setQueue(false);
+    setNodes(false);
+    setbinaryTrees(false);
+    setHeap(true);
   };
   return (
     <div>
@@ -125,6 +141,7 @@ const Home = () => {
       {queue && <p>Queue</p>}
       {nodes && <p>Nodes</p>}
       {binaryTrees && <p>Binary Trees</p>}
+      {heap ? <HeapComponent></HeapComponent>: ""}
     </div>
   );
 };

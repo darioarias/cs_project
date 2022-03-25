@@ -3,6 +3,7 @@ import SinglyLinkedListComponent from "../React/SinglyLinkedList";
 import BinaryTreeComponent from "../React/BinaryTree";
 import QueueComponent from "../React/Queue";
 import StackComponent from "../React/Stack";
+import HeapComponent from "../React/Heap";
  
 const ShowDataStructure = ({dataStructure}) => {
  return (
@@ -11,6 +12,7 @@ const ShowDataStructure = ({dataStructure}) => {
        {dataStructure === "stack" && <StackComponent/>}
        {dataStructure === "binaryTree" && <BinaryTreeComponent/>}
        {dataStructure === "queue" && <QueueComponent/>}
+       {dataStructure === "heap" && <HeapComponent/>}
    </div>
  );
 };
