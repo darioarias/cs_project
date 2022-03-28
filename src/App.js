@@ -4,6 +4,7 @@ import Nav from "./component/webpages/Navbar";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
 import Home from "./component/webpages/Home";
 import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
+import Navbar from "./component/webpages/Navbar";
 
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
 
@@ -47,7 +48,7 @@ class App extends Component {
 
     return (
       <div>
-        <Nav />
+        <Navbar />
         {/* <div className="container-fluid">
           <SinglyLinkedListComponent></SinglyLinkedListComponent>
         </div> */}

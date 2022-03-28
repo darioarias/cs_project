@@ -30,6 +30,7 @@ const SinglyLinkedListNode = (props) => {
             refY="3"
             orient="auto"
             markerUnits="strokeWidth"
+            marginleft= "20px"
           >
             <path d="M0,0 L0,6 L9,3 z" />
           </marker>

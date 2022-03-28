@@ -1,6 +1,10 @@
 import { default as Stack } from "../DSA/DataStructures/Stack/stack.js";
 import react from "react";
 import StackNode from "./StackNode";
+import Box from '@mui/material/Card';
+import Learn from '../webpages/Learn';
+
+
 class StackComponent extends react.Component {
   constructor(props) {
     super(props);
@@ -12,6 +16,7 @@ class StackComponent extends react.Component {
       max: 5, //set max limit to the stack to 5 nodes
     };
     this.onChangeValue = this.onChangeValue.bind(this);
+    this.goBackHandler = this.goBackHandler.bind(this);
   }
 
   componentDidUpdate() {
@@ -56,6 +61,9 @@ class StackComponent extends react.Component {
     console.log(this.state.list.peek());
     this.forceUpdate();
   }
+  goBackHandler() {
+    this.props.setGoBack(true)
+  }
 
   /**
    * @description instantiate nodes from the stack for the visuals
@@ -84,33 +92,52 @@ class StackComponent extends react.Component {
     //return is what is sent to the frontend such as the buttons and the stack with the instantiated nodes
     return (
       <div>
-        <button onClick={() => this.resetList()}> Reset List</button>
-        <div>
-          <input value={this.state.value} onChange={this.onChangeValue} />
-          <button onClick={() => this.push()}>Push Value</button>
-          <button onClick={() => this.pop()}>Pop Value</button>
-          <button onClick={() => this.peek()}>Peek Value</button>
+        {
+          !this.props.goBack ?
+          (<>
+           <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              p: 10,
+              m: 10,
+              bgcolor: '#1976D2',
+              borderRadius: 10,
+            }}
+            >
+          <button onClick={() => this.resetList()}> Reset List</button>
+          <div>
+            <input value={this.state.value} onChange={this.onChangeValue} />
+            <button onClick={() => this.push()}>Push Value</button>
+            <button onClick={() => this.pop()}>Pop Value</button>
+            <button onClick={() => this.peek()}>Peek Value</button>
+          </div>
+          </Box>
+          <div
+            className="jsavlist jsavautoresize jsavverticallist vertical"
+            data-visible="true"
+            data-nodegap="40"
+            data-autoresize="true"
+            style={{
+              padding: "10px",
+              display: "flex",
+              gap: "0px",
+              alignItems: "flex-start",
+              position: "static",
+              display: "block",
+              maxWidth: "10%",
+              margin: "auto",
+            }}
+          >
+            <div className="verticalNodes">Top of Stack</div>
+            {Nodes()}
+          </div>
+          <button onClick={this.goBackHandler}>Return</button>
+          </>
+            ) : <Learn/>}
         </div>
-        <div
-          className="jsavlist jsavautoresize jsavverticallist vertical"
-          data-visible="true"
-          data-nodegap="40"
-          data-autoresize="true"
-          style={{
-            padding: "10px",
-            display: "flex",
-            gap: "0px",
-            alignItems: "flex-start",
-            position: "static",
-            display: "block",
-            maxWidth: "10%",
-            margin: "auto",
-          }}
-        >
-          <div className="verticalNodes">Top of Stack</div>
-          {Nodes()}
-        </div>
-      </div>
     );
   }
 }

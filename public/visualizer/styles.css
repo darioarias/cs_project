@@ -936,7 +936,7 @@ ul.jsavcode {
   }
 }
 
-button:not(.navbar-toggler) {
+/* button:not(.navbar-toggler) {
   --blue: #66cfff;
   font-size: 15px;
   letter-spacing: 0.06em;
@@ -952,7 +952,7 @@ button:not(.navbar-toggler) {
   background: linear-gradient(to right, rgba(27, 156, 253, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 156, 253, 0.1) 100%);
   color: var(--blue);
   box-shadow: inset 0 0 10px rgba(27, 156, 253, 0.4), 0 0 9px 3px rgba(27, 156, 253, 0.1);
- }
+ } */
  
  button:not(.navbar-toggler):hover {
   color: #82aeff;

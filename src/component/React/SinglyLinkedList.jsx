@@ -1,6 +1,8 @@
 import { default as SinglyLinkedList } from "../DSA/DataStructures/LinkedList/singlyLinkedList.js";
 import react from "react";
 import SinglyLinkedListNode from "./SinglyLinkedListNode.jsx";
+import Box from '@mui/material/Card';
+import Learn from '../webpages/Learn';
 
 class SinglyLinkedListComponent extends react.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class SinglyLinkedListComponent extends react.Component {
 
     this.getHead = this.getHead.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
+    this.goBackHandler = this.goBackHandler.bind(this);
   }
 
   componentDidMount() {
@@ -71,6 +74,9 @@ class SinglyLinkedListComponent extends react.Component {
   onChangeValue(data) {
     this.setState({ value: data.target.value });
   }
+  goBackHandler() {
+    this.props.setGoBack(true)
+  }
 
   /**
    * @description instantiate nodes from the linked list for the visuals
@@ -101,6 +107,21 @@ class SinglyLinkedListComponent extends react.Component {
     };
     return (
       <div>
+        {
+          !this.props.goBack ?
+          (<>
+        <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          p: 10,
+          m: 10,
+          bgcolor: '#1976D2',
+          borderRadius: 10,
+        }}
+        >
         <button onClick={() => this.resetList()}>Reset List</button>
         <div>
           <input value={this.state.value} onChange={this.onChangeValue} />
@@ -111,6 +132,7 @@ class SinglyLinkedListComponent extends react.Component {
           <button onClick={() => this.removeLast()}> Remove Last</button>
           <button onClick={() => this.search()}>Search for Value</button>
         </div>
+        </Box>
 
         <div
           className="jsavlist jsavautoresize jsavhorizontallist scroller"
@@ -126,6 +148,9 @@ class SinglyLinkedListComponent extends react.Component {
         >
           {Nodes()}
         </div>
+        <button onClick={this.goBackHandler}>Return</button>
+        </>
+          ) : <Learn/>}
       </div>
     );
   }

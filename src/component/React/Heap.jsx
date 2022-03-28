@@ -2,6 +2,8 @@ import {default as Heap} from "../DSA/DataStructures/Heaps/heap.js";
 import react from "react";
 import TreeLevel from "./HeapNode.jsx";
 import HeapNode from "./HeapNode.jsx";
+import Box from '@mui/material/Card';
+import Learn from '../webpages/Learn';
 
 class HeapComponent extends react.Component{
     constructor(props){
@@ -12,6 +14,7 @@ class HeapComponent extends react.Component{
             heap: null,
         };
         this.onChangeValue = this.onChangeValue.bind(this);
+        this.goBackHandler = this.goBackHandler.bind(this);
     }
 
     componentDidMount(){
@@ -66,7 +69,22 @@ class HeapComponent extends react.Component{
             }
         };
         return (      
-        <div>
+            <div>
+                {
+                !this.props.goBack ?
+                (<>
+                <Box
+                sx={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    justifyContent: 'center',
+                    p: 10,
+                    m: 10,
+                    bgcolor: '#1976D2',
+                    borderRadius: 10,
+                }}
+            >
             <button onClick={() => this.resetHeap()}>Reset Heap</button>
             <div>
                 <input value={this.state.value} onChange={this.onChangeValue} />
@@ -74,7 +92,11 @@ class HeapComponent extends react.Component{
                 <button onClick={()=>this.remove()}>Remove Value</button>
                 <button onClick={()=>this.show()}>Debug</button>
             </div>
+            </Box>
             <div>{Nodes()}</div>
+            <button onClick={this.goBackHandler}>Return</button>
+            </>
+          ) : <Learn/>}
         </div>
         )
     }
