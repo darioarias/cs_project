@@ -75,7 +75,7 @@ export default function MenuAppBar() {
              >
                <MenuItem onClick={handleHome}>Home</MenuItem>
                <MenuItem onClick={handleLearnMore}>Learn</MenuItem>
-               <MenuItem onClic={handleAnimation}>Animation</MenuItem>
+               <MenuItem onClick={handleAnimation}>Animation</MenuItem>
              </Menu>
            </div>
        </Toolbar>
