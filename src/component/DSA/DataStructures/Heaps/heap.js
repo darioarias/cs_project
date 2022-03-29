@@ -64,8 +64,6 @@ export default class Heap extends Interface {
     switch (Type.member(type)) {
       case "MIN":
         this.#sort = (a, b) => {
-          console.log(this.values[b], this.values[a]);
-          console.log(this.#values[a] <= this.#values[b]);
           return this.#values[a] <= this.#values[b];
         };
         break;
@@ -250,7 +248,6 @@ export default class Heap extends Interface {
     this.show();
     let childIndx = at_index,
       parentIndx = this.#parentIndx(childIndx);
-    console.log(parentIndx, childIndx)
     while (childIndx > 0 && this.#sort(childIndx, parentIndx)) {
       this.#swap(childIndx, parentIndx);
       childIndx = parentIndx;
@@ -267,8 +264,6 @@ export default class Heap extends Interface {
   #siftDown(at_index) {
     //  return this.#values[a] < this.#values[b];
     let parentIndx = at_index;
-    console.log("Pre-removed: ")
-    console.log(this.show())
     while (true) {
       let left = this.#leftChildIndx(parentIndx),
         right = this.#rightChildIndx(parentIndx),
