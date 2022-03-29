@@ -22,7 +22,7 @@ class HeapComponent extends react.Component{
     }
 
     resetHeap(){
-        let newHeap = new Heap();
+        let newHeap = new Heap(Infinity, "MIN");
         this.setState({heap:newHeap});
     }
 
@@ -44,10 +44,13 @@ class HeapComponent extends react.Component{
         this.state.heap.show();
         this.forceUpdate();
     }
+    goBackHandler() {
+        this.props.setGoBack(true)
+    }
 
     /**
     * @description instantiate nodes from the stack for the visuals
-    * @param {*} pol : list of nodes
+    * @param {*} heapData : list of nodes
     * @returns array of instantiated node components
     */
     outputting(heapData) {
