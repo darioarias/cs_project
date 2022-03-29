@@ -2,7 +2,7 @@ import { default as SinglyLinkedList } from "../DSA/DataStructures/LinkedList/si
 import react from "react";
 import SinglyLinkedListNode from "./SinglyLinkedListNode.jsx";
 import Box from '@mui/material/Card';
-import Learn from '../webpages/Learn';
+import Learn from '../pages/Learn';
 
 class SinglyLinkedListComponent extends react.Component {
   constructor(props) {

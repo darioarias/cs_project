@@ -2,7 +2,7 @@ import { default as Stack } from "../DSA/DataStructures/Stack/stack.js";
 import react from "react";
 import StackNode from "./StackNode";
 import Box from '@mui/material/Card';
-import Learn from '../webpages/Learn';
+import Learn from '../pages/Learn';
 
 
 class StackComponent extends react.Component {

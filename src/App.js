@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { LightTheme, DarkTheme } from "./styles/themes";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import NavBar from "./component/navbar/Navbar";
 import Homepage from "./component/pages/Home";
@@ -34,6 +35,8 @@ const App = () => {
 
   return (
     <ThemeProvider theme={themeStyle}>
+      <CssBaseline />
+
       <NavBar toggleTheme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Homepage />} />

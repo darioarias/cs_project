@@ -3,7 +3,7 @@ import react from "react";
 import { QueueContainer } from "./styles.jsx";
 import QueueNode from "./QueueNode.jsx";
 import Box from '@mui/material/Card';
-import Learn from '../webpages/Learn';
+import Learn from '../pages/Learn';
 
 
 class QueueComponent extends react.Component {

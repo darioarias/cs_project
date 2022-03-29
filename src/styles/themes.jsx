@@ -11,6 +11,9 @@ export const DarkTheme = createTheme({
   palette: {
     type: "dark",
     mode: 'dark',
+    background: {
+      default: "#545e6e"
+    }
   },
 });
 

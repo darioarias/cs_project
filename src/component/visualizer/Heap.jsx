@@ -3,7 +3,7 @@ import react from "react";
 import TreeLevel from "./HeapNode.jsx";
 import HeapNode from "./HeapNode.jsx";
 import Box from '@mui/material/Card';
-import Learn from '../webpages/Learn';
+import Learn from '../pages/Learn';
 
 class HeapComponent extends react.Component{
     constructor(props){

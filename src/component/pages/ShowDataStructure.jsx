@@ -1,10 +1,10 @@
-import SinglyLinkedListComponent from "../React/SinglyLinkedList";
-import BinaryTreeComponent from "../React/BinaryTree";
-import QueueComponent from "../React/Queue";
-import StackComponent from "../React/Stack";
-import HeapComponent from "../React/Heap";
-import React, {useState} from "react"
- 
+import SinglyLinkedListComponent from "../visualizer/SinglyLinkedList";
+import BinaryTreeComponent from "../visualizer/BinaryTree";
+import QueueComponent from "../visualizer/Queue";
+import StackComponent from "../visualizer/Stack";
+import HeapComponent from "../visualizer/Heap";
+import React, {useState} from "react";
+
 const ShowDataStructure = ({dataStructure}) => {
   const [goBack, setGoBack] = useState(false);
  return (
