@@ -1,10 +1,18 @@
-import React, { Component } from "react";
-import "./App.css";
-import Nav from "./component/webpages/Navbar";
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import { LightTheme, DarkTheme } from "./styles/themes";
+
+import NavBar from "./component/navbar/Navbar";
+import Homepage from "./component/pages/Home";
+import LinkedListpage from "./component/pages/LinkedList";
+import Queuepage from "./component/pages/Queue";
+import Stackpage from "./component/pages/Stack";
+import Treepage from "./component/pages/Tree";
+import Sandbox from "./component/sandbox/sandbox";
+
 import { DataStructures, Algorithms } from "./component/DSA/exports";
-import Home from "./component/webpages/Home";
 import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
-import Navbar from "./component/webpages/Navbar";
 
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
 
@@ -20,44 +28,23 @@ const {
   PriorityQueues: { PriorityQueue },
 } = DataStructures; // for testing only, will not be used in production.
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
+const App = () => {
+  const [theme, setTheme] = useState(false);
+  const themeStyle = theme === false ? LightTheme : DarkTheme;
 
-  render() {
-    const bt = new BinaryTree();
-    bt.add("Dario");
-    bt.add("Arias");
-    bt.add("Lopz");
-    bt.add("Rosa");
-    bt.add("Maria");
-    bt.add("Lugo");
-    bt.add("Rosario");
-
-    // console.log(bt.toArr());
-
-    // const pq = new PriorityQueue("max", 10);
-    // console.log(pq);
-    //let vals = new Array(10).fill().map(() => Math.floor(Math.random() * 11));
-    //const pq = PriorityQueue.build_queue(vals, 10);
-
-    // vals.forEach((el) => pq.enqueue(el));
-
-    //while (!pq.isEmpty()) console.log(pq.dequeue());
-
-    return (
-      <div>
-        <Navbar />
-        {/* <div className="container-fluid">
-          <SinglyLinkedListComponent></SinglyLinkedListComponent>
-        </div> */}
-        <div>
-          <Home />
-        </div>
-      </div>
-    );
-  }
-}
+  return (
+    <ThemeProvider theme={themeStyle}>
+      <NavBar toggleTheme={theme} setTheme={setTheme} />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/linkedlist" element={<LinkedListpage />} />
+        <Route path="/queue" element={<Queuepage />} />
+        <Route path="/stack" element={<Stackpage />} />
+        <Route path="/tree" element={<Treepage />} />
+        <Route path="/sandbox" element={<Sandbox />} />
+      </Routes>
+    </ThemeProvider>
+  );
+};
 
 export default App;

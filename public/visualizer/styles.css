@@ -953,7 +953,7 @@ ul.jsavcode {
   color: var(--blue);
   box-shadow: inset 0 0 10px rgba(27, 156, 253, 0.4), 0 0 9px 3px rgba(27, 156, 253, 0.1);
  } */
- 
+ /*
  button:not(.navbar-toggler):hover {
   color: #82aeff;
   box-shadow: inset 0 0 10px rgba(27, 156, 253, 0.6), 0 0 9px 3px rgba(27, 156, 253, 0.2);
@@ -993,3 +993,4 @@ body{
   background-color: #566573;
   color: #f8f9f9;
 }
+*/
