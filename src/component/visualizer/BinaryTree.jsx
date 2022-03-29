@@ -1,6 +1,6 @@
 import { default as BinaryTree } from "../DSA/DataStructures/BinaryTree/binaryTree.js";
 import react from "react";
-import TreeNode from "./TreeNodes.jsx";
+import TreeLevel from "./TreeNodes.jsx";
 import Box from '@mui/material/Card';
 import Learn from '../pages/Learn';
 
@@ -44,9 +44,18 @@ class BinaryTreeComponent extends react.Component {
     this.props.setGoBack(true)
   }
 render() {
-    let Nodes = () => {
-      console.log(this.state.tree);
-    };
+  let Nodes = () => {
+    if (this.state.tree != null) {
+      let LevelOrder = this.state.tree.toArr();
+      return (
+        <>
+          {LevelOrder.map((subArray, Index) => (
+            <TreeLevel key={Index} data={subArray} level={Index}></TreeLevel>
+          ))}
+        </>
+      );
+    }
+  };
     return (
       <div>
         {
