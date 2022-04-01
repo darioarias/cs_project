@@ -21,7 +21,6 @@
 .path-visitedNodes {
   animation-name: visitedNodes;
   animation-duration: 2.0s;
-  animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
   animation-iteration-count: 1;
@@ -32,18 +31,16 @@
 .path-shortestPath {
   animation-name: shortestPath;
   animation-duration: 2.0s;
-  animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
+
 @keyframes visitedNodes {
   0% {
-    transform: scale(0.3);
     background-color: #F5FCFF;
-    border-radius: 10%;
   }
 
   50% {
@@ -51,29 +48,24 @@
   }
 
   75% {
-    transform: scale(1.1);
     background-color: #B7E9F7;
   }
 
   100% {
-    transform: scale(1);
     background-color: #7AD7F0;
   }
 }
 
 @keyframes shortestPath {
   0% {
-    transform: scale(0.6);
     background-color: aquamarine;
   }
 
   50% {
-    transform: scale(1.1);
     background-color: aquamarine;
   }
 
   100% {
-    transform: scale(1);
     background-color: aquamarine;
   }
 }

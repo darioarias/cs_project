@@ -91,7 +91,7 @@ const PathFindingViz = () => {
   };
 
   const displayGrid = (
-    <div>
+    <div className = "path-grid">
       {grid.map((row, rowIndex) => {
         return (
           <div key={rowIndex} className="path-grid-rows">
