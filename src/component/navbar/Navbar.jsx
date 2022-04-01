@@ -62,6 +62,9 @@ export default function NavBar({ toggleTheme, setTheme }) {
             <MenuItem onClick={handleClose}>
               <NavLink to="/tree">Tree</NavLink>
             </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <NavLink to="/heap">Heap</NavLink>
+            </MenuItem>
           </Menu>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <nav>
