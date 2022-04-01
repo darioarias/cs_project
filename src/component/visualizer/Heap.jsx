@@ -31,7 +31,7 @@ class HeapComponent extends react.Component{
     }
 
     insert(){
-        this.state.heap.insert(this.state.value);
+        this.state.heap.insert(parseInt(this.state.value));
         this.forceUpdate();
     }
 
