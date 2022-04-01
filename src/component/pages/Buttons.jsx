@@ -104,7 +104,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
    </Card>
    <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
      <CardActionArea onClick={() => {
-         setDataStructure("binaryTree")
+         setDataStructure("heap")
          setShowButtons(false)
        }}>
        <CardMedia

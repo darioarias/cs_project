@@ -245,6 +245,7 @@ export default class Heap extends Interface {
    * @param {*} at_index index to start checking
    */
   #siftUp(at_index) {
+    this.show();
     let childIndx = at_index,
       parentIndx = this.#parentIndx(childIndx);
     while (childIndx > 0 && this.#sort(childIndx, parentIndx)) {
@@ -252,6 +253,7 @@ export default class Heap extends Interface {
       childIndx = parentIndx;
       parentIndx = this.#parentIndx(childIndx);
     }
+    this.show();
   }
 
   /**

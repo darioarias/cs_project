@@ -1,0 +1,14 @@
+.PathFindingViz {
+    max-width: 80% ;
+    margin:  auto;
+}
+.path-grid {
+    display: inline-grid;
+    
+    grid-row-gap: 5px;
+    grid-column-gap: 5px;
+}
+.path-grid-rows {
+    display: flex;
+}
+
