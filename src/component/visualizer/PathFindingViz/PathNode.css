@@ -1,0 +1,78 @@
+.path {
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  flex-shrink: 0;
+}
+
+.path-start {
+  background-color: green;
+}
+
+.path-end {
+  background-color: red;
+}
+
+.path-wall {
+  background-color: purple;
+}
+
+.path-visitedNodes {
+  animation-name: visitedNodes;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+
+.path-shortestPath {
+  animation-name: shortestPath;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+}
+@keyframes visitedNodes {
+  0% {
+    transform: scale(0.3);
+    background-color: #F5FCFF;
+    border-radius: 10%;
+  }
+
+  50% {
+    background-color: #DBF3FA;
+  }
+
+  75% {
+    transform: scale(1.1);
+    background-color: #B7E9F7;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: #7AD7F0;
+  }
+}
+
+@keyframes shortestPath {
+  0% {
+    transform: scale(0.6);
+    background-color: aquamarine;
+  }
+
+  50% {
+    transform: scale(1.1);
+    background-color: aquamarine;
+  }
+
+  100% {
+    transform: scale(1);
+    background-color: aquamarine;
+  }
+}
