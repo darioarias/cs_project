@@ -1,7 +1,8 @@
 .path {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border: 1px solid black;
+  background-color: white;
   flex-shrink: 0;
 }
 
@@ -19,7 +20,7 @@
 
 .path-visitedNodes {
   animation-name: visitedNodes;
-  animation-duration: 1.5s;
+  animation-duration: 2.0s;
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
@@ -30,7 +31,7 @@
 
 .path-shortestPath {
   animation-name: shortestPath;
-  animation-duration: 1.5s;
+  animation-duration: 2.0s;
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
