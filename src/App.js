@@ -27,11 +27,15 @@ const {
   AVLTree: { AVLTree },
   Heaps: { Heap },
   PriorityQueues: { PriorityQueue },
+  Graph: { Graph },
 } = DataStructures; // for testing only, will not be used in production.
 
 const App = () => {
   const [theme, setTheme] = useState(false);
   const themeStyle = theme === false ? LightTheme : DarkTheme;
+
+  const g = new Graph();
+  console.log(g);
 
   return (
     <ThemeProvider theme={themeStyle}>

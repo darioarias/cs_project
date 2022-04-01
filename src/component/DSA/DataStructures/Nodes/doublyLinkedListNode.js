@@ -26,8 +26,6 @@ export default class DoublyLinkedListNode extends SinglyLinkedListNode {
     this.#previous = value;
   }
 
-  //main interface
-
   /**
    * @static
    * @description a way to check the type of node this is

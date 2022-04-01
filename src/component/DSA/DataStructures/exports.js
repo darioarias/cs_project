@@ -7,6 +7,7 @@ import BinarySearchTree from "./BinarySearchTree/export";
 import AVLTree from "./AdelsonVelsky_Landis_Tree/export";
 import Heaps from "./Heaps/export";
 import PriorityQueues from "./PriorityQueue/exports";
+import Graph from "./Graphs/exports";
 
 export default {
   Nodes,
@@ -18,4 +19,5 @@ export default {
   AVLTree,
   Heaps,
   PriorityQueues,
+  Graph,
 };
