@@ -1,71 +1,81 @@
 import { default as Vertex } from "./vertex";
-class EdgeType {
-  static UNDIRECTED = new EdgeType("undirected");
-  static DIRECTED = new EdgeType("directed");
-  constructor(name) {
-    this.name = name;
-  }
+import { default as Edge } from "./edge";
+import { default as Interface } from "../../Interface/interface";
+import { default as Enums } from "./enums";
 
-  static belongs(value) {
-    return value.toUpperCase() in this;
-  }
+const { EdgeType } = Enums;
 
-  toString() {
-    return `${this.name.toUpperCase()}`;
-  }
-
-  static toString() {
-    return "Edge_Enum";
-  }
-}
-
-export default class Graph {
+export default class Graph extends Interface {
   constructor() {
-    console.log(EdgeType.toString());
+    super();
   }
-  /**
-   *
-   * @param {*} data
-   */
-  createVertex(data) {}
 
   /**
-   *
-   * @param {*} source
-   * @param {*} destination
-   * @param {*} weight
+   * Creates a vertex and adds it to the graph.
+   * @param {*} data to be added
+   * @returns {Vertex} newly added vertex
+   */
+  createVertex(data) {
+    // const vertex = new Vertex(this.count, data);
+    // this.#adj_list[vertex] = [];
+    // return vertex;
+  }
+
+  /**
+   * Adds a directed edge between two vertices.
+   * @param {Vertex} source from where the the connection starts
+   * @param {Vertex} destination where the connection ends
+   * @param {Number} weight the weight of the connection
    */
   addDirectedEdge(source, destination, weight) {}
 
   /**
-   *
-   * @param {*} source
-   * @param {*} destination
-   * @param {*} weight
-   */
-  addUndirectedEdge(source, destination, weight) {}
-
-  /**
-   *
-   * @param {*} edge
-   * @param {*} source
-   * @param {*} destination
-   * @param {*} weight
-   */
-  add(edge, source, destination, weight) {}
-
-  /**
-   *
-   * @param {*} source
+   * Returns a list of outgoing edges from a specific vertex.
+   * @param {Vertex} source from where the the connection starts
+   * @returns {[Edge]} edges for a vertex
    */
   edges(source) {}
 
   /**
-   *
-   * @param {*} source
-   * @param {*} destination
+   * Returns the weight of the edge between two vertices.
+   * @param {Vertex} source from where the the connection starts
+   * @param {Vertex} destination where the connection ends
+   * @returns {Number} the weight associated with an edge
    */
   weight(source, destination) {}
+
+  /**
+   * Adds an undirected (or bi-directional) edge between two vertices.
+   * @param {Vertex} source from where the the connection starts
+   * @param {Vertex} destination where the connection ends
+   * @param {Number} weight the weight of the connection
+   * @returns {Boolean} Boolean indicating wether or not the edge was added
+   */
+  addUndirectedEdge(source, destination, weight) {
+    this.addDirectedEdge(source, destination, weight);
+    this.addDirectedEdge(destination, source, weight);
+    return true;
+  }
+
+  /**
+   * Uses EdgeType to add either a directed or undirected edge between two vertices.
+   * @param {String} edge_type the type of graph
+   * @param {Vertex} source from where the the connection starts
+   * @param {Vertex} destination where the connection ends
+   * @param {Number} weight the weight of the connection
+   */
+  add(edge_type, source, destination, weight = 0) {
+    switch (EdgeType.get_member(edge_type)) {
+      case "UNDIRECTED":
+        this.addUndirectedEdge(source, destination, weight);
+        break;
+      case "DIRECTED":
+        this.addDirectedEdge(source, destination, weight);
+        break;
+      default:
+        throw Interface.newErr("Graph Type not regconized");
+    }
+  }
 }
 
 /**
