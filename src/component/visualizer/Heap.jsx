@@ -75,7 +75,20 @@ class HeapComponent extends react.Component{
         orderHeaps.push(0)
         for (let levels = 1; levels < 30; levels++ )
         {
-            orderHeaps.push(2^levels + orderHeaps[levels-1]);
+            orderHeaps.push(Math.pow(2,levels) + orderHeaps[levels-1]);
+        }
+    }
+
+    findLevel = (id) => {
+        if (id == orderHeaps[0]){
+            
+        }
+        let previous = 0
+        for (let i = 1; i < 30; i++){
+            if (id <= orderHeaps[i] && id > previous){
+                return  100/(Math.pow(2, i));
+            }
+            previous = orderHeaps[i];
         }
     }
 
@@ -84,9 +97,10 @@ class HeapComponent extends react.Component{
             return 50
         let previous = 0
         for (let i = 1; i < 30; i++){
-            if (id <= i && id > previous)
-                return  100/(2*(i + 1))
-            previous = i
+            if (id <= orderHeaps[i] && id > previous){
+                return  100/(Math.pow(2, i));
+            }
+            previous = orderHeaps[i];
         }
     }
     render(){

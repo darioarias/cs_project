@@ -46,7 +46,7 @@ class StackComponent extends react.Component {
   //Push the node into the top of the stack the user entered in the input fields
   push() {
     this.state.list.push(this.state.value);
-    this.setState({animate:"push"});
+    this.setState({animate:"push"}); 
     this.forceUpdate();
   }
 
@@ -55,14 +55,14 @@ class StackComponent extends react.Component {
     this.state.list.pop();
     this.forceUpdate();
   }
-
+  
   //Peek at the top node of the stack
   peek() {
     console.log(this.state.list.peek());
     this.forceUpdate();
   }
   goBackHandler() {
-    this.props.setGoBack(true)
+    this.props.setGoBack(true);
   }
 
   /**
@@ -115,25 +115,24 @@ class StackComponent extends react.Component {
             <button onClick={() => this.peek()}>Peek Value</button>
           </div>
           </Box>
-          <div
-            className="jsavlist jsavautoresize jsavverticallist vertical"
-            data-visible="true"
-            data-nodegap="40"
-            data-autoresize="true"
-            style={{
-              padding: "10px",
-              display: "flex",
-              gap: "0px",
-              alignItems: "flex-start",
-              position: "static",
-              display: "block",
-              maxWidth: "10%",
-              margin: "auto",
-            }}
-          >
-            <div className="verticalNodes">Top of Stack</div>
-            {Nodes()}
-          </div>
+            <div
+              className="jsavlist jsavautoresize jsavverticallist vertical"
+              data-visible="true"
+              data-nodegap="40"
+              data-autoresize="true"
+              style={{
+                padding: "10px",
+                display: "flex",
+                gap: "0px",
+                alignItems: "flex-start",
+                position: "static",
+                display: "block",
+                maxWidth: "10%",
+                margin: "auto",
+              }}
+            >
+              {Nodes()}
+            </div>
           <button onClick={this.goBackHandler}>Return</button>
           </>
             ) : <Learn/>}
