@@ -2,7 +2,7 @@ import { CircleNode } from "./styles";
 const HeapNode = (props) => {
   return (
     <>
-      <CircleNode className = "CircleNode" order={props.index} id={props.index}>
+      <CircleNode className = "CircleNode" id={props.index} style={{right  :""+props.level+"%"}}>
         {props.data}
       </CircleNode>
     </>
