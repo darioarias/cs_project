@@ -1,4 +1,4 @@
-import LinkedListLearn from "./LinkedListLearn";
+import LinkedListComponent from "./LinkedList";
 import BinaryTreeComponent from "../visualizer/BinaryTree";
 import QueueComponent from "../visualizer/Queue";
 import StackComponent from "../visualizer/Stack";
@@ -9,7 +9,7 @@ const ShowDataStructure = ({dataStructure}) => {
   const [goBack, setGoBack] = useState(false);
  return (
    <div>
-       {dataStructure === "linkedList" && <LinkedListLearn goBack={goBack} setGoBack={setGoBack}/>}
+       {dataStructure === "linkedList" && <LinkedListComponent goBack={goBack} setGoBack={setGoBack}/>}
        {dataStructure === "stack" && <StackComponent goBack={goBack} setGoBack={setGoBack}/>}
        {dataStructure === "binaryTree" && <BinaryTreeComponent goBack={goBack} setGoBack={setGoBack}/>}
        {dataStructure === "queue" && <QueueComponent goBack={goBack} setGoBack={setGoBack} />}

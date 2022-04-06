@@ -1,10 +1,22 @@
-import HeapComponent from '../visualizer/Heap';
+import React from 'react';
 
 const Heappage = (props) => {
  return (
-   <div>
-     <HeapComponent navigateTo={props.navigateTo} />
-   </div>
+      <div className="shell">
+      <header className="shell-header">
+          <h1>Heaps</h1>
+      </header>
+      <main className="shell-body">
+      </main>
+      <main className='shell-bodyII'>
+      </main>
+      <footer className="shell-footer">
+      <button onClick={()=> {
+        props.navigateTo('/')
+      }}>Return</button>
+      </footer>
+    </div>
+
  );
 };
  

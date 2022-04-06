@@ -15,13 +15,11 @@ import {useNavigate} from 'react-router-dom';
  
 const Buttons = ({setDataStructure, setShowButtons}) => {
   const navigate = useNavigate();
-  const handleOnClickLinked = useCallback(() => navigate('/Learn/LinkedList', {replace: true}), [navigate]);
-  const handleOnClickStack = useCallback(() => navigate('/Learn/Stacks', {replace: true}), [navigate]);
-  const handleOnClickQueue = useCallback(() => navigate('/Learn/Queues', {replace: true}), [navigate]);
-  const handleOnClickTree = useCallback(() => navigate('/Learn/BinaryTrees', {replace: true}), [navigate]);
-  const handleOnClickHeap = useCallback(() => navigate('/Learn/Heaps', {replace: true}), [navigate]);
-
-
+  const handleOnClickLinked = useCallback(() => navigate('/linkedlist', {replace: true}), [navigate]);
+  const handleOnClickStack = useCallback(() => navigate('/stack', {replace: true}), [navigate]);
+  const handleOnClickQueue = useCallback(() => navigate('/queue', {replace: true}), [navigate]);
+  const handleOnClickTree = useCallback(() => navigate('/tree', {replace: true}), [navigate]);
+  const handleOnClickHeap = useCallback(() => navigate('/Heap', {replace: true}), [navigate]);
 
 
  return (

@@ -12,11 +12,6 @@ import Stackpage from "./component/pages/Stack";
 import Treepage from "./component/pages/Tree";
 import Heappage from "./component/pages/Heap";
 import Sandbox from "./component/sandbox/sandbox";
-import LinkedListLearn from "./component/pages/LinkedListLearn";
-import LearnStacks from "./component/pages/LearnStacks";
-import LearnQueues from "./component/pages/LearnQueues";
-import LearnTrees from "./component/pages/LearnTrees";
-import LearnHeaps from "./component/pages/LearnHeaps";
 
 
 import { DataStructures, Algorithms } from "./component/DSA/exports";
@@ -88,11 +83,6 @@ const App = () => {
         <Route path="/tree" element={<Treepage navigateTo={navigateTo} />} />
         <Route path="/Heap" element={<Heappage navigateTo={navigateTo} />} />
         <Route path="/sandbox" element={<Sandbox />} />
-        <Route path="/Learn/LinkedList" element={<LinkedListLearn navigateTo={navigateTo} />} />
-        <Route path="/Learn/Stacks" element={<LearnStacks navigateTo={navigateTo} />} />
-        <Route path="/Learn/Queues" element={<LearnQueues navigateTo={navigateTo} />} />
-        <Route path="/Learn/BinaryTrees" element={<LearnTrees navigateTo={navigateTo} />} />
-        <Route path="/Learn/Heaps" element={<LearnHeaps navigateTo={navigateTo} />} />
       </Routes>
     </ThemeProvider>
     // <PathFindingViz></PathFindingViz>

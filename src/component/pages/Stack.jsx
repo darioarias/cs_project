@@ -1,12 +1,21 @@
-import react from 'react'
-import StackComponent from '../visualizer/Stack';
-import Stack from '../visualizer/Stack';
+import React from 'react';
 
 const Stackpage = (props) => {
  return (
-   <div>
-     <StackComponent navigateTo={props.navigateTo}/>
-   </div>
+    <div className="shell">
+      <header className="shell-header">
+          <h1>Stacks</h1>
+      </header>
+      <main className="shell-body">
+      </main>
+      <main className='shell-bodyII'>
+      </main>
+      <footer className="shell-footer">
+      <button onClick={()=> {
+        props.navigateTo('/')
+      }}>Return</button>
+      </footer>
+    </div>
  );
 };
  
