@@ -4,14 +4,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import llimage from "../../Images/LinkedList.png"
-import Qimage from "../../Images/Queue.png"
-import Timage from "../../Images/Trees.png"
-import Simage from "../../Images/Stacks.png"
-import Himage from "../../Images/Heaps.png"
+import llimage from "../../Images/LinkedList.png";
+import Qimage from "../../Images/Queue.png";
+import Timage from "../../Images/Trees.png";
+import Simage from "../../Images/Stacks.png";
+import Himage from "../../Images/Heaps.png";
+import React, {useCallback} from 'react';
+import {useNavigate} from 'react-router-dom';
 
  
 const Buttons = ({setDataStructure, setShowButtons}) => {
+  const navigate = useNavigate();
+  const handleOnClickLinked = useCallback(() => navigate('/Learn/LinkedList', {replace: true}), [navigate]);
+  const handleOnClickStack = useCallback(() => navigate('/Learn/Stacks', {replace: true}), [navigate]);
+  const handleOnClickQueue = useCallback(() => navigate('/Learn/Queues', {replace: true}), [navigate]);
+  const handleOnClickTree = useCallback(() => navigate('/Learn/BinaryTrees', {replace: true}), [navigate]);
+  const handleOnClickHeap = useCallback(() => navigate('/Learn/Heaps', {replace: true}), [navigate]);
+
+
+
+
  return (
   <div >
    <Box
@@ -27,10 +39,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
    }}
     >
      <Card sx={{ maxWidth: 250, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
-     <CardActionArea onClick={() => {
-         setDataStructure("linkedList")
-         setShowButtons(false)
-       }}>
+     <CardActionArea onClick={handleOnClickLinked}>
        <CardMedia
          component="img"
          height="145"
@@ -46,10 +55,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
      </CardActionArea>
    </Card>
    <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 19, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
-     <CardActionArea onClick={() => {
-         setDataStructure("stack")
-         setShowButtons(false)
-       }}>
+     <CardActionArea onClick={handleOnClickStack}>
        <CardMedia
          component="img"
          height="155"
@@ -65,10 +71,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
      </CardActionArea>
    </Card>
    <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
-     <CardActionArea onClick={() => {
-         setDataStructure("queue")
-         setShowButtons(false)
-       }}>
+     <CardActionArea onClick={handleOnClickQueue}>
        <CardMedia
          component="img"
          height="155"
@@ -84,10 +87,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
      </CardActionArea>
    </Card>
    <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
-     <CardActionArea onClick={() => {
-         setDataStructure("binaryTree")
-         setShowButtons(false)
-       }}>
+     <CardActionArea onClick={handleOnClickTree}>
        <CardMedia
          component="img"
          height="155"
@@ -103,10 +103,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
      </CardActionArea>
    </Card>
    <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
-     <CardActionArea onClick={() => {
-         setDataStructure("heap")
-         setShowButtons(false)
-       }}>
+     <CardActionArea onClick={handleOnClickHeap}>
        <CardMedia
          component="img"
          height="155"

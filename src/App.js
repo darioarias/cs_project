@@ -10,7 +10,14 @@ import LinkedListpage from "./component/pages/LinkedList";
 import Queuepage from "./component/pages/Queue";
 import Stackpage from "./component/pages/Stack";
 import Treepage from "./component/pages/Tree";
+import Heappage from "./component/pages/Heap";
 import Sandbox from "./component/sandbox/sandbox";
+import LinkedListLearn from "./component/pages/LinkedListLearn";
+import LearnStacks from "./component/pages/LearnStacks";
+import LearnQueues from "./component/pages/LearnQueues";
+import LearnTrees from "./component/pages/LearnTrees";
+import LearnHeaps from "./component/pages/LearnHeaps";
+
 
 import { DataStructures, Algorithms } from "./component/DSA/exports";
 import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
@@ -44,7 +51,13 @@ const App = () => {
         <Route path="/queue" element={<Queuepage />} />
         <Route path="/stack" element={<Stackpage />} />
         <Route path="/tree" element={<Treepage />} />
+        <Route path="/Heap" element={<Heappage />} />
         <Route path="/sandbox" element={<Sandbox />} />
+        <Route path="/Learn/LinkedList" element={<LinkedListLearn />} />
+        <Route path="/Learn/Stacks" element={<LearnStacks />} />
+        <Route path="/Learn/Queues" element={<LearnQueues />} />
+        <Route path="/Learn/BinaryTrees" element={<LearnTrees />} />
+        <Route path="/Learn/Heaps" element={<LearnHeaps />} />
       </Routes>
     </ThemeProvider>
   );

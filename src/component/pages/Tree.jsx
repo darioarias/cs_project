@@ -1,9 +1,11 @@
-import react from 'react'
+import react from 'react';
+import BinaryTreeComponent from '../visualizer/BinaryTree';
+import BinaryTree from '../visualizer/BinaryTree';
 
 const Treepage = () => {
  return (
    <div>
-     Tree
+     <BinaryTreeComponent/>
    </div>
  );
 };

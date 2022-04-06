@@ -1,9 +1,10 @@
-import react from 'react'
+import react from 'react';
+import SinglyLinkedListComponent from '../visualizer/SinglyLinkedList';
 
 const LinkedListpage = () => {
  return (
    <div>
-     LinkedList
+     <SinglyLinkedListComponent/>
    </div>
  );
 };

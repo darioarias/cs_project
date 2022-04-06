@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import Buttons from "./Buttons"
-import ShowDataStructure from "./ShowDataStructure"
+import Buttons from "./Buttons";
+import ShowDataStructure from "./ShowDataStructure";
+import './grid.css';
  
 const Learn = () => {
  const [dataStructure, setDataStructure] = useState("");
