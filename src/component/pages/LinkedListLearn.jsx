@@ -6,15 +6,15 @@ export default function LinkedListLearn() {
   const navigate = useNavigate();
   const handleOnClick = useCallback(() => navigate('/', {replace: true}), [navigate]);
   return (
-    <div class="shell">
-      <header class="shell-header">
+    <div className="shell">
+      <header className="shell-header">
           <h1>Linked List</h1>
       </header>
-      <main class="shell-body">
+      <main className="shell-body">
       </main>
-      <main class='shell-bodyII'>
+      <main className='shell-bodyII'>
       </main>
-      <footer class="shell-footer">
+      <footer className="shell-footer">
       <button onClick={handleOnClick}>Return</button>
       </footer>
     </div>
