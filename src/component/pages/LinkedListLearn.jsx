@@ -1,10 +1,7 @@
-import React, {useCallback} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React from 'react';
 
 
-export default function LinkedListLearn() {
-  const navigate = useNavigate();
-  const handleOnClick = useCallback(() => navigate('/', {replace: true}), [navigate]);
+export default function LinkedListLearn(props) {
   return (
     <div className="shell">
       <header className="shell-header">
@@ -15,7 +12,9 @@ export default function LinkedListLearn() {
       <main className='shell-bodyII'>
       </main>
       <footer className="shell-footer">
-      <button onClick={handleOnClick}>Return</button>
+      <button onClick={()=> {
+        props.navigateTo('/')
+      }}>Return</button>
       </footer>
     </div>
   );

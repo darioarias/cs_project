@@ -1,10 +1,10 @@
 import react from 'react';
 import SinglyLinkedListComponent from '../visualizer/SinglyLinkedList';
 
-const LinkedListpage = () => {
+const LinkedListpage = (props) => {
  return (
    <div>
-     <SinglyLinkedListComponent/>
+     <SinglyLinkedListComponent navigateTo={props.navigateTo}/>
    </div>
  );
 };

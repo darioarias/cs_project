@@ -1,9 +1,9 @@
 import HeapComponent from '../visualizer/Heap';
 
-const Heappage = () => {
+const Heappage = (props) => {
  return (
    <div>
-     <HeapComponent/>
+     <HeapComponent navigateTo={props.navigateTo} />
    </div>
  );
 };

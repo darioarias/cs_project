@@ -1,10 +1,10 @@
 import react from 'react'
 import QueueComponent from "../visualizer/Queue";
 
-const Queuepage = () => {
+const Queuepage = (props) => {
  return (
    <div>
-     <QueueComponent/>
+     <QueueComponent navigateTo={props.navigateTo}/>
    </div>
  );
 };

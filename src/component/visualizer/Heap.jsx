@@ -17,7 +17,6 @@ class HeapComponent extends react.Component{
             heap: null,
         };
         this.onChangeValue = this.onChangeValue.bind(this);
-        this.goBackHandler = this.goBackHandler.bind(this);
     }
 
     componentDidMount(){
@@ -50,8 +49,8 @@ class HeapComponent extends react.Component{
         this.state.heap.show();
         this.forceUpdate();
     }
-    goBackHandler() {
-        this.props.setGoBack(true)
+    goBack = () => {
+        this.props.navigateTo('/')
     }
 
     /**
@@ -111,9 +110,6 @@ class HeapComponent extends react.Component{
         };
         return (      
             <div>
-                {
-                !this.props.goBack ?
-                (<>
                 <Box
                 sx={{
                     display: 'flex',
@@ -135,9 +131,7 @@ class HeapComponent extends react.Component{
             </div>
             </Box>
             <div>{Nodes()}</div>
-            <button onClick={this.goBackHandler}>Return</button>
-            </>
-          ) : <Learn/>}
+            <button onClick={this.goBack}>Return</button>
         </div>
         )
     }

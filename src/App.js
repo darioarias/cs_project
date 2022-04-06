@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
 import { LightTheme, DarkTheme } from "./styles/themes";
@@ -27,6 +27,8 @@ import {
   Astar,
 } from "./component/visualizer/PathFindingViz/algorithms/PathFinding";
 import PathFindingViz from "./component/visualizer/PathFindingViz/Pathfind";
+import {useNavigate} from 'react-router-dom';
+
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
 
 const {
@@ -44,6 +46,10 @@ const {
 
 const App = () => {
   const [theme, setTheme] = useState(false);
+
+  const navigate = useNavigate();
+  const navigateTo = useCallback((path) => navigate(path, {replace: true}), [navigate]);
+
   const themeStyle = theme === false ? LightTheme : DarkTheme;
 
   const graph = new AdjacencyMatrix();
@@ -76,17 +82,17 @@ const App = () => {
       <NavBar toggleTheme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/linkedlist" element={<LinkedListpage />} />
-        <Route path="/queue" element={<Queuepage />} />
-        <Route path="/stack" element={<Stackpage />} />
-        <Route path="/tree" element={<Treepage />} />
-        <Route path="/Heap" element={<Heappage />} />
+        <Route path="/linkedlist" element={<LinkedListpage navigateTo={navigateTo} />} />
+        <Route path="/queue" element={<Queuepage navigateTo={navigateTo} />} />
+        <Route path="/stack" element={<Stackpage navigateTo={navigateTo} />} />
+        <Route path="/tree" element={<Treepage navigateTo={navigateTo} />} />
+        <Route path="/Heap" element={<Heappage navigateTo={navigateTo} />} />
         <Route path="/sandbox" element={<Sandbox />} />
-        <Route path="/Learn/LinkedList" element={<LinkedListLearn />} />
-        <Route path="/Learn/Stacks" element={<LearnStacks />} />
-        <Route path="/Learn/Queues" element={<LearnQueues />} />
-        <Route path="/Learn/BinaryTrees" element={<LearnTrees />} />
-        <Route path="/Learn/Heaps" element={<LearnHeaps />} />
+        <Route path="/Learn/LinkedList" element={<LinkedListLearn navigateTo={navigateTo} />} />
+        <Route path="/Learn/Stacks" element={<LearnStacks navigateTo={navigateTo} />} />
+        <Route path="/Learn/Queues" element={<LearnQueues navigateTo={navigateTo} />} />
+        <Route path="/Learn/BinaryTrees" element={<LearnTrees navigateTo={navigateTo} />} />
+        <Route path="/Learn/Heaps" element={<LearnHeaps navigateTo={navigateTo} />} />
       </Routes>
     </ThemeProvider>
     // <PathFindingViz></PathFindingViz>

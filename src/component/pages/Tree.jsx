@@ -2,10 +2,10 @@ import react from 'react';
 import BinaryTreeComponent from '../visualizer/BinaryTree';
 import BinaryTree from '../visualizer/BinaryTree';
 
-const Treepage = () => {
+const Treepage = (props) => {
  return (
    <div>
-     <BinaryTreeComponent/>
+     <BinaryTreeComponent navigateTo={props.navigateTo}/>
    </div>
  );
 };

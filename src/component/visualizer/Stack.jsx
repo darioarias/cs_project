@@ -16,7 +16,6 @@ class StackComponent extends react.Component {
       max: 5, //set max limit to the stack to 5 nodes
     };
     this.onChangeValue = this.onChangeValue.bind(this);
-    this.goBackHandler = this.goBackHandler.bind(this);
   }
 
   componentDidUpdate() {
@@ -61,8 +60,8 @@ class StackComponent extends react.Component {
     console.log(this.state.list.peek());
     this.forceUpdate();
   }
-  goBackHandler() {
-    this.props.setGoBack(true);
+  goBack = () => {
+    this.props.navigateTo('/')
   }
 
   /**
@@ -92,9 +91,6 @@ class StackComponent extends react.Component {
     //return is what is sent to the frontend such as the buttons and the stack with the instantiated nodes
     return (
       <div>
-        {
-          !this.props.goBack ?
-          (<>
            <Box
             sx={{
               display: 'flex',
@@ -133,9 +129,7 @@ class StackComponent extends react.Component {
             >
               {Nodes()}
             </div>
-          <button onClick={this.goBackHandler}>Return</button>
-          </>
-            ) : <Learn/>}
+            <button onClick={this.goBack}>Return</button>
         </div>
     );
   }

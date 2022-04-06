@@ -19,7 +19,6 @@ class QueueComponent extends react.Component {
     };
 
     this.onChangeValue = this.onChangeValue.bind(this);
-    this.goBackHandler = this.goBackHandler.bind(this);
   }
 
   componentDidUpdate() {
@@ -73,8 +72,8 @@ class QueueComponent extends react.Component {
     this.setState({ size: val });
     this.forceUpdate();
   }
-  goBackHandler() {
-    this.props.setGoBack(true);
+  goBack = () => {
+    this.props.navigateTo('/')
   }
   render() {
     let Nodes = () => {
@@ -90,8 +89,6 @@ class QueueComponent extends react.Component {
     };
     return (
       <div>
-        {!this.props.goBack ? (
-          <>
             <Box
               sx={{
                 display: "flex",
@@ -112,11 +109,7 @@ class QueueComponent extends react.Component {
               </div>
             </Box>
             <QueueContainer>{Nodes()}</QueueContainer>
-            <button onClick={this.goBackHandler}>Return</button>
-          </>
-        ) : (
-          <Learn />
-        )}
+            <button onClick={this.goBack}>Return</button>
       </div>
     );
   }

@@ -16,7 +16,6 @@ class SinglyLinkedListComponent extends react.Component {
 
     this.getHead = this.getHead.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
-    this.goBackHandler = this.goBackHandler.bind(this);
   }
 
   componentDidMount() {
@@ -75,8 +74,9 @@ class SinglyLinkedListComponent extends react.Component {
   onChangeValue(data) {
     this.setState({ value: data.target.value });
   }
-  goBackHandler() {
-    this.props.setGoBack(true)
+
+  goBack = () => {
+    this.props.navigateTo('/')
   }
 
   /**
@@ -149,7 +149,7 @@ class SinglyLinkedListComponent extends react.Component {
         >
           {Nodes()}
         </div>
-        <button onClick={this.goBackHandler}>Return</button>
+        <button onClick={this.goBack}>Return</button>
         </>
           ) : <Learn/>}
       </div>

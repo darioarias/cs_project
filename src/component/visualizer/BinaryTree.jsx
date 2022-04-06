@@ -15,7 +15,6 @@ class BinaryTreeComponent extends react.Component {
     };
       
     this.onChangeValue = this.onChangeValue.bind(this);
-    this.goBackHandler = this.goBackHandler.bind(this);
   }
 
   componentDidMount() {
@@ -40,8 +39,8 @@ class BinaryTreeComponent extends react.Component {
     this.state.tree.add(this.state.value);
     this.forceUpdate();
   }
-  goBackHandler() {
-    this.props.setGoBack(true)
+  goBack = () => {
+    this.props.navigateTo('/')
   }
 render() {
   let Nodes = () => {
@@ -58,9 +57,6 @@ render() {
   };
     return (
       <div>
-        {
-          !this.props.goBack ?
-        (<>
         <Box
           sx={{
             display: 'flex',
@@ -81,9 +77,7 @@ render() {
         </div>
         </Box>
         {Nodes()}
-        <button onClick={this.goBackHandler}>Return</button>
-        </>
-          ) : <Learn/>}
+        <button onClick={this.goBack}>Return</button>
       </div>
     );
   }

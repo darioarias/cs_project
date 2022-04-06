@@ -2,10 +2,10 @@ import react from 'react'
 import StackComponent from '../visualizer/Stack';
 import Stack from '../visualizer/Stack';
 
-const Stackpage = () => {
+const Stackpage = (props) => {
  return (
    <div>
-     <StackComponent/>
+     <StackComponent navigateTo={props.navigateTo}/>
    </div>
  );
 };

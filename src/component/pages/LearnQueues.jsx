@@ -1,11 +1,7 @@
-import React, {useCallback} from 'react';
-import {useNavigate} from 'react-router-dom';
+import React from 'react';
 
 
-
-export default function LearnQueues() {
-  const navigate = useNavigate();
-  const handleOnClick = useCallback(() => navigate('/', {replace: true}), [navigate]);
+export default function LearnQueues(props) {
   return (
     <div className="shell">
       <header className="shell-header">
@@ -16,7 +12,9 @@ export default function LearnQueues() {
       <main className='shell-bodyII'>
       </main>
       <footer className="shell-footer">
-      <button onClick={handleOnClick}>Return</button>
+      <button onClick={()=> {
+        props.navigateTo('/')
+      }}>Return</button>
       </footer>
     </div>
   );
