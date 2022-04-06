@@ -22,6 +22,11 @@ import LearnHeaps from "./component/pages/LearnHeaps";
 import { DataStructures, Algorithms } from "./component/DSA/exports";
 import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
 
+import {
+  Dijkstra,
+  Astar,
+} from "./component/visualizer/PathFindingViz/algorithms/PathFinding";
+import PathFindingViz from "./component/visualizer/PathFindingViz/Pathfind";
 // const LS = DataStructures.LinkedLists.SinglyLinkedList
 
 const {
@@ -34,12 +39,36 @@ const {
   AVLTree: { AVLTree },
   Heaps: { Heap },
   PriorityQueues: { PriorityQueue },
+  Graph: { AdjacencyList, AdjacencyMatrix },
 } = DataStructures; // for testing only, will not be used in production.
 
 const App = () => {
   const [theme, setTheme] = useState(false);
   const themeStyle = theme === false ? LightTheme : DarkTheme;
 
+  const graph = new AdjacencyMatrix();
+  let singapore = graph.createVertex("Singapore");
+  let tokyo = graph.createVertex("Tokyo");
+  let hongKong = graph.createVertex("Hong Kong");
+  let detroit = graph.createVertex("Detroit");
+  let sanFrancisco = graph.createVertex("San Francisco");
+  let washingtonDC = graph.createVertex("Washington DC");
+  let austinTexas = graph.createVertex("Austin Texas");
+  let seattle = graph.createVertex("Seattle");
+
+  graph.add("undirected", singapore, hongKong, 300);
+  graph.add("undirected", singapore, tokyo, 500);
+  graph.add("undirected", hongKong, tokyo, 250);
+  graph.add("undirected", tokyo, detroit, 450);
+  graph.add("undirected", tokyo, washingtonDC, 300);
+  graph.add("undirected", hongKong, sanFrancisco, 600);
+  graph.add("undirected", detroit, austinTexas, 50);
+  graph.add("undirected", austinTexas, washingtonDC, 292);
+  graph.add("undirected", sanFrancisco, washingtonDC, 337);
+  graph.add("directed", seattle, washingtonDC, 337);
+  // console.log(graph.edges(tokyo));
+
+  //
   return (
     <ThemeProvider theme={themeStyle}>
       <CssBaseline />
@@ -60,6 +89,7 @@ const App = () => {
         <Route path="/Learn/Heaps" element={<LearnHeaps />} />
       </Routes>
     </ThemeProvider>
+    // <PathFindingViz></PathFindingViz>
   );
 };
 

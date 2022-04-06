@@ -123,6 +123,24 @@ export default class BinaryTree extends Interface {
     return levels;
   }
 
+  /**
+   * Searches for a given value in the tree and returns the node if the value is found.
+   * @param {*} value the value to search for
+   * @returns {Node} Node containig the value
+   */
+  find(value) {
+    const queue = new Queue(this.#root);
+    while (!queue.isEmpty()) {
+      const currentNode = queue.dequeue();
+      let { value: n_value, left, right } = currentNode;
+
+      if (n_value === value) return currentNode;
+      if (left) queue.enqueue(left);
+      if (right) queue.enqueue(right);
+    }
+    return null;
+  }
+
   // private methods/properties
   /**@private Holds a reference to the root of the tree */
   #root;

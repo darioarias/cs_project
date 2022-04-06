@@ -5,6 +5,9 @@ import HeapNode from "./HeapNode.jsx";
 import Box from '@mui/material/Card';
 import Learn from '../pages/Learn';
 
+let orderHeaps = [];
+
+
 class HeapComponent extends react.Component{
     constructor(props){
         super(props);
@@ -18,6 +21,8 @@ class HeapComponent extends react.Component{
     }
 
     componentDidMount(){
+        this.levelOrder()
+        console.log(orderHeaps)
         this.resetHeap();
     }
 
@@ -31,6 +36,7 @@ class HeapComponent extends react.Component{
     }
 
     insert(){
+        console.log(this.state.order)
         this.state.heap.insert(parseInt(this.state.value));
         this.forceUpdate();
     }
@@ -57,7 +63,7 @@ class HeapComponent extends react.Component{
         let heapNodes = [];
         let output = [];
         heapData.map((node, index) =>
-            heapNodes.push(<HeapNode key={index} data={node} index={index}></HeapNode>)
+            heapNodes.push(<HeapNode level={this.selectOrder(index)} data={node} index={index}></HeapNode>)
         );
         for (let i = 0; i < heapNodes.length; i++) {
             output.push(heapNodes[i]);
@@ -65,6 +71,38 @@ class HeapComponent extends react.Component{
         return output;
     }
 
+    levelOrder = () => {
+        orderHeaps.push(0)
+        for (let levels = 1; levels < 30; levels++ )
+        {
+            orderHeaps.push(Math.pow(2,levels) + orderHeaps[levels-1]);
+        }
+    }
+
+    findLevel = (id) => {
+        if (id == orderHeaps[0]){
+            
+        }
+        let previous = 0
+        for (let i = 1; i < 30; i++){
+            if (id <= orderHeaps[i] && id > previous){
+                return  100/(Math.pow(2, i));
+            }
+            previous = orderHeaps[i];
+        }
+    }
+
+    selectOrder = (id) => {
+        if (id == orderHeaps[0])
+            return 50
+        let previous = 0
+        for (let i = 1; i < 30; i++){
+            if (id <= orderHeaps[i] && id > previous){
+                return  100/(Math.pow(2, i));
+            }
+            previous = orderHeaps[i];
+        }
+    }
     render(){
         let Nodes = () => {
             if (this.state.heap != null){
@@ -106,3 +144,29 @@ class HeapComponent extends react.Component{
 }
 
 export default HeapComponent;
+
+/*
+0 - level 0
+1, 2 - level 1
+3,4,5,6 - level 2
+7,8,9,10,11,12,13,14 - level 3
+
+orders()=>{
+    levels = 0
+    states = []
+    states.push(0)
+    for i in range (30):
+        states.push(2^n + states[n-1])
+}
+
+returnOrder(value)=>{
+    if value == states[0]:
+        return 50
+    previous state
+    for i in states:
+        if value <= i and value < previous stat:
+            return  100/2*(levels + 1)
+        previous state = i
+}
+100/2*(levels + 1)
+*/

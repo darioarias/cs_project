@@ -994,3 +994,20 @@ body{
   color: #f8f9f9;
 }
 */
+@keyframes stackPushing{
+  0%{  transform: translateX(0vw);}
+  100%{transform: translateX(50vw);}
+}
+
+.stackAnimationPush{
+  top:0;
+  left:0;
+  max-width: 10%;
+  text-align: center;
+  position: absolute;
+  margin:auto;
+  animation-name: stackPushing;
+  animation-duration: 5s;
+  animation-fill-mode:forwards;
+}
+
