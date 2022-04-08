@@ -16,13 +16,30 @@ const PathFindingViz = () => {
   const [visitedNodes, setVisitedNodes] = useState([]);
   const [algoOption, setAlgoOption] = useState("A*");
   const [click, setClick] = useState(false);
-
+  const [drag, setDrag] = useState({ start: false, end: false });
   useEffect(() => {
     createGrid();
   }, []);
 
   const handleAlgoSelect = (e) => {
     setAlgoOption(e.target.value);
+  };
+
+  const handleMouseDown = (e) => {};
+
+  const handleMouseUp = () => {
+    setClick(false);
+    setDrag({ begin: false, end: false });
+  };
+
+  const handleClick = (e) => {
+    if (e.target.className === 'path ') {
+      let text = e.target.id;
+      const arr = text.split("-")
+      console.log(arr);
+      grid[parseInt(arr[1])][parseInt(arr[2])].isWall = true;
+      e.target.className = 'path path-wall'
+    }
   };
 
   const createGrid = () => {
@@ -91,7 +108,12 @@ const PathFindingViz = () => {
   };
 
   const displayGrid = (
-    <div className = "path-grid">
+    <div
+      className="path-grid"
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onClick={handleClick}
+    >
       {grid.map((row, rowIndex) => {
         return (
           <div key={rowIndex} className="path-grid-rows">
@@ -123,7 +145,7 @@ const PathFindingViz = () => {
     }
   };
 
-  const visualizePath = () => {  
+  const visualizePath = () => {
     for (let i = 0; i <= visitedNodes.length; i++) {
       if (i === visitedNodes.length) {
         setTimeout(() => {
