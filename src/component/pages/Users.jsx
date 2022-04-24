@@ -20,7 +20,8 @@ class Users extends Component {
     render(){
         return (
             <div>
-                YEP
+                I think we should get CORS enabled on the server side
+                <a href="https://enable-cors.org/server.html" style={{color:"black"}}>This is a good source I found that can help you Dario</a>
             </div>
         )
     }

@@ -84,7 +84,12 @@ export default function NavBar({ toggleTheme, setTheme }) {
           </Button>
           <Button color="inherit">
             <nav>
-              <NavLink to="/Users">Users</NavLink>
+              <NavLink to="/Users">Testing Users</NavLink>
+            </nav>
+          </Button>
+          <Button color="inherit">
+            <nav>
+              <NavLink to="/Profile">Testing Profiles</NavLink>
             </nav>
           </Button>
         </Toolbar>
