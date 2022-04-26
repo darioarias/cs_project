@@ -12,6 +12,8 @@ import Stackpage from "./component/pages/Stack";
 import Treepage from "./component/pages/Tree";
 import Heappage from "./component/pages/Heap";
 import Sandbox from "./component/sandbox/sandbox";
+import Users from "./component/pages/Users";
+import Profile from "./component/pages/UserProfile";
 
 
 import { DataStructures, Algorithms } from "./component/DSA/exports";
@@ -83,6 +85,8 @@ const App = () => {
         <Route path="/tree" element={<Treepage navigateTo={navigateTo} />} />
         <Route path="/Heap" element={<Heappage navigateTo={navigateTo} />} />
         <Route path="/sandbox" element={<Sandbox />} />
+        <Route path="/Users" element={<Users/>}></Route>
+        <Route path="/Profile" element={<Profile/>}></Route>
       </Routes>
     </ThemeProvider>
     // <PathFindingViz></PathFindingViz>

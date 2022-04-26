@@ -1011,3 +1011,21 @@ body{
   animation-fill-mode:forwards;
 }
 
+.userProfile{
+  box-sizing: border-box;
+}
+
+.column{
+  float: left;
+}
+
+.left-content{
+  border: solid black;
+  width: 30%;
+  text-align: center;
+}
+
+.right-content{
+  border: dotted black;
+  width: 70%;
+}
