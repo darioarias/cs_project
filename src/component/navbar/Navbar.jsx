@@ -82,6 +82,16 @@ export default function NavBar({ toggleTheme, setTheme }) {
               <NavLink to="/sandbox">Sandbox</NavLink>
             </nav>
           </Button>
+          <Button color="inherit">
+            <nav>
+              <NavLink to="/Users">Testing Users</NavLink>
+            </nav>
+          </Button>
+          <Button color="inherit">
+            <nav>
+              <NavLink to="/Profile">Testing Profiles</NavLink>
+            </nav>
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>
