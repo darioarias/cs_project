@@ -1,0 +1,66 @@
+.arr-container {
+    position: absolute;
+    margin-top: 25px;
+    margin-left: 5px;
+}
+
+.arr-ele {
+    display: inline-block;
+    align-items: center;
+    width: 9px;
+    margin: 1px;
+}
+
+.arr-compare {
+    animation-name: compare;
+    animation-duration: 2.0s;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+
+  @keyframes compare {
+    0% {
+      background-color: blue;
+    }
+  
+    50% {
+      background-color: blue;
+    }
+  
+    75% {
+      background-color: blue;
+    }
+  
+    100% {
+      background-color: blue;
+    }
+  }
+  
+  .arr-swap {
+    animation-name: swap;
+    animation-duration: 2.0s;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+  }
+  
+  
+  @keyframes swap {
+    0% {
+      background-color: red;
+    }
+  
+    50% {
+      background-color: red;
+    }
+  
+    100% {
+      background-color: red;
+    }
+  }
+  
