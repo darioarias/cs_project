@@ -14,14 +14,22 @@ class Users extends Component {
 
     componentDidMount(){
         axios.get("https://algoviz-pyflask-rest-api.herokuapp.com/api/v1/users/")
-        .then(response=>{console.log(response)})
+        .then(response=>{
+            console.log(response)
+            this.setState({posts:response.data})
+        })
         .catch(error=>{console.log(error)})
     }   
     render(){
+        const {posts} =this.state
         return (
             <div>
-                I think we should get CORS enabled on the server side
-                <a href="https://enable-cors.org/server.html" style={{color:"black"}}>This is a good source I found that can help you Dario</a>
+                Users
+                {
+                    posts.length ?
+                    posts.map(post => <div key ={post.id}>{post.username} {post.email}</div>):
+                    null
+                } 
             </div>
         )
     }
