@@ -5,6 +5,7 @@ import BinaryTreeComponent from "../visualizer/BinaryTree";
 import QueueComponent from "../visualizer/Queue";
 import StackComponent from "../visualizer/Stack";
 import HeapComponent from "../visualizer/Heap";
+import SortingViz from "../visualizer/SortingViz/Sorting";
 
 const Sandbox = () => {
   const [option, setOption] = useState("PathFinding");
@@ -25,6 +26,8 @@ const Sandbox = () => {
         return(<StackComponent></StackComponent>);
       case "Heap":
         return(<HeapComponent></HeapComponent>);
+      case "Sorting":
+        return(<SortingViz></SortingViz>);
     }
   }
 
@@ -37,6 +40,7 @@ const Sandbox = () => {
           <option value="Queue">Queue</option>
           <option value="Stack">Stack</option>
           <option value="Heap">Heap</option>
+          <option value="Sorting">Sorting</option>
       </select>
      <div>
        {renderSwitch()}
