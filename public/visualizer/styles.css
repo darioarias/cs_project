@@ -1026,6 +1026,6 @@ body{
 }
 
 .right-content{
-  border: dotted black;
+  border: solid black;
   width: 70%;
 }
