@@ -14,6 +14,8 @@ import Heappage from "./component/pages/Heap";
 import Sandbox from "./component/sandbox/sandbox";
 import Users from "./component/pages/Users";
 import Profile from "./component/pages/UserProfile";
+import SignForm from "./component/pages/Sign.jsx";
+
 
 
 import { DataStructures, Algorithms } from "./component/DSA/exports";
@@ -42,6 +44,7 @@ const {
 } = DataStructures; // for testing only, will not be used in production.
 
 const App = () => {
+
   const [theme, setTheme] = useState(false);
 
   const navigate = useNavigate();
@@ -84,6 +87,7 @@ const App = () => {
         <Route path="/stack" element={<Stackpage navigateTo={navigateTo} />} />
         <Route path="/tree" element={<Treepage navigateTo={navigateTo} />} />
         <Route path="/Heap" element={<Heappage navigateTo={navigateTo} />} />
+        <Route path="/Sign" element={<SignForm />} />
         <Route path="/sandbox" element={<Sandbox />} />
         <Route path="/Users" element={<Users/>}></Route>
         <Route path="/Profile" element={<Profile/>}></Route>

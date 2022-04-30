@@ -2,7 +2,6 @@ import { default as BinaryTree } from "../DSA/DataStructures/BinaryTree/binaryTr
 import react from "react";
 import TreeLevel from "./TreeNodes.jsx";
 import Box from '@mui/material/Card';
-import Learn from '../pages/Learn';
 
 
 class BinaryTreeComponent extends react.Component {
