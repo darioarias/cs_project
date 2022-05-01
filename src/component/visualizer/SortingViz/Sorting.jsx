@@ -27,12 +27,12 @@ const SortingViz = () => {
         insertionSort();
         break;
       case "Merge":
-        MergeSort();
+        // MergeSort();
         break;
     }
   };
 
-  const insertionSort = async _ => {
+  const insertionSort = async (_) => {
     let animationsArr = InsertionSort(arr, arrLength);
     for (let i = 0; i < animationsArr.length; i++) {
       let elements = document.getElementsByClassName("arr-ele");
@@ -52,7 +52,7 @@ const SortingViz = () => {
   }
 
   function swap(e, e2, i) {
-    return new Promise( () =>
+    return new Promise(() =>
       setTimeout(() => {
         let temp = e.height;
         e.height = e2.height;

@@ -1,12 +1,11 @@
-import react from 'react'
-import Learn from './Learn'
+import react from "react";
+import Learn from "./Learn";
 const Homepage = () => {
- return (
-   <div>
-     <Learn></Learn>
-   </div>
- );
+  return (
+    <div>
+      <Learn></Learn>
+    </div>
+  );
 };
- 
-export default Homepage;
 
+export default Homepage;
