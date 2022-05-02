@@ -73,7 +73,6 @@ export function SignForm(){
                       Sign up
                     </button>
                   </div>
-                  <img src="img/log.svg" className="image" alt="" />
                 </div>
                 <div className="panel right-panel">
                   <div className="content">
@@ -82,7 +81,6 @@ export function SignForm(){
                       Sign in
                     </button>
                   </div>
-                  <img src="img/register.svg" className="image" alt="" />
                 </div>
               </div>
           </div>
