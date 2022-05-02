@@ -11,20 +11,22 @@ class SinglyLinkedListComponent extends react.Component {
 
     this.state = {
       value: 0,
-      list: null,
+      list: new SinglyLinkedList(null, 10),
     };
-
+    for (let i = 0; i<5; i++){
+      this.state.list.append(i);
+    }
     this.getHead = this.getHead.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
   }
 
   componentDidMount() {
-    this.resetList();
+    // this.resetList();
   }
 
   resetList() {
     // let newlist = new SinglyLinkedList(null, 5);
-    this.setState({ list: new SinglyLinkedList(null, 5) });
+    this.setState({ list: new SinglyLinkedList(null, 10) });
   }
 
   push() {

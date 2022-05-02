@@ -26,9 +26,9 @@ const SortingViz = () => {
       case "Insertion":
         insertionSort();
         break;
-      case "Merge":
-        // MergeSort();
-        break;
+      // case "Merge":
+      //   MergeSort();
+      //   break;
     }
   };
 
