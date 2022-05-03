@@ -49,9 +49,6 @@ class HeapComponent extends react.Component{
         this.state.heap.show();
         this.forceUpdate();
     }
-    goBack = () => {
-        this.props.navigateTo('/')
-    }
 
     /**
     * @description instantiate nodes from the stack for the visuals
@@ -131,7 +128,6 @@ class HeapComponent extends react.Component{
             </div>
             </Box>
             <div>{Nodes()}</div>
-            <button onClick={this.goBack}>Return</button>
         </div>
         )
     }

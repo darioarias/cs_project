@@ -38,9 +38,7 @@ class BinaryTreeComponent extends react.Component {
     this.state.tree.add(this.state.value);
     this.forceUpdate();
   }
-  goBack = () => {
-    this.props.navigateTo('/')
-  }
+
 render() {
   let Nodes = () => {
     if (this.state.tree != null) {
@@ -76,7 +74,6 @@ render() {
         </div>
         </Box>
         {Nodes()}
-        <button onClick={this.goBack}>Return</button>
       </div>
     );
   }

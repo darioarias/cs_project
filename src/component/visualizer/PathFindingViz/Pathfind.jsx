@@ -4,7 +4,7 @@ import "./Pathfind.css";
 import { Astar, Dijkstra } from "./algorithms/PathFinding";
 
 const rows = 15;
-const cols = 15;
+const cols = 30;
 const m_StartNodeRow = 0;
 const m_StartNodeCol = 0;
 const m_EndNodeRow = rows - 5;
@@ -33,12 +33,12 @@ const PathFindingViz = () => {
   };
 
   const handleClick = (e) => {
-    if (e.target.className === 'path ') {
+    if (e.target.className === "path" || e.target.className === "path ") {
       let text = e.target.id;
-      const arr = text.split("-")
+      const arr = text.split("-");
       console.log(arr);
       grid[parseInt(arr[1])][parseInt(arr[2])].isWall = true;
-      e.target.className = 'path path-wall'
+      e.target.className = "path path-wall";
     }
   };
 
@@ -57,6 +57,24 @@ const PathFindingViz = () => {
     }
     setGrid(Grid);
     addNeighbours(Grid);
+    setPath([]);
+    setVisitedNodes([]);
+  };
+
+  const resetGrid = () => {
+    let elements = document.getElementsByClassName("path-visitedNodes");
+    while (elements.length) {
+      elements[0].classList.remove("path-visitedNodes");
+    }
+    elements = document.getElementsByClassName("path-shortestPath");
+    while (elements.length) {
+      elements[0].classList.remove("path-shortestPath");
+    }
+    elements = document.getElementsByClassName("path-wall");
+    while (elements.length) {
+      elements[0].classList.remove("path-wall");
+    }
+    createGrid();
   };
 
   const addNeighbours = (grid) => {
@@ -137,8 +155,10 @@ const PathFindingViz = () => {
   );
   const visualizeShortestPath = (shortestPath) => {
     for (let i = 0; i < shortestPath.length; i++) {
+      const node = shortestPath[i];
+      if (node.x == m_StartNodeCol && node.y == m_StartNodeRow) continue;
+      if (node.x == m_EndNodeCol && node.y == m_EndNodeRow) continue;
       setTimeout(() => {
-        const node = shortestPath[i];
         document.getElementById(`path-${node.x}-${node.y}`).className =
           "path path-shortestPath";
       }, 10 * i);
@@ -152,8 +172,10 @@ const PathFindingViz = () => {
           visualizeShortestPath(path);
         }, 20 * i);
       } else {
+        const node = visitedNodes[i];
+        if (node.x == m_StartNodeCol && node.y == m_StartNodeRow) continue;
+        if (node.x == m_EndNodeCol && node.y == m_EndNodeRow) continue;
         setTimeout(() => {
-          const node = visitedNodes[i];
           document.getElementById(`path-${node.x}-${node.y}`).className =
             "path path-visitedNodes";
         }, 20 * i);
@@ -162,9 +184,13 @@ const PathFindingViz = () => {
   };
   return (
     <div className="PathFindingViz">
-      <button onClick={visualize}> Path</button>
-      <h1>Pathfinding Component</h1>
-      {displayGrid}
+      <h1>Pathfinding Visualizer</h1>
+      <button onClick={visualize}> Visualize Path </button>
+      <button onClick={resetGrid}> Reset Grid </button>
+      <select value={algoOption} onChange={handleAlgoSelect}>
+        <option value="A*">A*</option>
+      </select>
+      <div>{displayGrid}</div>
     </div>
   );
 };

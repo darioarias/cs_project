@@ -1,0 +1,14 @@
+.canvas {
+    background-color: #fff;
+    border-radius: 1rem;
+    margin: 1rem auto;
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+}
+
+.graph {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}

@@ -110,9 +110,6 @@ class SinglyLinkedListComponent extends react.Component {
     };
     return (
       <div>
-        {
-          !this.props.goBack ?
-          (<>
         <Box
         sx={{
           display: 'flex',
@@ -151,9 +148,6 @@ class SinglyLinkedListComponent extends react.Component {
         >
           {Nodes()}
         </div>
-        <button onClick={this.goBack}>Return</button>
-        </>
-          ) : <Learn/>}
       </div>
     );
   }
