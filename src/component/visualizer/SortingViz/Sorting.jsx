@@ -88,6 +88,7 @@ const SortingViz = () => {
   return (
     <div className="SortingViz">
       <button onClick={visualize}> Run Algorithm </button>
+      <button onClick={createArray}> Reset Array </button>
       <div className="arr-container">
         {arr.map((value, index) => (
           <div
