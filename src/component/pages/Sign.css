@@ -11,10 +11,9 @@ input {
 
 .container {
     position:relative;
-    top: 5vh;
-    width: 100%;
+    min-width: 100%;
     background-color: #fff;
-    min-height: 100vh;
+    min-height: 89.5vh;
     overflow: hidden;
 }
 

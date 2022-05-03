@@ -69,7 +69,7 @@ export function SignForm(){
                 <div className="panel left-panel">
                   <div className="content">
                     <h3>New here ?</h3>
-                    <button className="btn transparent" id="sign-up-btn" onClick={Sign}>
+                    <button className="btn transparent" id="sign-up-btn" onMouseDown={Sign}>
                       Sign up
                     </button>
                   </div>
@@ -77,14 +77,13 @@ export function SignForm(){
                 <div className="panel right-panel">
                   <div className="content">
                     <h3>Already a User ?</h3>
-                    <button className="btn transparent" id="sign-in-btn" onClick={Sign}>
+                    <button className="btn transparent" id="sign-in-btn" onMouseDown={Sign}>
                       Sign in
                     </button>
                   </div>
                 </div>
               </div>
           </div>
-        <script src="Sign.js"></script>
     </main>
   );
 };
