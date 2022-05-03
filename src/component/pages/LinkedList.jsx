@@ -32,9 +32,6 @@ const LinkedListpage = (props) => {
         </div>
       </main>
       <footer className="shell-footer">
-      <button onClick={()=> {
-        props.navigateTo('/')
-      }}>Return</button>
       </footer>
     </div>
  );

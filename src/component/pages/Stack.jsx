@@ -11,9 +11,6 @@ const Stackpage = (props) => {
       <main className='shell-bodyII'>
       </main>
       <footer className="shell-footer">
-      <button onClick={()=> {
-        props.navigateTo('/')
-      }}>Return</button>
       </footer>
     </div>
  );

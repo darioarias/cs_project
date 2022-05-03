@@ -4,7 +4,7 @@ import "./Pathfind.css";
 import { Astar, Dijkstra } from "./algorithms/PathFinding";
 
 const rows = 15;
-const cols = 15;
+const cols = 30;
 const m_StartNodeRow = 0;
 const m_StartNodeCol = 0;
 const m_EndNodeRow = rows - 5;

@@ -60,10 +60,7 @@ class StackComponent extends react.Component {
     console.log(this.state.list.peek());
     this.forceUpdate();
   }
-  goBack = () => {
-    this.props.navigateTo('/')
-  }
-
+  
   /**
    * @description instantiate nodes from the stack for the visuals
    * @param {*} pol : list of nodes
@@ -129,7 +126,6 @@ class StackComponent extends react.Component {
             >
               {Nodes()}
             </div>
-            <button onClick={this.goBack}>Return</button>
         </div>
     );
   }

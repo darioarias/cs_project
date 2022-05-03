@@ -6,6 +6,8 @@ import QueueComponent from "../visualizer/Queue";
 import StackComponent from "../visualizer/Stack";
 import HeapComponent from "../visualizer/Heap";
 import SortingViz from "../visualizer/SortingViz/Sorting";
+import GraphViz from "../visualizer/GraphViz/Graph";
+import "./sandbox.css"
 
 const Sandbox = () => {
   const [option, setOption] = useState("PathFinding");
@@ -28,11 +30,13 @@ const Sandbox = () => {
         return(<HeapComponent></HeapComponent>);
       case "Sorting":
         return(<SortingViz></SortingViz>);
+      case "Graph":
+        return(<GraphViz></GraphViz>);
     }
   }
 
  return (
-   <div>
+   <div className= "sandbox">
      <h2>Sandbox</h2>
      <select value={option} onChange={handleOptionSelect}>
           <option value="PathFinding">PathFinding</option>
@@ -41,6 +45,7 @@ const Sandbox = () => {
           <option value="Stack">Stack</option>
           <option value="Heap">Heap</option>
           <option value="Sorting">Sorting</option>
+          <option value="Graph">Graph</option>
       </select>
      <div>
        {renderSwitch()}

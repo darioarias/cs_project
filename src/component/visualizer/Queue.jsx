@@ -72,9 +72,7 @@ class QueueComponent extends react.Component {
     this.setState({ size: val });
     this.forceUpdate();
   }
-  goBack = () => {
-    this.props.navigateTo('/')
-  }
+
   render() {
     let Nodes = () => {
       if (this.state.queue !== null) {
@@ -109,7 +107,6 @@ class QueueComponent extends react.Component {
               </div>
             </Box>
             <QueueContainer>{Nodes()}</QueueContainer>
-            <button onClick={this.goBack}>Return</button>
       </div>
     );
   }
