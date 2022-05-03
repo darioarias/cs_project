@@ -1029,3 +1029,8 @@ body{
   border: solid black;
   width: 70%;
 }
+
+.learning-text{
+  color:black;
+  font-family: Georgia, serif;
+}
