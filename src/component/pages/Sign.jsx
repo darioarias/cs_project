@@ -33,8 +33,16 @@ export function SignForm(){
                       </a>
                     </div>
                   </form>
-                  <form action="https://kit.fontawesome.com/64d58efce2.js" className="sign-up-form">
+                  <form action="#" className="sign-up-form">
                     <h2 className="title">Sign up</h2>
+                    <div className="input-field">
+                      <i className="fas fa-user"></i>
+                      <input type="text" placeholder="First Name" />
+                    </div>
+                    <div className="input-field">
+                      <i className="fas fa-user"></i>
+                      <input type="text" placeholder="Last Name" />
+                    </div>
                     <div className="input-field">
                       <i className="fas fa-user"></i>
                       <input type="text" placeholder="Username" />
