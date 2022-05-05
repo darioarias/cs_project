@@ -8,17 +8,18 @@ class LinkedListpage extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      descriptions: []
+      courseDesc: []
     }
   }
 
   componentDidMount(){
     axios.get("https://algoviz-pyflask-rest-api.herokuapp.com/api/v1/courses/")
     .then(response=>{
-      // console.log(response)
-      this.setState({descriptions: response.data}) 
+        console.log(response)
+        // for now this is static prob use for loop or somehing to store json stuff
+        this.setState({courseDesc:response.data[3].description})
     })
-    .catch(error=>{console.log(error)})
+    .catch(error=>{console.log(error)})    
   }
 
   push(randomValuePushed){
@@ -41,18 +42,18 @@ class LinkedListpage extends React.Component{
   //more stuff to add?
 
   render(){
-    //this.state.descriptions[3].description
+    console.table(this.state.courseDesc)
     return (
       <div className="shell learning-text">
         <header className="shell-header">
             <h1>Linked List</h1>
-            <div>{}</div>
         </header>
         <main className="shell-body ">
           <SinglyLinkedList ref={SinglyLinkedList=>this.SinglyLinkedList = SinglyLinkedList}></SinglyLinkedList>
         </main>
         <main className='shell-bodyII'>
           <div>
+            <div>{this.state.courseDesc}</div>
             <h2>What is a Linked List</h2>
               <p>A Linked List is a data structure that is composed of nodes with an integer value and a link to the next node.</p>
             <hr></hr>
