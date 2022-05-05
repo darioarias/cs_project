@@ -22,22 +22,39 @@ class LearnSinglyLinkedListComponent extends react.Component {
     this.setState({ list: new SinglyLinkedList(null, 10) });
   }
 
-  push() {
-    try {
-      this.state.list.push(this.state.value);
+  // push method calls the push method defined in our logic
+  // The parameter is for the learning portion to pass random values, without user input
+  push(pushedValue = -1) {
+    let capacity = 10 - this.getLength(); // the limit to the linked list is 10 for the learn
+    // If user push in learning, exceeds out max size of 10 then alert user
+    if (capacity - 1 < 0){
+      alert("For our example, the max size is 10 nodes");
+      pushedValue = -1; 
+      return 
+    }
+
+    if (pushedValue !== -1){
+      this.state.list.push(pushedValue);
       this.forceUpdate();
-    } catch (e) {
-      console.log(e.toString());
+      pushedValue = -1;
+      return 
     }
   }
 
-  append() {
-    try {
-      this.state.list.append(this.state.value);
-    } catch (e) {
-      console.log(e.toString());
+  append(pushedValue = -1) {
+    let capacity = 10 - this.getLength(); // the limit to the linked list is 10 for the learn
+    // If user append in learning, exceeds out max size of 10 then alert user
+    if (capacity - 1 < 0){
+      alert("For our example, the max size is 10 nodes");
+      pushedValue = -1; 
+      return 
     }
-    this.forceUpdate();
+    if (pushedValue !== -1){
+      this.state.list.append(pushedValue);
+      this.forceUpdate();
+      pushedValue = -1;
+      return 
+    }
   }
 
   remove() {
@@ -64,6 +81,10 @@ class LearnSinglyLinkedListComponent extends react.Component {
     if (this.state.list != null) {
       return this.state.list.head;
     }
+  }
+
+  getLength(){
+    return this.state.list.lengthLinkedList();
   }
 
   onChangeValue(data) {

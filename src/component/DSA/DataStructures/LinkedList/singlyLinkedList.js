@@ -1,5 +1,6 @@
 import { default as Node } from "../Nodes/singlyLinkedListNode";
 import { default as Interface } from "../../Interface/interface.js";
+import { ThermostatOutlined } from "@mui/icons-material";
 
 export default class SinglyLinkedList extends Interface {
   /**
@@ -183,6 +184,16 @@ export default class SinglyLinkedList extends Interface {
 
     return null;
   }
+
+    /**
+   * @method
+   * @description returns the length of the list.
+   * @param {*} None
+   * @returns length of the list.
+   */
+    lengthLinkedList() {
+      return this.#length;
+    }
 
   /**
    * @description A way to verify if the list is empty

@@ -2,6 +2,8 @@ import React from 'react';
 import SinglyLinkedList from "../visualizer/LearnSinglyLinkedList";
 import axios from 'axios';
 
+//This class is the parent to the Singly Linked List. 
+//The class will call methods of the singly linked list components via refs
 class LinkedListpage extends React.Component{
   constructor(props){
     super(props)
@@ -13,20 +15,21 @@ class LinkedListpage extends React.Component{
   componentDidMount(){
     axios.get("https://algoviz-pyflask-rest-api.herokuapp.com/api/v1/courses/")
     .then(response=>{
-      console.log(response)
+      // console.log(response)
       this.setState({descriptions: response.data}) 
     })
     .catch(error=>{console.log(error)})
   }
 
-  push(){
-    this.SinglyLinkedList.push();
+  push(randomValuePushed){
+    this.SinglyLinkedList.push(randomValuePushed);
   }
 
-  append(){
-    this.SinglyLinkedList.append();
+  append(randomValueAppended){
+    this.SinglyLinkedList.append(randomValueAppended);
   }
 
+  // maybe add user inputs?
   remove(){
     this.SinglyLinkedList.remove();
   }
@@ -55,11 +58,11 @@ class LinkedListpage extends React.Component{
             <hr></hr>
             <h2>Push Method</h2>
               <p>The push method for a linked list is used to put a new node as the starting node in the linked list</p>
-              <button>Click here to try the push method</button>
+              <button onClick={() => this.push(Math.floor(Math.random() * 100))}>Click here to try the push method</button>
             <hr></hr>
             <h2>Append Method</h2>
               <p>The append method for a linked list is used to put a new node at the end of the linked list</p>
-              <button>Click here to try the append method</button>
+              <button onClick={() => this.append(Math.floor(Math.random() * 100))}>Click here to try the append method</button>
             <hr></hr>
             <h2>Remove Method</h2>
               <p>The remove method for a linked list is used to remove a specific value in a node from the linked list</p>
