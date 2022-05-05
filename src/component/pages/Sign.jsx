@@ -11,7 +11,7 @@ export function SignForm() {
   const onsubmit = async (e) => {
     e.preventDefault();
     if (!username || !password) {
-      setError("you need to fill in both password and username");
+      setError("you need to fill in both, password and username");
       return;
     }
     // console.log({ username, password });
