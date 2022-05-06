@@ -4,10 +4,10 @@
   box-sizing: border-box;
 }
 
-main,
+/* main,
 input {
     font-family: "Bungee Inline", sans-serif;
-}
+} */
 
 .container {
     position:relative;

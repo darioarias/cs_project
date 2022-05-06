@@ -68,9 +68,9 @@ const PathFindingViz = () => {
     setVisitedNodes([]);
   };
 
-  const resetGrid = () => {
-    location.reload();
-  };
+  // const resetGrid = () => {
+  //   location.reload();
+  // };
 
   const addNeighbours = (grid) => {
     for (let i = 0; i < rows; i++) {
@@ -194,9 +194,9 @@ const PathFindingViz = () => {
         <Button color="primary" variant="outlined" onClick={visualize}>
           Visualize Path
         </Button>
-        <Button color="primary" variant="outlined" onClick={resetGrid}>
+        {/* <Button color="primary" variant="outlined" onClick={resetGrid}>
           Reset Grid
-        </Button>
+        </Button> */}
       </div>
       <div>{displayGrid}</div>
     </div>

@@ -22,7 +22,7 @@
   justify-content: center;
   display: flex;
   padding: 5em;
-  font-family: 'Bungee Inline', cursive;
+  /* font-family: 'Bungee Inline', cursive; */
   color: rgb(8, 7, 7);
   background-color: rgb(126, 189, 226);
   padding: 35px 20px;
@@ -38,7 +38,7 @@
   background-color: #FFF;
 }
 .shell-bodyII {
-  font-weight: bold;
+  /* font-weight: bold; */
   grid-row: 3 / 4;
   grid-column: 2 / 3; 
   min-height: 50vh;
@@ -49,11 +49,11 @@
   background-color: #FFF;
 }
 .shell-bodyII h2{
-  font-family: "Bungee Inline";
-  font-weight: bold;
+  /* font-family: "Bungee Inline"; */
+  /* font-weight: bold; */
 }
 .shell-bodyII button {
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 .shell-footer {

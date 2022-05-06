@@ -57,8 +57,8 @@ class LearnSinglyLinkedListComponent extends react.Component {
     }
   }
 
-  remove() {
-    this.state.list.remove(Number(this.state.value));
+  remove(value) {
+    this.state.list.remove(value);
     this.forceUpdate();
   }
 
@@ -79,8 +79,16 @@ class LearnSinglyLinkedListComponent extends react.Component {
 
   getHead() {
     if (this.state.list != null) {
-      return this.state.list.head;
+      return this.state.list.head.__private_0_value;
     }
+    return null;
+  }
+
+  getTail(){
+    if (this.state.list != null) {
+      return this.state.list.tail.__private_0_value;
+    }
+    return null;
   }
 
   getLength(){
@@ -89,10 +97,6 @@ class LearnSinglyLinkedListComponent extends react.Component {
 
   onChangeValue(data) {
     this.setState({ value: data.target.value });
-  }
-
-  goBack = () => {
-    this.props.navigateTo('/')
   }
 
   /**
