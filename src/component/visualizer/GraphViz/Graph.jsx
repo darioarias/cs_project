@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer } from "react";
 import Draggable from "react-draggable";
 import Xarrow from "react-xarrows";
-
+import { BFS } from "./algorithms/GraphAlgo";
 import "./Graph.css";
 import {
   Button,
@@ -38,10 +38,13 @@ const GraphViz = () => {
   const [adjList, setAdjList] = useState(new Map());
   const [adjListHTML, setAdjListHTML] = useState(new Map());
   const [size, setSize] = useState(0);
+  const [path, setPath] = useState([]);
   const [openEdges, setopenEdges] = useState(false);
+  const [sourceV, setSourceV] = useState(0);
+  const [destV, setDestV] = useState(0);
   const [unweighted, setWeighted] = useState("unweighted");
   const [undirected, setDirected] = useState("undirected");
-  const [algoOption, setAlgoOption] = useState("Dijkstra");
+  const [algoOption, setAlgoOption] = useState("Breath First Search");
   const [node1, setNode1] = useState(0);
   const [node2, setNode2] = useState(0);
 
@@ -69,6 +72,7 @@ const GraphViz = () => {
     setSize(0);
     setAdjList(new Map());
     setAdjListHTML(new Map());
+    setPath([]);
   };
 
   const getCoordinates = (e) => {
@@ -140,8 +144,22 @@ const GraphViz = () => {
   };
 
   const visualize = () => {
+    let visited = null;
     switch (algoOption) {
+      case "Breath First Search":
+        visited = BFS(sourceV, adjList);
+        break;
     }
+    visualizePath(visited);
+  };
+
+  const visualizePath = (p) => {
+    let str = "";
+    for (let i of p) {
+      str += i.toString() + ", ";
+    }
+    str = str.slice(0, -2);
+    setPath(str);
   };
 
   return (
@@ -210,6 +228,9 @@ const GraphViz = () => {
           {displayVertex()}
         </div>
       </div>
+      <div>
+        <h6>Path: {path}</h6>
+      </div>
       <div className="controls">
         <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
           <InputLabel id="select-label">Algorithms</InputLabel>
@@ -220,7 +241,9 @@ const GraphViz = () => {
             label="Algorithms"
             onChange={handleAlgoSelect}
           >
-            <MenuItem value={"Dijkstra"}>Dijkstra</MenuItem>
+            <MenuItem value={"Breath First Search"}>
+              Breath First Search
+            </MenuItem>
           </Select>
         </FormControl>
         <Button color="primary" variant="outlined" onClick={visualize}>
@@ -229,6 +252,32 @@ const GraphViz = () => {
         <Button color="primary" variant="outlined" onClick={createGraph}>
           Reset
         </Button>
+      </div>
+      <div className="controls">
+        <TextField 
+          autoFocus
+          align="center"
+          id="outlined-number"
+          label="Source Vertex"
+          type="number"
+          variant="outlined"
+          size="small"
+          onChange={(e) => {
+            setSourceV(Number(e.target.value));
+          }}
+        />
+        <TextField
+          autoFocus
+          align="center"
+          id="outlined-number"
+          label="Destination Vertex"
+          type="number"
+          variant="outlined"
+          size="small"
+          onChange={(e) => {
+            setDestV(Number(e.target.value));
+          }}
+        />
       </div>
     </div>
   );
