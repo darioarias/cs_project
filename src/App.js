@@ -16,8 +16,6 @@ import Users from "./component/pages/Users";
 import Profile from "./component/pages/UserProfile";
 import SignForm from "./component/pages/Sign.jsx";
 
-
-
 import { DataStructures, Algorithms } from "./component/DSA/exports";
 import BinarySearchTree from "./component/DSA/DataStructures/BinarySearchTree/binarySearchTree";
 
@@ -26,9 +24,8 @@ import {
   Astar,
 } from "./component/visualizer/PathFindingViz/algorithms/PathFinding";
 import PathFindingViz from "./component/visualizer/PathFindingViz/Pathfind";
-import {useNavigate} from 'react-router-dom';
-
-// const LS = DataStructures.LinkedLists.SinglyLinkedList
+import { useNavigate } from "react-router-dom";
+import { ReactSession } from "react-client-session";
 
 const {
   Nodes: { SinglyLinkedListNode: Node },
@@ -44,11 +41,13 @@ const {
 } = DataStructures; // for testing only, will not be used in production.
 
 const App = () => {
-
   const [theme, setTheme] = useState(false);
 
   const navigate = useNavigate();
-  const navigateTo = useCallback((path) => navigate(path, {replace: true}), [navigate]);
+  const navigateTo = useCallback(
+    (path) => navigate(path, { replace: true }),
+    [navigate]
+  );
 
   const themeStyle = theme === false ? LightTheme : DarkTheme;
 
@@ -82,15 +81,18 @@ const App = () => {
       <NavBar toggleTheme={theme} setTheme={setTheme} />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/linkedlist" element={<LinkedListpage navigateTo={navigateTo} />} />
+        <Route
+          path="/linkedlist"
+          element={<LinkedListpage navigateTo={navigateTo} />}
+        />
         <Route path="/queue" element={<Queuepage navigateTo={navigateTo} />} />
         <Route path="/stack" element={<Stackpage navigateTo={navigateTo} />} />
         <Route path="/tree" element={<Treepage navigateTo={navigateTo} />} />
         <Route path="/Heap" element={<Heappage navigateTo={navigateTo} />} />
         <Route path="/Sign" element={<SignForm />} />
         <Route path="/sandbox" element={<Sandbox />} />
-        <Route path="/Users" element={<Users/>}></Route>
-        <Route path="/Profile" element={<Profile/>}></Route>
+        <Route path="/Users" element={<Users />}></Route>
+        <Route path="/Profile" element={<Profile />}></Route>
       </Routes>
     </ThemeProvider>
     // <PathFindingViz></PathFindingViz>

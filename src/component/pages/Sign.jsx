@@ -1,6 +1,9 @@
 import { useState } from "react";
 import "./Sign.css";
 import Sign from "./Sign.js";
+import { auth_instance, resources_instance } from "../../networking/axios.js";
+import FlashMessage from "./flash_message";
+import { ReactSession } from "react-client-session";
 
 export function SignForm() {
   const [username, setUsername] = useState("");
@@ -8,6 +11,67 @@ export function SignForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [showFlash, setShowFlash] = useState(false);
+  const [feedback, setFeedback] = useState("");
+
+  const signinOnSubmit = (e = new Event()) => {
+    e.preventDefault();
+    // const url = `${process.env.REACT_APP_API_ROOT_URL}/signin/`;
+    // ReactSession.remove("token");
+    if (ReactSession.get("token")) {
+      console.log("already signed in");
+      return;
+    }
+
+    auth_instance()
+      .post("/signin/", { username, password })
+      .then(({ data: { access_token, message } }) => {
+        // save token, maybe in cookie or redux
+        ReactSession.set("token", access_token);
+        ReactSession.set("username", username);
+        setFeedback(message);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response.data);
+          setFeedback(error.response.data.message);
+        } else {
+          setFeedback(error.message);
+          console.log("err", error);
+        }
+      })
+      .finally(() => {
+        setShowFlash(true);
+      });
+  };
+
+  const signupOnSubmit = (e = new Event()) => {
+    e.preventDefault();
+    resources_instance()
+      .post("/users/", {
+        username,
+        password,
+        first_name: firstName,
+        last_name: lastName,
+        email,
+      })
+      .then(({ data }) => {
+        console.log(data);
+        ReactSession.set("username", username);
+        setFeedback("account created. Be sure to verify email.");
+      })
+      .catch((error) => {
+        console.log(error);
+        if (error.response) {
+          setFeedback(error.response.data.message);
+        } else setFeedback(error.message);
+      })
+      .finally(() => {
+        setShowFlash(true);
+      });
+  };
+
   return (
     <main>
       <div className="container">
@@ -17,13 +81,41 @@ export function SignForm() {
               <h2 className="title">Sign in</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
-                <input type="text" placeholder="Username" />
+                <input
+                  type="text"
+                  placeholder="Username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </div>
               <div className="input-field">
                 <i className="fas fa-lock"></i>
-                <input type="password" placeholder="Password" />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
-              <input type="submit" value="Login" className="btn solid" />
+              <input
+                type="submit"
+                value="Login"
+                onClick={signinOnSubmit}
+                className="btn solid"
+              />
+
+              {showFlash && (
+                <div>
+                  <FlashMessage
+                    duration={2000}
+                    persistOnHover={true}
+                    isShowing={setShowFlash}
+                  >
+                    {feedback}
+                  </FlashMessage>
+                </div>
+              )}
+
               <div className="social-media">
                 <a
                   href="https://kit.fontawesome.com/64d58efce2.js"
@@ -98,7 +190,24 @@ export function SignForm() {
                   value={password}
                 />
               </div>
-              <input type="submit" className="btn" value="Sign up" />
+              <input
+                type="submit"
+                className="btn"
+                value="Sign up"
+                onClick={signupOnSubmit}
+              />
+              {showFlash && (
+                <div>
+                  <FlashMessage
+                    duration={2000}
+                    persistOnHover={true}
+                    isShowing={setShowFlash}
+                  >
+                    {feedback}
+                  </FlashMessage>
+                </div>
+              )}
+
               <div className="social-media">
                 <a
                   href="https://kit.fontawesome.com/64d58efce2.js"
