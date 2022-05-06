@@ -19,20 +19,16 @@
 }
 
 .path-visitedNodes {
-  animation-name: visitedNodes;
-  animation-duration: 2.0s;
+  animation: visitedNodes 2.0s;
   animation-delay: 0;
-  animation-direction: alternate;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
 }
 
 .path-shortestPath {
-  animation-name: shortestPath;
-  animation-duration: 2.0s;
+  animation: shortestPath 2.0s;
   animation-delay: 0;
-  animation-direction: alternate;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   animation-play-state: running;
@@ -41,10 +37,12 @@
 @keyframes visitedNodes {
   0% {
     background-color: #F5FCFF;
+    transform: scale(0.1);
   }
 
   50% {
     background-color: #DBF3FA;
+    transform: scale(1.2);
   }
 
   75% {
@@ -53,19 +51,26 @@
 
   100% {
     background-color: #7AD7F0;
+    transform: scale(1);
   }
 }
 
 @keyframes shortestPath {
   0% {
     background-color: aquamarine;
+    transform: scale(0.1);
   }
 
   50% {
+    background-color: aquamarine;
+    transform: scale(1.2);
+  }
+  75% {
     background-color: aquamarine;
   }
 
   100% {
     background-color: aquamarine;
+    transform: scale(1);
   }
 }

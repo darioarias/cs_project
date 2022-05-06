@@ -18,7 +18,7 @@ function swap(arr, i, j) {
         j--;
       }
     }
-    return animations;
+    return [animations, copy];
   }
 
   export { InsertionSort };

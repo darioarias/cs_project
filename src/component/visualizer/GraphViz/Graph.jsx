@@ -1,41 +1,74 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import Draggable from "react-draggable";
+import Xarrow from "react-xarrows";
+
 import "./Graph.css";
+import {
+  Button,
+  FormControl,
+  MenuItem,
+  Select,
+  InputLabel,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
 
 const Circle = (x, y) => {
-    return {
-        padding: 0,
-        margin: 5,
-        width: 50,
-        height: 50,
-        borderRadius: "50%",
-        border: "1px solid black",
-        alignItems: "center",
-        lineHeight: "50px",
-        outlineWidth: 0,
-        justifyContent: "center",
-        left: `${x - 25}px`,
-        top: `${y - 25}px`,
-    }
-}
+  return {
+    padding: 0,
+    margin: 5,
+    width: 50,
+    height: 50,
+    backgroundColor: "white",
+    color: "black",
+    borderRadius: "50%",
+    border: "1px solid black",
+    lineHeight: "50px",
+    outlineWidth: 0,
+    left: `${x - 25}px`,
+    top: `${y - 25}px`,
+  };
+};
 
 const GraphViz = () => {
-  const [adjList, setAdjList] = useState([]);
-  const [adjListHTML, setAdjListHTML] = useState([]);
+  const [adjList, setAdjList] = useState(new Map());
+  const [adjListHTML, setAdjListHTML] = useState(new Map());
   const [size, setSize] = useState(0);
+  const [openEdges, setopenEdges] = useState(false);
   const [unweighted, setWeighted] = useState("unweighted");
   const [undirected, setDirected] = useState("undirected");
   const [algoOption, setAlgoOption] = useState("Dijkstra");
+  const [node1, setNode1] = useState(0);
+  const [node2, setNode2] = useState(0);
 
   useEffect(() => {
     createGraph();
   }, []);
 
+  const [_, forceUpdate] = useReducer((x) => x + 1, 0);
+
+  const handleAlgoSelect = (e) => {
+    setAlgoOption(e.target.value);
+  };
+
+  const handleEdgesOpen = () => {
+    setopenEdges(true);
+  };
+
+  const handleEdgesClose = () => {
+    setopenEdges(false);
+    setNode1(0);
+    setNode2(0);
+  };
+
   const createGraph = () => {
     setSize(0);
-    let adj = new Map();
-    setAdjList(adj);
-    setAdjListHTML(adj);
+    setAdjList(new Map());
+    setAdjListHTML(new Map());
   };
 
   const getCoordinates = (e) => {
@@ -49,40 +82,153 @@ const GraphViz = () => {
       adjList.set(i, []);
       let [x, y] = getCoordinates(e);
       adjListHTML.set(i, () => (
-        <Draggable key={i} bounds="parent">
-          <div className={`vertex vertex-${i}`} id={`vertex-${i}`}
-          style = {Circle(x, y)}>
-              {i}
+        <Draggable
+          key={i}
+          bounds="parent"
+          onStop={forceUpdate}
+          onDrag={forceUpdate}
+        >
+          <div
+            className={`vertex vertex-${i}`}
+            id={`vertex-${i}`}
+            style={Circle(x, y)}
+          >
+            {i}
           </div>
         </Draggable>
       ));
     }
   };
 
-  const addEdge = () => {};
+  const addEdge = () => {
+    if (node1 != node2 && adjList.has(node1) && adjList.has(node2)) {
+      if (!adjList.get(node1).includes(node2))
+        adjList.set(node1, [...adjList.get(node1), node2]);
+    }
+    handleEdgesClose();
+  };
 
-  const display = () => {
+  const displayVertex = () => {
     let nodes = [];
     const values = adjListHTML.values();
-    let res = values.next();
-    while(!res.done) {
-        nodes.push(res.value());
-        res = values.next();
+    let temp = values.next();
+    while (!temp.done) {
+      nodes.push(temp.value());
+      temp = values.next();
     }
     return nodes;
   };
 
+  const displayEdges = () => {
+    let edges = [];
+    for (let i = 0; i < size; i++) {
+      let arr = adjList.get(i);
+      if (arr.length === 0) continue;
+      for (let j = 0; j < arr.length; j++) {
+        edges.push(
+          <Xarrow
+            key={`edge${i}-${arr[j]}`}
+            id={`${i}-${arr[j]}`}
+            start={`vertex-${i}`}
+            end={`vertex-${arr[j]}`}
+            color="black"
+          ></Xarrow>
+        );
+      }
+    }
+    return edges;
+  };
+
+  const visualize = () => {
+    switch (algoOption) {
+    }
+  };
+
   return (
-      
-    <div
-      className="canvas"
-      onDoubleClick={(e) => {
-        addVertex(e, size);
-        setSize(size + 1);
-      }}
-    >
-      <div className="graph">
-          {display()}
+    <div>
+      <div className="controls">
+        <Button
+          color="primary"
+          variant="outlined"
+          onClick={(e) => {
+            addVertex(e, size);
+            setSize(size + 1);
+          }}
+        >
+          Add Vertex
+        </Button>
+
+        <Button variant="outlined" onClick={handleEdgesOpen}>
+          Create Edge
+        </Button>
+        <Dialog open={openEdges} onClose={handleEdgesClose}>
+          <DialogTitle>Create Edges</DialogTitle>
+          <DialogContent>
+            <DialogContentText align="center">
+              Connect Two Vertex Together
+            </DialogContentText>
+            <TextField
+              autoFocus
+              align="center"
+              id="outlined-number"
+              label="Vertex 1"
+              type="number"
+              variant="standard"
+              onChange={(e) => {
+                setNode1(Number(e.target.value));
+              }}
+            />
+            <TextField
+              autoFocus
+              align="center"
+              id="outlined-number"
+              label="Vertex 2"
+              type="number"
+              variant="standard"
+              onChange={(e) => {
+                setNode2(Number(e.target.value));
+              }}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleEdgesClose}>Cancel</Button>
+            <Button color="primary" variant="outlined" onClick={addEdge}>
+              Add Edge
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
+      <div
+        className="canvas"
+        onDoubleClick={(e) => {
+          addVertex(e, size);
+          setSize(size + 1);
+        }}
+      >
+        <div className="graph">
+          {displayEdges()}
+          {displayVertex()}
+        </div>
+      </div>
+      <div className="controls">
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="select-label">Algorithms</InputLabel>
+          <Select
+            labelId="select-label"
+            id="simple-select"
+            value={algoOption}
+            label="Algorithms"
+            onChange={handleAlgoSelect}
+          >
+            <MenuItem value={"Dijkstra"}>Dijkstra</MenuItem>
+          </Select>
+        </FormControl>
+        <Button color="primary" variant="outlined" onClick={visualize}>
+          Visualize Path
+        </Button>
+        <Button color="primary" variant="outlined" onClick={createGraph}>
+          Reset
+        </Button>
       </div>
     </div>
   );

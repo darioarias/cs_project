@@ -2,7 +2,13 @@ import React, { useState, useEffect } from "react";
 import PathNode from "./PathNode";
 import "./Pathfind.css";
 import { Astar, Dijkstra } from "./algorithms/PathFinding";
-
+import {
+  Button,
+  FormControl,
+  MenuItem,
+  Select,
+  InputLabel,
+} from "@mui/material";
 const rows = 15;
 const cols = 30;
 const m_StartNodeRow = 0;
@@ -15,6 +21,7 @@ const PathFindingViz = () => {
   const [path, setPath] = useState([]);
   const [visitedNodes, setVisitedNodes] = useState([]);
   const [algoOption, setAlgoOption] = useState("A*");
+  const [isRunning, setisRunning] = useState(false);
   const [click, setClick] = useState(false);
   const [drag, setDrag] = useState({ start: false, end: false });
   useEffect(() => {
@@ -62,19 +69,7 @@ const PathFindingViz = () => {
   };
 
   const resetGrid = () => {
-    let elements = document.getElementsByClassName("path-visitedNodes");
-    while (elements.length) {
-      elements[0].classList.remove("path-visitedNodes");
-    }
-    elements = document.getElementsByClassName("path-shortestPath");
-    while (elements.length) {
-      elements[0].classList.remove("path-shortestPath");
-    }
-    elements = document.getElementsByClassName("path-wall");
-    while (elements.length) {
-      elements[0].classList.remove("path-wall");
-    }
-    createGrid();
+    location.reload();
   };
 
   const addNeighbours = (grid) => {
@@ -108,7 +103,6 @@ const PathFindingViz = () => {
 
   const visualize = () => {
     let results;
-
     const startNode = grid[m_StartNodeRow][m_StartNodeCol];
     const endNode = grid[m_EndNodeRow][m_EndNodeCol];
     switch (algoOption) {
@@ -122,7 +116,6 @@ const PathFindingViz = () => {
     setPath(results.path);
     setVisitedNodes(results.visitedNodes);
     visualizePath();
-    console.log(results.path);
   };
 
   const displayGrid = (
@@ -184,12 +177,27 @@ const PathFindingViz = () => {
   };
   return (
     <div className="PathFindingViz">
-      <h1>Pathfinding Visualizer</h1>
-      <button onClick={visualize}> Visualize Path </button>
-      <button onClick={resetGrid}> Reset Grid </button>
-      <select value={algoOption} onChange={handleAlgoSelect}>
-        <option value="A*">A*</option>
-      </select>
+      <h2>Pathfinding Visualizer</h2>
+      <div className="controls">
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="select-label">Algorithms</InputLabel>
+          <Select
+            labelId="select-label"
+            id="simple-select"
+            value={algoOption}
+            label="Algorithms"
+            onChange={handleAlgoSelect}
+          >
+            <MenuItem value={"A*"}>A*</MenuItem>
+          </Select>
+        </FormControl>
+        <Button color="primary" variant="outlined" onClick={visualize}>
+          Visualize Path
+        </Button>
+        <Button color="primary" variant="outlined" onClick={resetGrid}>
+          Reset Grid
+        </Button>
+      </div>
       <div>{displayGrid}</div>
     </div>
   );

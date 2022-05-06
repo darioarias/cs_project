@@ -1,7 +1,6 @@
 function Dijkstra(grid, startNode, endNode) {}
 
 function Astar(startNode, endNode) {
-  console.log("A* Start");
   let path = [];
   let visitedNodes = [];
   let openList = [];
@@ -29,7 +28,6 @@ function Astar(startNode, endNode) {
         path.push(temp.previous);
         temp = temp.previous;
       }
-      console.log("Found Path!");
       return { path, visitedNodes };
     }
 
@@ -58,7 +56,6 @@ function Astar(startNode, endNode) {
       }
     }
   }
-  console.log("No Path!");
   return { path, visitedNodes };
 }
 

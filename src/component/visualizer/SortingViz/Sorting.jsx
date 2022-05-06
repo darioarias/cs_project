@@ -1,10 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "./Sorting.css";
 import { InsertionSort } from "./algorithms/Sorting";
+import {
+  Button,
+  FormControl,
+  MenuItem,
+  Select,
+  InputLabel,
+} from "@mui/material";
 
 const SortingViz = () => {
   const [arr, setArr] = useState([]);
-  const [sorting, setSorting] = useState(false);
+  const [sorting, setSorting] = useState(0);
   const [arrLength, setArrLength] = useState(100);
   const [algoOption, setAlgoOption] = useState("Insertion");
 
@@ -12,11 +19,15 @@ const SortingViz = () => {
     createArray();
   }, []);
 
+  const handleAlgoSelect = (e) => {
+    setAlgoOption(e.target.value);
+  };
+
   function createArray() {
     setSorting(false);
     const arr = [];
     for (let i = 0; i < arrLength; i++) {
-      arr.push(getRandomInt(100));
+      arr.push(getRandomInt(75));
     }
     setArr(arr);
   }
@@ -33,7 +44,7 @@ const SortingViz = () => {
   };
 
   const insertionSort = async (_) => {
-    let animationsArr = InsertionSort(arr, arrLength);
+    let [animationsArr, arrtemp] = InsertionSort(arr, arrLength);
     for (let i = 0; i < animationsArr.length; i++) {
       let elements = document.getElementsByClassName("arr-ele");
       let [index1, index2, type] = animationsArr[i];
@@ -87,8 +98,27 @@ const SortingViz = () => {
 
   return (
     <div className="SortingViz">
-      <button onClick={visualize}> Run Algorithm </button>
-      <button onClick={createArray}> Reset Array </button>
+      <div className="controls">
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="select-label">Algorithms</InputLabel>
+          <Select
+            labelId="select-label"
+            id="simple-select"
+            value={algoOption}
+            label="Algorithms"
+            onChange={handleAlgoSelect}
+          >
+            <MenuItem value={"Insertion"}>Insertion</MenuItem>
+          </Select>
+        </FormControl>
+        <Button color="primary" variant="outlined" onClick={visualize}>
+          Sort
+        </Button>
+        <Button color="primary" variant="outlined" onClick={createArray}>
+          Random Array
+        </Button>
+      </div>
+
       <div className="arr-container">
         {arr.map((value, index) => (
           <div
