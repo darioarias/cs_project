@@ -43,11 +43,15 @@ export default class Stack extends Interface {
    * @returns Top value, or null
    */
   peek() {
-    return this.#list.tail ? this.#list.tail.value : null;
+    return this.#list.head ? this.#list.head.value : null;
   }
 
   toArr() {
     return this.#list.toArr();
+  }
+
+  getLength(){
+    return this.#list.toArr().length;
   }
   /**
    * @static

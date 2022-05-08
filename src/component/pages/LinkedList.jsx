@@ -88,7 +88,9 @@ class LinkedListpage extends React.Component{
           <div>
             <div>{this.state.courseDesc}</div>
             <h2>What is a Linked List</h2>
-              <p>A Linked List is a data structure that is composed of nodes with an integer value and a link to the next node.</p>
+              <p>A Linked List is a data structure that is composed of nodes with an integer value and a link to the next node.
+                This linked list is an example of singly linked list where the nodes only point in one direction.
+              </p>
             <hr></hr>
             <h2>Head</h2>
             <p>The first node in the linked list is called the head of the linked list. If the linked list is empty then the head node of the linked list should be null.</p>
@@ -116,7 +118,7 @@ class LinkedListpage extends React.Component{
               <button onClick={() => this.remove()}>Click here to try the remove method</button>
             <hr></hr>
             <h2>Pop Method</h2>
-              <p>The pop mrthod for a linked list is used to remove the head node of the linked list</p>
+              <p>The pop method for a linked list is used to remove the head node of the linked list</p>
               <button onClick={() => this.pop()}>Click here to try the pop method</button>
             <hr></hr>
           </div>
