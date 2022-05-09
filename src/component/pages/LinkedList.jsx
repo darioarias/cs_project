@@ -113,7 +113,9 @@ class LinkedListpage extends React.Component{
             <button onClick={() => this.removeLast()}>Click here to try the append method</button>
             <hr></hr>
             <h2>Remove at Index Method</h2>
-              <p>The remove method for a linked list is used to remove a node at a specific index from the linked list. The head node is index 0 and the last node is the length of the linked list - 1</p>
+              <p>The remove method for a linked list is used to remove a node at a specific index from the linked list. 
+                The head node is index 0, the second node is 1, the third node is 2, and the last node is the total number of nodes 
+                minus 1.</p>
               <input value={this.state.value} onChange={this.onChangeValue} />
               <button onClick={() => this.remove()}>Click here to try the remove method</button>
             <hr></hr>

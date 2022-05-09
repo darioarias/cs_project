@@ -31,7 +31,7 @@ class StackPage extends React.Component{
       <main className='stack-shell-bodyII'>
         <h2>What is a Stack</h2>
         <p>A Stack is an abstract data type that serves as a collection of elements. 
-          The Stack follows a LIFO (Last in First Out) principal in that the last inserted item 
+          The Stack follows a LIFO (Last In First Out) principal in that the last inserted item 
           in the stack is the first item removed. In a real world example with a stack of plates, a plate can be inserted
           at the top of the stack and removed from the top of the stack.    
         </p>
