@@ -88,7 +88,9 @@ class LinkedListpage extends React.Component{
           <div>
             <div>{this.state.courseDesc}</div>
             <h2>What is a Linked List</h2>
-              <p>A Linked List is a data structure that is composed of nodes with an integer value and a link to the next node.</p>
+              <p>A Linked List is a data structure that is composed of nodes with an integer value and a link to the next node.
+                This linked list is an example of singly linked list where the nodes only point in one direction.
+              </p>
             <hr></hr>
             <h2>Head</h2>
             <p>The first node in the linked list is called the head of the linked list. If the linked list is empty then the head node of the linked list should be null.</p>
@@ -111,12 +113,14 @@ class LinkedListpage extends React.Component{
             <button onClick={() => this.removeLast()}>Click here to try the append method</button>
             <hr></hr>
             <h2>Remove at Index Method</h2>
-              <p>The remove method for a linked list is used to remove a node at a specific index from the linked list. The head node is index 0 and the last node is the length of the linked list - 1</p>
+              <p>The remove method for a linked list is used to remove a node at a specific index from the linked list. 
+                The head node is index 0, the second node is 1, the third node is 2, and the last node is the total number of nodes 
+                minus 1.</p>
               <input value={this.state.value} onChange={this.onChangeValue} />
               <button onClick={() => this.remove()}>Click here to try the remove method</button>
             <hr></hr>
             <h2>Pop Method</h2>
-              <p>The pop mrthod for a linked list is used to remove the head node of the linked list</p>
+              <p>The pop method for a linked list is used to remove the head node of the linked list</p>
               <button onClick={() => this.pop()}>Click here to try the pop method</button>
             <hr></hr>
           </div>

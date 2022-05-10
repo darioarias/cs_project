@@ -59,6 +59,10 @@ export default class Queue extends Interface {
     return this.#list.toArr();
   }
 
+  getLength(){
+    return this.#list.toArr().length;
+  }
+
   //private methods/properties
   #list;
 }

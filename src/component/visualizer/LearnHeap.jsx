@@ -1,10 +1,7 @@
 import {default as Heap} from "../DSA/DataStructures/Heaps/heap.js";
 import react from "react";
-import HeapNode from "./HeapNode.jsx";
-import Box from '@mui/material/Card';
-import Learn from '../pages/Learn';
+import HeapNode from "./LearnHeapNode";
 
-// let orderHeaps = []; //keeps track of levels for testing
 let horizontalPos = []; //Base cases for the offset
 
 class HeapComponent extends react.Component{
@@ -21,7 +18,6 @@ class HeapComponent extends react.Component{
     componentDidMount(){
         this.horizontalPosCalc();
         this.quickSort(horizontalPos, 0, 30);
-        //couldnt think of a better algorithm so i did this for loop
         for (let i = 0; i<31; i++){
             for (let j = i + 1; j < 31; j++){
                 if (horizontalPos[i][0] === horizontalPos[j][0] && horizontalPos[i][1] > horizontalPos[j][1]){
@@ -29,10 +25,6 @@ class HeapComponent extends react.Component{
                 }
             }
         }
-
-        // console.table(horizontalPos);
-        // this.levelOrder();   #used for testing 
-        // console.table(orderHeaps); # used for testing
         this.resetHeap();
     }
 
@@ -45,8 +37,16 @@ class HeapComponent extends react.Component{
         this.setState({ value: data.target.value });
     }
 
-    insert(){
-        this.state.heap.insert(parseInt(this.state.value));
+    insert(pushedValue = -1){
+        let capacity = 31 - this.getLength(); // the limit to the heap is 31 for the learn
+    // If user push in learning, exceeds out max size of 31 then alert user
+        if (capacity - 1 < 0){
+            alert("For our example, the max size is 20 nodes");
+            pushedValue = -1; 
+            return 
+        }
+        this.state.heap.insert(pushedValue);
+        pushedValue = -1;
         this.forceUpdate();
     }
 
@@ -82,15 +82,6 @@ class HeapComponent extends react.Component{
         }
         return output;
     }
-
-    // method used for testing to check levels
-    // levelOrder = () => {
-    //     orderHeaps.push(1)
-    //     for (let levels = 1; levels < 6; levels++ )
-    //     {
-    //         orderHeaps.push(Math.pow(2,levels) + orderHeaps[levels-1]);
-    //     }
-    // }
 
     //Used to calculate the offsets, I decided to limit the level of nodes to 6, because the tree will get huge to fit in the screen
     horizontalPosCalc = (level = 0, offset = 50) => {
@@ -142,28 +133,7 @@ class HeapComponent extends react.Component{
             }
         };
         return (      
-            <div>
-                <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    justifyContent: 'center',
-                    p: 10,
-                    m: 10,
-                    bgcolor: '#1976D2',
-                    borderRadius: 10,
-                }}
-            >
-            <button onClick={() => this.resetHeap()}>Reset Heap</button>
-            <div>
-                <input value={this.state.value} onChange={this.onChangeValue} />
-                <button onClick={()=>this.insert()}>Insert Value</button>
-                <button onClick={()=>this.remove()}>Remove Value</button>
-            </div>
-            </Box>
             <div>{Nodes()}</div>
-        </div>
         )
     }
 }

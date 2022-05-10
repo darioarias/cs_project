@@ -7,11 +7,15 @@ import {
   MenuItem,
   Select,
   InputLabel,
+  Box,
+  Slider,
 } from "@mui/material";
 
 const SortingViz = () => {
   const [arr, setArr] = useState([]);
+  const [speed, setSpeed] = useState(33);
   const [sorting, setSorting] = useState(0);
+  const [timeouts, setTimer] = useState([]);
   const [arrLength, setArrLength] = useState(100);
   const [algoOption, setAlgoOption] = useState("Insertion");
 
@@ -23,14 +27,25 @@ const SortingViz = () => {
     setAlgoOption(e.target.value);
   };
 
-  function createArray() {
+  const createArray = () => {
+    if (timeouts.length > 0)
+      for (let i = 0; i < timeouts.length; i++) {
+        clearTimeout(timeouts[i]);
+      }
+    const elements = document.querySelectorAll(".arr-ele");
+
     setSorting(false);
     const arr = [];
     for (let i = 0; i < arrLength; i++) {
-      arr.push(getRandomInt(75));
+      let num = getRandomInt(75);
+      arr.push(num);
+      if (elements[i] != undefined) {
+        elements[i].style.backgroundColor = "black";
+        elements[i].style.height = `${num}vh`;
+      }
     }
     setArr(arr);
-  }
+  };
 
   const visualize = () => {
     switch (algoOption) {
@@ -43,6 +58,11 @@ const SortingViz = () => {
     }
   };
 
+  const changeSpeed = (e, v) => {
+    setSpeed(v);
+    console.log(arr);
+  };
+
   const insertionSort = async (_) => {
     let [animationsArr, arrtemp] = InsertionSort(arr, arrLength);
     for (let i = 0; i < animationsArr.length; i++) {
@@ -52,6 +72,10 @@ const SortingViz = () => {
       let element2 = elements[index2].style;
       animate(element1, element2, type, i);
       animate(element1, element2, "x", i);
+      if (i == animationsArr.length - 1)
+        setTimeout(() => {
+          setArr(arrtemp);
+        }, i * speed + speed);
     }
   };
 
@@ -64,22 +88,26 @@ const SortingViz = () => {
 
   function swap(e, e2, i) {
     return new Promise(() =>
-      setTimeout(() => {
-        let temp = e.height;
-        e.height = e2.height;
-        e2.height = temp;
-        e.backgroundColor = "red";
-        e2.backgroundColor = "red";
-      }, i * 1)
+      timeouts.push(
+        setTimeout(() => {
+          let temp = e.height;
+          e.height = e2.height;
+          e2.height = temp;
+          e.backgroundColor = "red";
+          e2.backgroundColor = "red";
+        }, i * speed)
+      )
     );
   }
 
   function resetColor(e, e2, i) {
     return new Promise(() =>
-      setTimeout(() => {
-        e.backgroundColor = "black";
-        e2.backgroundColor = "black";
-      }, i * 1)
+      timeouts.push(
+        setTimeout(() => {
+          e.backgroundColor = "black";
+          e2.backgroundColor = "black";
+        }, i * speed + speed)
+      )
     );
   }
 
@@ -117,6 +145,13 @@ const SortingViz = () => {
         <Button color="primary" variant="outlined" onClick={createArray}>
           Random Array
         </Button>
+        <Box sx={{ width: 200, padding: 1 }}>
+          <Slider
+            defaultValue={speed}
+            onChange={changeSpeed}
+            valueLabelDisplay="auto"
+          />
+        </Box>
       </div>
 
       <div className="arr-container">

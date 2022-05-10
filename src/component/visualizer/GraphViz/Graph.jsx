@@ -136,6 +136,7 @@ const GraphViz = () => {
             start={`vertex-${i}`}
             end={`vertex-${arr[j]}`}
             color="black"
+            showHead={false}
           ></Xarrow>
         );
       }
@@ -156,10 +157,15 @@ const GraphViz = () => {
   const visualizePath = (p) => {
     let str = "";
     for (let i of p) {
-      str += i.toString() + ", ";
+      setTimeout(() => {
+        document.getElementById(`vertex-${i}`).style.borderColor = "red";
+        str += i.toString() + ", ";
+      }, 1000 * i);
+      setTimeout(() => {
+        document.getElementById(`vertex-${i}`).style.borderColor = "black";
+        setPath(str);
+      }, 1000 * i + 1000);
     }
-    str = str.slice(0, -2);
-    setPath(str);
   };
 
   return (
@@ -254,7 +260,7 @@ const GraphViz = () => {
         </Button>
       </div>
       <div className="controls">
-        <TextField 
+        <TextField
           autoFocus
           align="center"
           id="outlined-number"

@@ -13,7 +13,10 @@ function BFS(s, adjList)
    return visited
 }
 
+function Dijkstra(s, d, adjList) 
+{
+
+}
 
 
-
-export { BFS };
+export { BFS, Dijkstra };

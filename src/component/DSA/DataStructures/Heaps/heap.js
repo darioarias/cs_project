@@ -125,7 +125,7 @@ export default class Heap extends Interface {
    * @param {*} value value to be inserted
    */
   insert(value) {
-    if (this.#values.length >= this.max)
+    if (this.#values.length > this.max)
       throw Interface.newErr("Heap has reached its max_size");
     this.#values.push(value);
     this.#siftUp(this.#values.length - 1);
@@ -198,6 +198,11 @@ export default class Heap extends Interface {
     for (; i >= 0; i--) {
       this.#siftDown(i);
     }
+  }
+
+
+  getLength(){
+    return this.#values.length;
   }
 
   //private method / properties
