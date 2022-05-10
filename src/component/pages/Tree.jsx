@@ -19,6 +19,12 @@ class Treepage extends React.Component{
         <h2>What is a Binary Tree</h2>
         <p></p>
         <hr></hr>
+        <h2>Add Left Method</h2>
+        <p>Insert a value to the left of a node assuming the node does not have any left child nodes.</p>
+        <hr></hr>
+        <h2>Add Right Method</h2>
+        <p>Insert a value to the right of the node assuming the node does not have any right chidl nodes.</p>
+        <hr></hr>
         <h2>Add method</h2>
         <p>Inserts a value into the tree at the first open spot from the first node missing a left or right child</p>
         <hr></hr>
