@@ -48,8 +48,8 @@ class QueueComponent extends react.Component {
 
   // learning portion uses restricted inputs from 0 to 100. pushedvalue is a flag
   Enqueue(pushedValue = -1) {
-    let capacity = 20 - this.getLength(); // the limit to the stack is 10 for the learn
-    // If user push in learning, exceeds out max size of 10 then alert user
+    let capacity = 20 - this.getLength(); // the limit to the queue is 20 for the learn
+    // If user enqueue in learning, exceeds out max size of 20 then alert user
     if (capacity - 1 < 0){
       alert("For our example, the max size is 20 nodes");
       pushedValue = -1; 
