@@ -7,10 +7,28 @@ import {
   MenuItem,
   Select,
   InputLabel,
+  Box,
+  Slider,
 } from "@mui/material";
+
+const animationSpeeds = [
+  {
+    value: 1,
+    label: "fastest",
+  },
+  {
+    value: 10,
+    label: "fast",
+  },
+  {
+    value: 100,
+    label: "slow",
+  },
+];
 
 const SortingViz = () => {
   const [arr, setArr] = useState([]);
+  const [speed, setSpeed] = useState(33);
   const [sorting, setSorting] = useState(0);
   const [arrLength, setArrLength] = useState(100);
   const [algoOption, setAlgoOption] = useState("Insertion");
@@ -43,6 +61,11 @@ const SortingViz = () => {
     }
   };
 
+  const changeSpeed = (e, v) => {
+    setSpeed(v);
+    console.log(arr)
+  };
+
   const insertionSort = async (_) => {
     let [animationsArr, arrtemp] = InsertionSort(arr, arrLength);
     for (let i = 0; i < animationsArr.length; i++) {
@@ -52,6 +75,10 @@ const SortingViz = () => {
       let element2 = elements[index2].style;
       animate(element1, element2, type, i);
       animate(element1, element2, "x", i);
+      if (i == animationsArr.length - 1)
+        setTimeout(() => {
+          setArr(arrtemp);
+        }, i * speed + speed);
     }
   };
 
@@ -70,7 +97,7 @@ const SortingViz = () => {
         e2.height = temp;
         e.backgroundColor = "red";
         e2.backgroundColor = "red";
-      }, i * 1)
+      }, i * speed)
     );
   }
 
@@ -79,7 +106,7 @@ const SortingViz = () => {
       setTimeout(() => {
         e.backgroundColor = "black";
         e2.backgroundColor = "black";
-      }, i * 1)
+      }, i * speed + speed)
     );
   }
 
@@ -117,6 +144,13 @@ const SortingViz = () => {
         <Button color="primary" variant="outlined" onClick={createArray}>
           Random Array
         </Button>
+        <Box sx={{ width: 200, padding: 1 }}>
+          <Slider
+            defaultValue={speed}
+            onChange={changeSpeed}
+            valueLabelDisplay="auto"
+          />
+        </Box>
       </div>
 
       <div className="arr-container">
