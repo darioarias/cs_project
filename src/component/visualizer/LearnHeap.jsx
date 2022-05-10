@@ -41,7 +41,7 @@ class HeapComponent extends react.Component{
         let capacity = 31 - this.getLength(); // the limit to the heap is 31 for the learn
     // If user push in learning, exceeds out max size of 31 then alert user
         if (capacity - 1 < 0){
-            alert("For our example, the max size is 20 nodes");
+            alert("For our example, the max size is 31 nodes");
             pushedValue = -1; 
             return 
         }
