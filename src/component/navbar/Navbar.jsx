@@ -11,8 +11,11 @@ import IconButton from "@mui/material/IconButton";
 // import MenuItem from "@mui/material/MenuItem";
 import Switch from "@mui/material/Switch";
 import styled from "@emotion/styled";
-import LoginIcon from '@mui/icons-material/Login';
-import SignForm from "../pages/Sign.jsx"
+import LoginIcon from "@mui/icons-material/Login";
+import LockIcon from "@mui/icons-material/Lock";
+import SignForm from "../pages/Sign.jsx";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 export default function NavBar({ toggleTheme, setTheme }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -29,21 +32,41 @@ export default function NavBar({ toggleTheme, setTheme }) {
     setTheme(!toggleTheme);
   };
 
+  const signout = () => {
+    cookies.remove("token");
+    cookies.remove("username");
+    console.log("user has been signed out");
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            component={Link} to="/Sign"  
-            size="large"
-            edge="start"
-            color="inherit"
-            onClick={SignForm}
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <LoginIcon />
-           </IconButton>
+          {!cookies.get("token") && (
+            <IconButton
+              component={Link}
+              to="/Sign"
+              size="large"
+              edge="start"
+              color="inherit"
+              onClick={SignForm}
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <LoginIcon />
+            </IconButton>
+          )}
+          {cookies.get("token") && (
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <LockIcon onClick={signout} />
+            </IconButton>
+          )}
+
           {/* <Menu
           //   id="basic-menu"
           //   anchorEl={anchorEl}

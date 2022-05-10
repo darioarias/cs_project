@@ -3,9 +3,11 @@ import "./Sign.css";
 import Sign from "./Sign.js";
 import { auth_instance, resources_instance } from "../../networking/axios.js";
 import FlashMessage from "./flash_message";
-import { ReactSession } from "react-client-session";
-
+// import { ReactSession } from "react-client-session";
+// import { useCookies } from "react-cookie";
+import Cookies from "universal-cookie";
 export function SignForm() {
+  const cookies = new Cookies();
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -14,22 +16,33 @@ export function SignForm() {
 
   const [showFlash, setShowFlash] = useState(false);
   const [feedback, setFeedback] = useState("");
+  // const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const signinOnSubmit = (e = new Event()) => {
     e.preventDefault();
     // const url = `${process.env.REACT_APP_API_ROOT_URL}/signin/`;
     // ReactSession.remove("token");
-    if (ReactSession.get("token")) {
-      console.log("already signed in");
-      return;
-    }
+    // if (ReactSession.get("token")) {
+    //   console.log("already signed in");
+    //   return;
+    // }
 
     auth_instance()
       .post("/signin/", { username, password })
       .then(({ data: { access_token, message } }) => {
         // save token, maybe in cookie or redux
-        ReactSession.set("token", access_token);
-        ReactSession.set("username", username);
+        // ReactSession.set("token", access_token);
+        // ReactSession.set("username", username);
+        // setCookie("token", access_token, { maxAge: 5000 });
+
+        cookies.set("token", access_token, {
+          maxAge: process.env.REACT_APP_COOKIES_MAX_AGE,
+        });
+
+        cookies.set("username", username, {
+          maxAge: process.env.REACT_APP_COOKIES_MAX_AGE,
+        });
+
         setFeedback(message);
       })
       .catch((error) => {
@@ -58,7 +71,7 @@ export function SignForm() {
       })
       .then(({ data }) => {
         console.log(data);
-        ReactSession.set("username", username);
+        // ReactSession.set("username", username);
         setFeedback("account created. Be sure to verify email.");
       })
       .catch((error) => {
@@ -71,7 +84,8 @@ export function SignForm() {
         setShowFlash(true);
       });
   };
-
+  // console.log(cookies.remove("_xsrf"));
+  console.log(cookies.getAll());
   return (
     <main>
       <div className="container">
