@@ -7,9 +7,14 @@ import { BrowserRouter } from "react-router-dom";
 // import { CookiesProvider } from "react-cookie";
 // ReactSession.setStoreType("Cookie");
 
+import store from "./redux_app/store";
+import { Provider } from "react-redux";
+
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
   document.getElementById("root")
 );

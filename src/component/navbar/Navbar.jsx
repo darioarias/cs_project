@@ -9,6 +9,11 @@ import IconButton from "@mui/material/IconButton";
 // import MenuIcon from "@mui/icons-material/Menu";
 // import Menu from "@mui/material/Menu";
 // import MenuItem from "@mui/material/MenuItem";
+
+import { useSelector, useDispatch } from "react-redux";
+import { removeAuthToken } from "../../redux_features/user/authTokenSlice";
+import { removeUsername } from "../../redux_features/user/usernameSlice.js";
+
 import Switch from "@mui/material/Switch";
 import styled from "@emotion/styled";
 import LoginIcon from "@mui/icons-material/Login";
@@ -24,6 +29,8 @@ export default function NavBar({ toggleTheme, setTheme }) {
     setAnchorEl(event.currentTarget);
   };
 
+  const dispatch = useDispatch();
+
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -33,15 +40,17 @@ export default function NavBar({ toggleTheme, setTheme }) {
   };
 
   const signout = () => {
-    cookies.remove("token");
-    cookies.remove("username");
+    dispatch(removeAuthToken());
+    dispatch(removeUsername());
+    // cookies.remove("token");
+    // cookies.remove("username");
     console.log("user has been signed out");
   };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {!cookies.get("token") && (
+          {!useSelector((state) => state.authToken.value) && (
             <IconButton
               component={Link}
               to="/Sign"
@@ -55,7 +64,7 @@ export default function NavBar({ toggleTheme, setTheme }) {
               <LoginIcon />
             </IconButton>
           )}
-          {cookies.get("token") && (
+          {useSelector((state) => state.authToken.value) && (
             <IconButton
               size="large"
               edge="start"

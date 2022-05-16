@@ -3,14 +3,21 @@ import Buttons from "./Buttons";
 import ShowDataStructure from "./ShowDataStructure";
 import "./grid.css";
 
+import { useSelector, useDispatch } from "react-redux";
+
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
+
 const Learn = () => {
   const [dataStructure, setDataStructure] = useState("");
   const [showButtons, setShowButtons] = useState(true);
+  const [username] = useState(useSelector((state) => state.username.value));
+  // username = useSelector((state) => state.username.value);
   return (
     <div>
-      {cookies.get("token") && <p>Welcome {cookies.get("username")}</p>}
+      {useSelector((state) => state.authToken.value) && (
+        <p>Welcome {username}</p>
+      )}
       {showButtons ? (
         <Buttons
           setDataStructure={setDataStructure}

@@ -38,7 +38,7 @@ class QueueComponent extends react.Component {
     this.setState({ queue: new Queue(null, this.state.max) });
     this.setState({ size: 0 });
     this.setState({ val: 0 });
-    this.setState({ animate: ""});
+    this.setState({ animate: "" });
   }
 
   onChangeValue(data) {
@@ -50,10 +50,10 @@ class QueueComponent extends react.Component {
   Enqueue(pushedValue = -1) {
     let capacity = 20 - this.getLength(); // the limit to the queue is 20 for the learn
     // If user enqueue in learning, exceeds out max size of 20 then alert user
-    if (capacity - 1 < 0){
+    if (capacity - 1 < 0) {
       alert("For our example, the max size is 20 nodes");
-      pushedValue = -1; 
-      return 
+      pushedValue = -1;
+      return;
     }
     this.state.queue.enqueue(pushedValue);
     let val = 1 + this.state.size;
@@ -63,10 +63,10 @@ class QueueComponent extends react.Component {
     this.forceUpdate();
   }
 
-  Dequeue() {    
-    if (this.state.size === 0){
-        alert("There are no elements!");
-        return
+  Dequeue() {
+    if (this.state.size === 0) {
+      alert("There are no elements!");
+      return;
     }
     this.setState({ animate: "" });
     const { queue } = this.state;
@@ -77,14 +77,13 @@ class QueueComponent extends react.Component {
         duration: 1000,
       });
     queue.dequeue();
-    let val = this.state.size  - 1 ;
-    if (val < 0)
-      val = 0;
+    let val = this.state.size - 1;
+    if (val < 0) val = 0;
     this.setState({ size: val });
     this.forceUpdate();
   }
 
-  getLength(){
+  getLength() {
     return this.state.queue.getLength();
   }
 
@@ -102,7 +101,7 @@ class QueueComponent extends react.Component {
     };
     return (
       <div>
-            <QueueContainer>{Nodes()}</QueueContainer>
+        <QueueContainer>{Nodes()}</QueueContainer>
       </div>
     );
   }

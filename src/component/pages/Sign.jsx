@@ -5,7 +5,12 @@ import { auth_instance, resources_instance } from "../../networking/axios.js";
 import FlashMessage from "./flash_message";
 // import { ReactSession } from "react-client-session";
 // import { useCookies } from "react-cookie";
+import { useSelector, useDispatch } from "react-redux";
+import { updateAuthToken } from "../../redux_features/user/authTokenSlice";
+import { updateUsername } from "../../redux_features/user/usernameSlice";
+
 import Cookies from "universal-cookie";
+import { Token } from "@mui/icons-material";
 export function SignForm() {
   const cookies = new Cookies();
   const [username, setUsername] = useState("");
@@ -17,31 +22,23 @@ export function SignForm() {
   const [showFlash, setShowFlash] = useState(false);
   const [feedback, setFeedback] = useState("");
   // const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const dispatch = useDispatch();
 
   const signinOnSubmit = (e = new Event()) => {
     e.preventDefault();
-    // const url = `${process.env.REACT_APP_API_ROOT_URL}/signin/`;
-    // ReactSession.remove("token");
-    // if (ReactSession.get("token")) {
-    //   console.log("already signed in");
-    //   return;
-    // }
-
     auth_instance()
       .post("/signin/", { username, password })
       .then(({ data: { access_token, message } }) => {
         // save token, maybe in cookie or redux
-        // ReactSession.set("token", access_token);
-        // ReactSession.set("username", username);
-        // setCookie("token", access_token, { maxAge: 5000 });
+        dispatch(updateAuthToken(access_token));
+        dispatch(updateUsername(username));
+        // cookies.set("token", access_token, {
+        //   maxAge: process.env.REACT_APP_COOKIES_MAX_AGE,
+        // });
 
-        cookies.set("token", access_token, {
-          maxAge: process.env.REACT_APP_COOKIES_MAX_AGE,
-        });
-
-        cookies.set("username", username, {
-          maxAge: process.env.REACT_APP_COOKIES_MAX_AGE,
-        });
+        // cookies.set("username", username, {
+        //   maxAge: process.env.REACT_APP_COOKIES_MAX_AGE,
+        // });
 
         setFeedback(message);
       })
@@ -85,7 +82,10 @@ export function SignForm() {
       });
   };
   // console.log(cookies.remove("_xsrf"));
-  console.log(cookies.getAll());
+  console.log(
+    useSelector((state) => state.authToken.value),
+    useSelector((state) => state.username.value)
+  );
   return (
     <main>
       <div className="container">
