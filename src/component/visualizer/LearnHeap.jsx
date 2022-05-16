@@ -17,9 +17,9 @@ class HeapComponent extends react.Component{
 
     componentDidMount(){
         this.horizontalPosCalc();
-        this.quickSort(horizontalPos, 0, 30);
-        for (let i = 0; i<31; i++){
-            for (let j = i + 1; j < 31; j++){
+        this.quickSort(horizontalPos, 0, 6);
+        for (let i = 0; i<7; i++){
+            for (let j = i + 1; j < 7; j++){
                 if (horizontalPos[i][0] === horizontalPos[j][0] && horizontalPos[i][1] > horizontalPos[j][1]){
                     this.swap(horizontalPos, i, j);
                 }
@@ -29,7 +29,7 @@ class HeapComponent extends react.Component{
     }
 
     resetHeap(){
-        let newHeap = new Heap(30, "MIN");
+        let newHeap = new Heap(6, "MIN");
         this.setState({heap:newHeap});
     }
 
@@ -38,10 +38,10 @@ class HeapComponent extends react.Component{
     }
 
     insert(pushedValue = -1){
-        let capacity = 31 - this.getLength(); // the limit to the heap is 31 for the learn
+        let capacity = 7 - this.getLength(); // the limit to the heap is 31 for the learn
     // If user push in learning, exceeds out max size of 31 then alert user
         if (capacity - 1 < 0){
-            alert("For our example, the max size is 31 nodes");
+            alert("For our example, the max size is 7 nodes");
             pushedValue = -1; 
             return 
         }
@@ -85,7 +85,7 @@ class HeapComponent extends react.Component{
 
     //Used to calculate the offsets, I decided to limit the level of nodes to 6, because the tree will get huge to fit in the screen
     horizontalPosCalc = (level = 0, offset = 50) => {
-        if (level == 5){
+        if (level == 3){
             return
         }
         else{

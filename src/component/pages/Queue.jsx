@@ -47,6 +47,22 @@ class QueuePage extends React.Component{
             <br></br>
             <button onClick={() => this.Dequeue()}> CLick here to Dequeue </button>
           </p>
+          <hr></hr>
+          <h2>Leetcode Challenges</h2>
+          <ul>
+            Leetcode Easy:
+            <li><a href="https://leetcode.com/problems/number-of-recent-calls/" target = "_blank">Number of Recent Calls</a></li>
+            <li><a href="https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/" target = "_blank">Number of Students Unable to Eat Lunch</a></li>
+            <li><a href="https://leetcode.com/problems/time-needed-to-buy-tickets/" target = "_blank">Time Needed to Buy Tickets</a></li>
+            Leetcode Medium:
+            <li><a href="https://leetcode.com/problems/reveal-cards-in-increasing-order/" target = "_blank">Reveal Cards In Increasing Order</a></li>
+            <li><a href="https://leetcode.com/problems/find-the-winner-of-the-circular-game/" target = "_blank">Find the Winner of the Circular Game</a></li>
+            <li><a href="https://leetcode.com/problems/flatten-nested-list-iterator/" target = "_blank">Flatten Nested List Iterator</a></li>
+            <li><a href="https://leetcode.com/problems/design-front-middle-back-queue/" target = "_blank">Design Front Middle Back Queue</a></li>
+            Leetcode Hard:
+            <li><a href="https://leetcode.com/problems/constrained-subsequence-sum/" target = "_blank">Constrained Subsequence Sum</a></li>
+            <li><a href="https://leetcode.com/problems/delivering-boxes-from-storage-to-ports/" target = "_blank">Delivering Boxes from Storage to Ports</a></li>
+          </ul>
         </main>
         <footer className="shell-footer">
         </footer>

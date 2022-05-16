@@ -87,7 +87,7 @@ const App = () => {
         />
         <Route path="/queue" element={<Queuepage navigateTo={navigateTo} />} />
         <Route path="/stack" element={<Stackpage navigateTo={navigateTo} />} />
-        <Route path="/tree" element={<Treepage navigateTo={navigateTo} />} />
+        {/* <Route path="/tree" element={<Treepage navigateTo={navigateTo} />} /> */}
         <Route path="/Heap" element={<Heappage navigateTo={navigateTo} />} />
         <Route path="/Sign" element={<SignForm />} />
         <Route path="/sandbox" element={<Sandbox />} />

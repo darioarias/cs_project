@@ -13,9 +13,6 @@ class SinglyLinkedListComponent extends react.Component {
       value: 0,
       list: new SinglyLinkedList(null, 10),
     };
-    for (let i = 0; i<5; i++){
-      this.state.list.append(i);
-    }
     this.getHead = this.getHead.bind(this);
     this.onChangeValue = this.onChangeValue.bind(this);
   }

@@ -18,7 +18,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
   const handleOnClickLinked = useCallback(() => navigate('/linkedlist', {replace: true}), [navigate]);
   const handleOnClickStack = useCallback(() => navigate('/stack', {replace: true}), [navigate]);
   const handleOnClickQueue = useCallback(() => navigate('/queue', {replace: true}), [navigate]);
-  const handleOnClickTree = useCallback(() => navigate('/tree', {replace: true}), [navigate]);
+  // const handleOnClickTree = useCallback(() => navigate('/tree', {replace: true}), [navigate]);
   const handleOnClickHeap = useCallback(() => navigate('/Heap', {replace: true}), [navigate]);
 
 
@@ -84,7 +84,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
        </CardContent>
      </CardActionArea>
    </Card>
-   <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
+   {/* <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
      <CardActionArea onClick={handleOnClickTree}>
        <CardMedia
          component="img"
@@ -99,7 +99,7 @@ const Buttons = ({setDataStructure, setShowButtons}) => {
          </Typography>
        </CardContent>
      </CardActionArea>
-   </Card>
+   </Card> */}
    <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
      <CardActionArea onClick={handleOnClickHeap}>
        <CardMedia
