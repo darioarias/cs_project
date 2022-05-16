@@ -26,10 +26,7 @@ const Buttons = ({ setDataStructure, setShowButtons }) => {
     () => navigate("/queue", { replace: true }),
     [navigate]
   );
-  const handleOnClickTree = useCallback(
-    () => navigate("/tree", { replace: true }),
-    [navigate]
-  );
+  // const handleOnClickTree = useCallback(() => navigate('/tree', {replace: true}), [navigate]);
   const handleOnClickHeap = useCallback(
     () => navigate("/Heap", { replace: true }),
     [navigate]
@@ -124,31 +121,22 @@ const Buttons = ({ setDataStructure, setShowButtons }) => {
             </CardContent>
           </CardActionArea>
         </Card>
-        <Card
-          sx={{
-            maxWidth: 300,
-            marginRight: 8,
-            marginBottom: 20,
-            boxShadow: 4,
-            width: 250,
-            backgroundColor: "#ede0d4",
-          }}
-        >
-          <CardActionArea onClick={handleOnClickTree}>
-            <CardMedia
-              component="img"
-              height="155"
-              width="230"
-              image={Timage}
-              alt="Linked List"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                Binary Trees
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
+        {/* <Card sx={{ maxWidth: 300, marginRight: 8, marginBottom: 20, boxShadow: 4, width: 250, backgroundColor: "#ede0d4"}}>
+     <CardActionArea onClick={handleOnClickTree}>
+       <CardMedia
+         component="img"
+         height="155"
+         width = "230"
+         image={Timage}
+         alt="Linked List"
+       />
+       <CardContent>
+         <Typography gutterBottom variant="h5" component="div">
+           Binary Trees
+         </Typography>
+       </CardContent>
+     </CardActionArea>
+   </Card> */}
         <Card
           sx={{
             maxWidth: 300,

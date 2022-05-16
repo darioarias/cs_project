@@ -1,5 +1,5 @@
 import LinkedListComponent from "./LinkedList";
-import BinaryTreeComponent from "../visualizer/BinaryTree";
+// import BinaryTreeComponent from "../visualizer/BinaryTree";
 import QueueComponent from "../visualizer/Queue";
 import StackComponent from "../visualizer/Stack";
 import HeapComponent from "../visualizer/Heap";
@@ -11,7 +11,7 @@ const ShowDataStructure = ({dataStructure}) => {
    <div>
        {dataStructure === "linkedList" && <LinkedListComponent goBack={goBack} setGoBack={setGoBack}/>}
        {dataStructure === "stack" && <StackComponent goBack={goBack} setGoBack={setGoBack}/>}
-       {dataStructure === "binaryTree" && <BinaryTreeComponent goBack={goBack} setGoBack={setGoBack}/>}
+       {/* {dataStructure === "binaryTree" && <BinaryTreeComponent goBack={goBack} setGoBack={setGoBack}/>} */}
        {dataStructure === "queue" && <QueueComponent goBack={goBack} setGoBack={setGoBack} />}
        {dataStructure === "heap" && <HeapComponent goBack={goBack} setGoBack={setGoBack} />}
    </div>

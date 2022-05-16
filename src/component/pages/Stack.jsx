@@ -48,6 +48,24 @@ class StackPage extends React.Component{
         <p>The peek method will return the value of the top element and will not modify the stack</p>
         <button onClick={() => this.peek()}>Peek Value</button>
         <hr></hr>
+        <h2>Leetcode Challenges</h2>
+        <ul>
+          Leetcode Easy:
+          <li><a href="https://leetcode.com/problems/maximum-nesting-depth-of-the-parentheses/" target = "_blank">Maximum Nesting Depth of the Parentheses</a></li>
+          <li><a href="https://leetcode.com/problems/remove-outermost-parentheses/" target = "_blank">Remove Outermost Parentheses</a></li>
+          <li><a href="https://leetcode.com/problems/increasing-order-search-tree/" target = "_blank">Increasing Order Search Tree</a></li>
+          <li><a href="https://leetcode.com/problems/build-an-array-with-stack-operations/" target = "_blank">Build an Array With Stack Operations</a></li>
+          <li><a href="https://leetcode.com/problems/min-stack/" target = "_blank">Min Stack</a></li>
+          Leetcode Medium:
+          <li><a href="https://leetcode.com/problems/design-a-stack-with-increment-operation/" target = "_blank">Design a Stack With Increment Operation</a></li>
+          <li><a href="https://leetcode.com/problems/design-browser-history/" target = "_blank">Design Browser History</a></li>
+          <li><a href="https://leetcode.com/problems/validate-stack-sequences/" target = "_blank">Validate Stack Sequences</a></li>
+          <li><a href="https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/" target = "_blank">Minimum Remove to Make Valid Parentheses</a></li>
+          Leetcode Hard:
+          <li><a href="https://leetcode.com/problems/number-of-visible-people-in-a-queue/" target = "_blank">Number of Visible People in a Queue</a></li>
+          <li><a href="https://leetcode.com/problems/minimum-number-of-increments-on-subarrays-to-form-a-target-array/" target = "_blank">Minimum Number of Increments on Subarrays to Form a Target Array</a></li>
+          <li><a href="https://leetcode.com/problems/brace-expansion-ii/" target = "_blank">Brace Expansion II</a></li>
+        </ul>
       </main>
       <footer className="stack-shell-footer">
       </footer>

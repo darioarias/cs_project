@@ -20,10 +20,10 @@ class Heappage extends React.Component{
       <header className="shell-header">
           <h1>Heaps</h1>
       </header>
-      <main className="shell-body" style={{position:"relative"}}>
+      <main className="shell-body">
         <Heap ref = {Heap=>this.Heap = Heap}></Heap>
       </main>
-      <main className='shell-bodyII' style={{position:"relative"}}>
+      <main className='shell-bodyII'>
       <h2>What is a Heap</h2>
           <p> 
             A heap is tree-based data structure that takes the form of a binary tree. The highest priority element will be at the top of the heap.
@@ -45,6 +45,24 @@ class Heappage extends React.Component{
           </p>
           <button onClick={() => this.Remove()}> Click here to Remove </button>
           <hr></hr>
+          <h2>Leetcode Challenges</h2>
+          <ul>
+            Leetcode Easy:
+            <li><a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/" target = "_blank">Kth Largest Element in a Stream</a></li>
+            <li><a href="https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity/" target = "_blank">Largest Number After Digit Swaps by Parity</a></li>
+            <li><a href="https://leetcode.com/problems/relative-ranks/" target = "_blank">Relative Ranks</a></li>
+            Leetcode Medium:
+            <li><a href="https://leetcode.com/problems/reduce-array-size-to-the-half/" target = "_blank">Reduce Array Size to The Half</a></li>
+            <li><a href="https://leetcode.com/problems/sort-characters-by-frequency/" target = "_blank">Sort Characters By Frequency</a></li>
+            <li><a href="https://leetcode.com/problems/top-k-frequent-elements/" target = "_blank">Top K Frequent Elements</a></li>
+            <li><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target = "_blank">Kth Largest Element in an Array</a></li>
+            <li><a href="https://leetcode.com/problems/longest-happy-string/" target = "_blank">Longest Happy String</a></li>
+            Leetcode Hard:
+            <li><a href="https://leetcode.com/problems/sequentially-ordinal-rank-tracker/" target = "_blank">Sequentially Ordinal Rank Tracker</a></li>
+            <li><a href="https://leetcode.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/" target = "_blank">Find the Kth Smallest Sum of a Matrix With Sorted Rows</a></li>
+            <li><a href="https://leetcode.com/problems/swim-in-rising-water/" target = "_blank">Swim in Rising Water</a></li>
+            <li><a href="https://leetcode.com/problems/k-th-smallest-prime-fraction/" target = "_blank">K-th Smallest Prime Fraction</a></li>
+          </ul>
       </main>
       <footer className="shell-footer" style={{position:"relative"}}>
       </footer>

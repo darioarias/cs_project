@@ -37,9 +37,9 @@ class BinaryTreeComponent extends react.Component {
     this.forceUpdate();
   }
 
-//   addLeft(){
-//       this.state.tree.addLeft(this.state.value)
-//   }
+  addLeft(){
+      this.state.tree.addLeft(this.state.value)
+  }
 
 render() {
   let Nodes = () => {
@@ -61,6 +61,7 @@ render() {
           <input value={this.state.value} onChange={this.onChangeValue} />
           <button onClick={() => this.setRoot()}> Set Root </button>
           <button onClick={() => this.add()}> Add Value </button>
+          <button onClick={() => this.addLeft()}> Add Left Value </button>
         </div>
         {Nodes()}
       </div>

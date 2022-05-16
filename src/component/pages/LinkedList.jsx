@@ -123,6 +123,22 @@ class LinkedListpage extends React.Component{
               <p>The pop method for a linked list is used to remove the head node of the linked list</p>
               <button onClick={() => this.pop()}>Click here to try the pop method</button>
             <hr></hr>
+            <h2>Leetcode Challenges</h2>
+            <ul>
+              Leetcode Easy:
+              <li><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/" target = "_blank">Delete a node in a linked list</a></li>
+              <li><a href="https://leetcode.com/problems/reverse-linked-list/" target = "_blank">Reverse Linked List</a></li>
+              <li><a href="https://leetcode.com/problems/merge-two-sorted-lists/" target = "_blank">Merge Two Sorted Lists</a></li>
+              <li><a href="https://leetcode.com/problems/linked-list-cycle/" target = "_blank"> Linked List Cycle</a></li>
+              Leetcode Medium:
+              <li><a href="https://leetcode.com/problems/odd-even-linked-list/" target = "_blank">Odd Even Linked List</a></li>
+              <li><a href="https://leetcode.com/problems/swap-nodes-in-pairs/" target = "_blank">Swap Nodes in Pairs</a></li>
+              <li><a href="https://leetcode.com/problems/add-two-numbers/" target = "_blank">Add Two Numbers</a></li>
+              <li><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target = "_blank">Remove Nth Node From End of List</a></li>
+              <li><a href="https://leetcode.com/problems/rotate-list/" target = "_blank">Rotate List</a></li>
+              Leetcode Hard:
+              <li><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target = "_blank">Merge k Sorted Lists</a></li>
+            </ul>
           </div>
         </main>
         <footer className="shell-footer">
