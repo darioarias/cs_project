@@ -27,10 +27,15 @@ class Heappage extends React.Component{
       <h2>What is a Heap</h2>
           <p> 
             A heap is tree-based data structure that takes the form of a binary tree. The highest priority element will be at the top of the heap.
-            This example is a min-heap, where the lowest value will be at the top of the tree and the higher numbers will be lower down the tree. 
+            To start click on the insert method.
+            The above heap is a min-heap, where the lowest value will be at the top of the tree and the higher numbers will be lower down the tree. 
+            The max heap is another type of heap, where the highest value will be at the top of the tree and the lowest numbers will be at the bottom of the tree.
           </p>
           <hr></hr>
           <h2>Insert Method</h2>
+            When a user inserts an element into the min-heap, the element will sift up until the parent is less than the element. 
+            In a max-heap, the element will sift up until the element is less than the parent. The above example is a min-heap, so the lowest value will 
+            be highest element in the tree.
           <p> 
           </p>
           <button onClick={() => this.Insert()}> Click here to Insert </button>
