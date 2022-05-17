@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Sign.css";
 import Sign from "./Sign.js";
-import { auth_instance, resources_instance } from "../../networking/axios.js";
+import { auth_instance, post_instance } from "../../networking/axios.js";
 import FlashMessage from "./flash_message";
 // import { ReactSession } from "react-client-session";
 // import { useCookies } from "react-cookie";
@@ -58,7 +58,7 @@ export function SignForm() {
 
   const signupOnSubmit = (e = new Event()) => {
     e.preventDefault();
-    resources_instance()
+    post_instance()
       .post("/users/", {
         username,
         password,

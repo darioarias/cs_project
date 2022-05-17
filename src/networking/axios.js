@@ -1,4 +1,6 @@
 import axios from "axios";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 const create_instance = (config = {}) => axios.create({ ...config });
 
@@ -37,10 +39,14 @@ export const auth_instance = (headers, timeout) => {
   return instance;
 };
 
-export const resources_instance = (headers, timeout) => {
+export const post_instance = (headers, timeout) => {
   let instance = create_instance({
     baseURL: process.env.REACT_APP_API_ROOT_URL,
-    headers: { "Content-Type": "application/json", ...headers },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${cookies.get("token")}`,
+      ...headers,
+    },
     timeout,
   });
 
@@ -49,6 +55,51 @@ export const resources_instance = (headers, timeout) => {
       config,
       new Set(["first_name", "last_name", "username", "email", "password"])
     );
+
+    if (meets_reqs.success) return config;
+    throw new axios.Cancel(meets_reqs.message);
+  });
+
+  return instance;
+};
+
+export const get_instance = (headers, timeout) => {
+  let instance = create_instance({
+    baseURL: process.env.REACT_APP_API_ROOT_URL,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${cookies.get("token")}`,
+      ...headers,
+    },
+    timeout,
+  });
+
+  // instance.interceptors.request.use((config) => {
+  //   let meets_reqs = check_required(
+  //     config,
+  //     new Set(["first_name", "last_name", "username", "email", "password"])
+  //   );
+
+  //   if (meets_reqs.success) return config;
+  //   throw new axios.Cancel(meets_reqs.message);
+  // });
+
+  return instance;
+};
+
+export const enroll_post_instance = (headers, timeout) => {
+  let instance = create_instance({
+    baseURL: process.env.REACT_APP_API_ROOT_URL,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${cookies.get("token")}`,
+      ...headers,
+    },
+    timeout,
+  });
+
+  instance.interceptors.request.use((config) => {
+    let meets_reqs = check_required(config, new Set(["title", "username"]));
 
     if (meets_reqs.success) return config;
     throw new axios.Cancel(meets_reqs.message);

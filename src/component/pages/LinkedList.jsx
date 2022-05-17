@@ -3,7 +3,7 @@ import SinglyLinkedList from "../visualizer/LearnSinglyLinkedList";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { connect } from "react-redux";
-
+import { enroll_post_instance } from "../../networking/axios";
 //This class is the parent to the Singly Linked List.
 //The class will call methods of the singly linked list components via refs
 
@@ -24,6 +24,7 @@ class LinkedListpage extends React.Component {
       .then((response) => {
         // console.log(response);
         // for now this is static prob use for loop or somehing to store json stuff
+        // console.log(response.data);
         this.setState({ courseDesc: response.data[2].description });
       })
       .catch((error) => {
@@ -86,6 +87,14 @@ class LinkedListpage extends React.Component {
     authToken: { value: authToken },
   }) {
     if (authToken) {
+      enroll_post_instance()
+        .post("/enrollments/", {
+          username,
+          title: "Linked Lists",
+        })
+        .then((result) => console.log(result))
+        .catch((error) => console.log(error));
+
       console.log("user is signed in: proceed to add them to this course");
       return;
     }
