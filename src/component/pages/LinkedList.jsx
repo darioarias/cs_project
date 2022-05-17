@@ -278,7 +278,6 @@ class LinkedListpage extends React.Component {
             </ul>
           </div>
         </main>
-        <footer className="shell-footer"></footer>
       </div>
     );
   }

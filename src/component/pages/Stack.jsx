@@ -67,8 +67,6 @@ class StackPage extends React.Component{
           <li><a href="https://leetcode.com/problems/brace-expansion-ii/" target = "_blank">Brace Expansion II</a></li>
         </ul>
       </main>
-      <footer className="stack-shell-footer">
-      </footer>
     </div>
     );
   }

@@ -10,12 +10,14 @@ class QueueComponent extends react.Component {
 
     this.state = {
       value: 0,
-      queue: null,
+      queue: new Queue(null, 20),
       animate: "",
       size: 0,
       max: 20,
     };
-
+    for (let i = 0; i < 5; i++) {
+      this.state.queue.enqueue(i);
+    }
     this.onChangeValue = this.onChangeValue.bind(this);
   }
 
@@ -29,9 +31,9 @@ class QueueComponent extends react.Component {
     }
   }
 
-  componentDidMount() {
-    this.resetQueue();
-  }
+  // componentDidMount() {
+  //   this.resetQueue();
+  // }
 
   resetQueue() {
     // let newQueue = new Queue();
@@ -48,10 +50,10 @@ class QueueComponent extends react.Component {
 
   // learning portion uses restricted inputs from 0 to 100. pushedvalue is a flag
   Enqueue(pushedValue = -1) {
-    let capacity = 20 - this.getLength(); // the limit to the queue is 20 for the learn
+    let capacity = 13 - this.getLength(); // the limit to the queue is 20 for the learn
     // If user enqueue in learning, exceeds out max size of 20 then alert user
     if (capacity - 1 < 0) {
-      alert("For our example, the max size is 20 nodes");
+      alert("For our example, the max size is 13 nodes");
       pushedValue = -1;
       return;
     }
@@ -64,7 +66,7 @@ class QueueComponent extends react.Component {
   }
 
   Dequeue() {
-    if (this.state.size === 0) {
+    if (this.getLength() === 0) {
       alert("There are no elements!");
       return;
     }

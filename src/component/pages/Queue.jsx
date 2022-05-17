@@ -38,14 +38,15 @@ class QueuePage extends React.Component{
           <h2>Enqueue Method</h2>
           <p>The Enqueue Method is a method for the queue that allows 
             addition of elements at the end of the queue.
+            <br></br>
+            <button onClick={() => this.Enqueue()}> Click here to Enqueue </button>
           </p>
-          <button onClick={() => this.Enqueue()}> Click here to Enqueue </button>
           <hr></hr>
           <h2>Dequeue Method</h2>
           <p>The Dequeue Method is a method for the queue that allows 
             the removal of elements through the beginning of the queue.
             <br></br>
-            <button onClick={() => this.Dequeue()}> CLick here to Dequeue </button>
+            <button onClick={() => this.Dequeue()}> Click here to Dequeue </button>
           </p>
           <hr></hr>
           <h2>Leetcode Challenges</h2>
@@ -64,8 +65,6 @@ class QueuePage extends React.Component{
             <li><a href="https://leetcode.com/problems/delivering-boxes-from-storage-to-ports/" target = "_blank">Delivering Boxes from Storage to Ports</a></li>
           </ul>
         </main>
-        <footer className="shell-footer">
-        </footer>
       </div>
     );
   }
