@@ -64,8 +64,6 @@ class Heappage extends React.Component{
             <li><a href="https://leetcode.com/problems/k-th-smallest-prime-fraction/" target = "_blank">K-th Smallest Prime Fraction</a></li>
           </ul>
       </main>
-      <footer className="shell-footer" style={{position:"relative"}}>
-      </footer>
     </div>
     );
   }

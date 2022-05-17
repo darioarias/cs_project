@@ -101,8 +101,8 @@ class LinkedListpage extends React.Component{
             <button onClick={() => this.getTail()}>Check out the tail node</button>
             <hr></hr>
             <h2>Push Method</h2>
-              <p>The push method for a linked list is used to put a new node in the beginning of the linked list.</p>
-              <button onClick={() => this.push(Math.floor(Math.random() * 100))}>Click here to try the push method</button>
+            <p>The push method for a linked list is used to put a new node in the beginning of the linked list.</p>
+            <button onClick={() => this.push(Math.floor(Math.random() * 100))}>Click here to try the push method</button>
             <hr></hr>
             <h2>Append Method</h2>
               <p>The append method for a linked list is used to put a new node at the end of the linked list</p>
@@ -141,8 +141,6 @@ class LinkedListpage extends React.Component{
             </ul>
           </div>
         </main>
-        <footer className="shell-footer">
-        </footer>
       </div>
    );
   }
