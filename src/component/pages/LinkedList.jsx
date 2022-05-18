@@ -12,6 +12,7 @@ class LinkedListpage extends React.Component {
     super(props);
     this.state = {
       value: 0,
+      title: [],
       courseDesc: [],
       username: "",
     };
@@ -23,9 +24,26 @@ class LinkedListpage extends React.Component {
       .get("https://algoviz-pyflask-rest-api.herokuapp.com/api/v1/courses/")
       .then((response) => {
         // console.log(response);
-        // for now this is static prob use for loop or somehing to store json stuff
-        // console.log(response.data);
-        this.setState({ courseDesc: response.data[2].description });
+        // for now this is static prob use to store data from api, couldnt figure out a better way
+        //courses shouldnt be deleted so the static aspect is fine
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[3].description] });
+        this.setState({ title: [...this.state.title, response.data[3].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[4].description] });
+        this.setState({ title: [...this.state.title, response.data[4].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[5].description] });
+        this.setState({ title: [...this.state.title, response.data[5].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[6].description] });
+        this.setState({ title: [...this.state.title, response.data[6].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[7].description] });
+        this.setState({ title: [...this.state.title, response.data[7].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[8].description] });
+        this.setState({ title: [...this.state.title, response.data[8].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[9].description] });
+        this.setState({ title: [...this.state.title, response.data[9].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[10].description] });
+        this.setState({ title: [...this.state.title, response.data[10].title] });
+
+        // console.table(this.state.courseDesc);
       })
       .catch((error) => {
         console.log(error);
@@ -118,49 +136,38 @@ class LinkedListpage extends React.Component {
         </main>
         <main className="shell-bodyII">
           <div>
-            <div>{this.state.courseDesc}</div>
-            <h2>What is a Linked List</h2>
+            <h2>{this.state.title[0]}</h2>
             <p>
-              A Linked List is a data structure that is composed of nodes with
-              an integer value and a link to the next node. This linked list is
-              an example of singly linked list where the nodes only point in one
-              direction.
+              {this.state.courseDesc[0]}
             </p>
             <hr></hr>
-            <h2>Head</h2>
+            <h2>{this.state.title[1]}</h2>
             <p>
-              The first node in the linked list is called the head of the linked
-              list. If the linked list is empty then the head node of the linked
-              list should be null.
+              {this.state.courseDesc[1]}
             </p>
             <button onClick={() => this.getHead()}>
               Check out the head node
             </button>
             <hr></hr>
-            <h2>Tail</h2>
+            <h2>{this.state.title[2]}</h2>
             <p>
-              The last node in the linked list is called the tail of the linked
-              list. If the linked list is empty then the tail node of the linked
-              list should be null. If there is only one node, then the node is
-              both a head and a tail node
+              {this.state.courseDesc[2]}
             </p>
             <button onClick={() => this.getTail()}>
               Check out the tail node
             </button>
             <hr></hr>
-            <h2>Push Method</h2>
+            <h2>{this.state.title[3]}</h2>
             <p>
-              The push method for a linked list is used to put a new node in the
-              beginning of the linked list.
+              {this.state.courseDesc[3]}
             </p>
             <button onClick={() => this.push(Math.floor(Math.random() * 100))}>
               Click here to try the push method
             </button>
             <hr></hr>
-            <h2>Append Method</h2>
+            <h2>{this.state.title[4]}</h2>
             <p>
-              The append method for a linked list is used to put a new node at
-              the end of the linked list
+              {this.state.courseDesc[4]}
             </p>
             <button
               onClick={() => this.append(Math.floor(Math.random() * 100))}
@@ -168,31 +175,26 @@ class LinkedListpage extends React.Component {
               Click here to try the append method
             </button>
             <hr></hr>
-            <h2>Remove Last Method</h2>
+            <h2>{this.state.title[5]}</h2>
             <p>
-              The remove last method for a linked list will remove the tail node
-              or the last node in the linked list
+              {this.state.courseDesc[5]}
             </p>
             <button onClick={() => this.removeLast()}>
               Click here to try the append method
             </button>
             <hr></hr>
-            <h2>Remove at Index Method</h2>
+            <h2>{this.state.title[6]}</h2>
             <p>
-              The remove method for a linked list is used to remove a node at a
-              specific index from the linked list. The head node is index 0, the
-              second node is 1, the third node is 2, and the last node is the
-              total number of nodes minus 1.
+              {this.state.courseDesc[6]}
             </p>
             <input value={this.state.value} onChange={this.onChangeValue} />
             <button onClick={() => this.remove()}>
               Click here to try the remove method
             </button>
             <hr></hr>
-            <h2>Pop Method</h2>
+            <h2>{this.state.title[7]}</h2>
             <p>
-              The pop method for a linked list is used to remove the head node
-              of the linked list
+              {this.state.courseDesc[7]}
             </p>
             <button onClick={() => this.pop()}>
               Click here to try the pop method

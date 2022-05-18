@@ -1,10 +1,36 @@
 import React from "react";
 import Heap from "../visualizer/LearnHeap";
+import axios from "axios";
 import { connect } from "react-redux";
 import { enroll_post_instance } from "../../networking/axios";
+
 class Heappage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      title: [], 
+      courseDesc: []
+    }
+  }
+
+  componentDidMount() {
+    axios
+      .get("https://algoviz-pyflask-rest-api.herokuapp.com/api/v1/courses/")
+      .then((response) => {
+        // console.log(response);
+        // for now this is static prob use to store data from api, couldnt figure out a better way
+        //courses shouldnt be deleted so the static aspect is fine
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[18].description] });
+        this.setState({ title: [...this.state.title, response.data[18].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[19].description] });
+        this.setState({ title: [...this.state.title, response.data[19].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[20].description] });
+        this.setState({ title: [...this.state.title, response.data[20].title] });
+        // console.table(this.state.courseDesc);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   Insert() {
@@ -43,30 +69,19 @@ class Heappage extends React.Component {
           <Heap ref={(Heap) => (this.Heap = Heap)}></Heap>
         </main>
         <main className="shell-bodyII">
-          <h2>What is a Heap</h2>
+          <h2>{this.state.title[0]}</h2>
           <p>
-            A heap is tree-based data structure that takes the form of a binary
-            tree. The highest priority element will be at the top of the heap.
-            To start click on the insert method. The above heap is a min-heap,
-            where the lowest value will be at the top of the tree and the higher
-            numbers will be lower down the tree. The max heap is another type of
-            heap, where the highest value will be at the top of the tree and the
-            lowest numbers will be at the bottom of the tree.
+            {this.state.courseDesc[0]}
           </p>
           <hr></hr>
-          <h2>Insert Method</h2>
-          When a user inserts an element into the min-heap, the element will
-          sift up until the parent is less than the element. In a max-heap, the
-          element will sift up until the element is less than the parent. The
-          above example is a min-heap, so the lowest value will be highest
-          element in the tree.
+          <h2>{this.state.title[1]}</h2>
+            {this.state.courseDesc[1]}
           <p></p>
           <button onClick={() => this.Insert()}> Click here to Insert </button>
           <hr></hr>
-          <h2>Remove Method</h2>
+          <h2>{this.state.title[2]}</h2>
           <p>
-            The Remove Method is a method for the heap that allows the removal
-            of the top-most element from the heap.
+            {this.state.courseDesc[2]}
           </p>
           <button onClick={() => this.Remove()}> Click here to Remove </button>
           <hr></hr>

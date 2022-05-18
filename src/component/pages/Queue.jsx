@@ -6,6 +6,30 @@ import { enroll_post_instance } from "../../networking/axios";
 class QueuePage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      title: [], 
+      courseDesc: []
+    }
+  }
+
+  componentDidMount() {
+    axios
+      .get("https://algoviz-pyflask-rest-api.herokuapp.com/api/v1/courses/")
+      .then((response) => {
+        // console.log(response);
+        // for now this is static prob use to store data from api, couldnt figure out a better way
+        //courses shouldnt be deleted so the static aspect is fine
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[15].description] });
+        this.setState({ title: [...this.state.title, response.data[15].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[16].description] });
+        this.setState({ title: [...this.state.title, response.data[16].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[17].description] });
+        this.setState({ title: [...this.state.title, response.data[17].title] });
+        // console.table(this.state.courseDesc);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   Enqueue() {
@@ -44,22 +68,14 @@ class QueuePage extends React.Component {
           <Queue ref={(Queue) => (this.Queue = Queue)}></Queue>
         </main>
         <main className="shell-bodyII">
-          <h2>What is a Queue</h2>
+          <h2>{this.state.title[0]}</h2>
           <p>
-            A Queue is an abstract data type that is a collection of elements
-            and can be maintained by adding at the end of the collection and
-            removal from the beginning of the collection. The queue follows a
-            FIFO (First In First Out) principal in that an element that is added
-            first to the queue will be removed from the queue first. Lines are
-            an example of a queue. For example, the first person in a line will
-            be served first, while the last person in the line has to wait until
-            all the people in front have been served.
+            {this.state.courseDesc[0]}
           </p>
           <hr></hr>
-          <h2>Enqueue Method</h2>
+          <h2>{this.state.title[1]}</h2>
           <p>
-            The Enqueue Method is a method for the queue that allows addition of
-            elements at the end of the queue.
+            {this.state.courseDesc[1]}
             <br></br>
             <button onClick={() => this.Enqueue()}>
               {" "}
@@ -67,10 +83,9 @@ class QueuePage extends React.Component {
             </button>
           </p>
           <hr></hr>
-          <h2>Dequeue Method</h2>
+          <h2>{this.state.title[2]}</h2>
           <p>
-            The Dequeue Method is a method for the queue that allows the removal
-            of elements through the beginning of the queue.
+            {this.state.courseDesc[2]}
             <br></br>
             <button onClick={() => this.Dequeue()}>
               {" "}
