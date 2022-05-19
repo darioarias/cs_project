@@ -38,9 +38,11 @@
   border-radius: 10px;
   box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
   background-color: #FFF;
+  z-index: 1;
 }
+
 .shell-bodyII {
-  /* font-weight: bold; */
+  position: sticky;
   grid-row: 4 / 8;
   grid-column: 2 / 3; 
   min-height: 50vh;
@@ -74,6 +76,7 @@
   border-radius: 10px;
   box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
   background-color: #FFF;
+  z-index: 1;
 }
 
 .stack-shell-bodyII{

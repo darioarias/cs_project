@@ -3,6 +3,12 @@ This is just for testing purposes to check reflect the users for the get request
 */
 import axios from 'axios';
 import React, { Component, useState } from "react";
+import Card from '@mui/material/Card';
+import { CardContent, CardMedia } from '@mui/material';
+import Uimage from "../../Images/abstract-user.png";
+import { color } from '@mui/system';
+
+
 
 class UserProfile extends Component {
     constructor(props){
@@ -34,22 +40,26 @@ class UserProfile extends Component {
         const {challenges} = this.state
         return (
             <div className="userProfile">
-                <div className="left-content column">
+                <Card className="left-content column" sx={{boxShadow: "0px 0px 3px 3px lightgrey"}}>
+                <CardMedia component="img" image={Uimage} height="auto" width = "auto" alt='username'></CardMedia>
                     <h5>Username via get request</h5>
                     <h6>Real name optional</h6>
-                    <button>Settings another page for this?</button>
-                </div>
-                <div className="right-content column">
+                    {/* <button>Settings another page for this?</button> */}
+                </Card>
+                <div className="right-content column" sx={{padding: 1, fontfamily:'Raleway'}}>
                     <div className="spacer"></div>
-                    <h4>Courses</h4>
-                    <ol>
+                    <Card sx={{boxShadow: "0px 0px 3px 3px lightgrey", padding: 1, fontfamily:'Raleway', marginBottom: 2}}>
+                    <h4> Courses</h4>
+                    <ol sx={{paddingTop: 2}}>
                         {
                             courses.length ?
                             courses.map(course => <li key ={course.id}>{course.title}: {course.description} </li>):
                             null
                         }
                     </ol>
-                    <h4>Challenges</h4>
+                    </Card>
+                    <Card sx={{boxShadow: "0px 0px 3px 3px lightgrey", padding: 1, fontfamily:'Raleway'}}>
+                    <h4> Challenges</h4>
                     <ol>
                         {
                             challenges.length ?
@@ -57,6 +67,7 @@ class UserProfile extends Component {
                             null
                         }
                     </ol>
+                    </Card>
                 </div>
             </div>
         )

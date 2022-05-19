@@ -936,64 +936,6 @@ ul.jsavcode {
   }
 }
 
-/* button:not(.navbar-toggler) {
-  --blue: #66cfff;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  position: relative;
-  font-family: inherit;
-  margin: 20px;
-  padding: 5px;
-  border-radius: 0.6em;
-  overflow: hidden;
-  transition: all 0.3s;
-  line-height: 1.4em;
-  border: 2px solid var(--blue);
-  background: linear-gradient(to right, rgba(27, 156, 253, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 156, 253, 0.1) 100%);
-  color: var(--blue);
-  box-shadow: inset 0 0 10px rgba(27, 156, 253, 0.4), 0 0 9px 3px rgba(27, 156, 253, 0.1);
- } */
- /*
- button:not(.navbar-toggler):hover {
-  color: #82aeff;
-  box-shadow: inset 0 0 10px rgba(27, 156, 253, 0.6), 0 0 9px 3px rgba(27, 156, 253, 0.2);
- }
- 
- button:not(.navbar-toggler):before {
-  content: "";
-  position: absolute;
-  left: -4em;
-  width: 4em;
-  height: 100%;
-  top: 0;
-  transition: transform .4s ease-in-out;
-  background: linear-gradient(to right, transparent 1%, rgba(27, 156, 253, 0.1) 40%,rgba(27, 156, 253, 0.1) 60% , transparent 100%);
- }
- 
- button:not(.navbar-toggler):hover:before {
-  transform: translateX(15em);
- }
-
- .theme-switch-wrapper {
-  display: flex;
-  align-items: center;
-}
-.theme-switch {
-  display: inline-block;
-  height: 34px;
-  position: relative;
-  width: 60px;
-}
-
-.theme-switch input {
-  display:none;
-}
-
-body{
-  background-color: #566573;
-  color: #f8f9f9;
-}
-*/
 @keyframes stackPushing{
   0%{  transform: translateX(0vw);}
   100%{transform: translateX(50vw);}
@@ -1013,6 +955,7 @@ body{
 
 .userProfile{
   box-sizing: border-box;
+  min-height: 90vh;
 }
 
 .column{
@@ -1020,17 +963,43 @@ body{
 }
 
 .left-content{
-  border: solid black;
-  width: 30%;
+  width: 26%;
   text-align: center;
+  padding: 1rem;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-top: 2%;
 }
 
 .right-content{
-  border: solid black;
-  width: 70%;
+  margin-top: 2%;
+  width: 68%;
+  margin-right: 2%;
+  font-family: 'raleway';
+  font-weight: 600;
 }
-
 .learning-text{
   color:black;
   font-family: Georgia, serif;
+}
+
+@media screen and (max-width:700px){
+  .userProfile{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-flow: column;
+  }
+    .left-content{
+      order: 1;
+      width: auto;
+      padding: 1.5rem;
+    }
+    .right-content{
+      order: 2;
+      width: auto;
+      margin-left: auto;
+      padding: 1rem;
+    }
 }
