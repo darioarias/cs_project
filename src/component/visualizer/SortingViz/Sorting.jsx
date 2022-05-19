@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Sorting.css";
-import { InsertionSort } from "./algorithms/Sorting";
+import { BubbleSort, InsertionSort, SelectionSort } from "./algorithms/Sorting";
 import {
   Button,
   FormControl,
@@ -48,23 +48,21 @@ const SortingViz = () => {
   };
 
   const visualize = () => {
+    let [animationsArr, arrtemp] = [[], []];
     switch (algoOption) {
       case "Insertion":
-        insertionSort();
+        [animationsArr, arrtemp] = InsertionSort(arr, arrLength);
+        break;
+      case "Bubble":
+        [animationsArr, arrtemp] = BubbleSort(arr, arrLength);
+        break;
+      case "Selection":
+        [animationsArr, arrtemp] = SelectionSort(arr, arrLength);
         break;
       // case "Merge":
       //   MergeSort();
       //   break;
     }
-  };
-
-  const changeSpeed = (e, v) => {
-    setSpeed(v);
-    console.log(arr);
-  };
-
-  const insertionSort = async (_) => {
-    let [animationsArr, arrtemp] = InsertionSort(arr, arrLength);
     for (let i = 0; i < animationsArr.length; i++) {
       let elements = document.getElementsByClassName("arr-ele");
       let [index1, index2, type] = animationsArr[i];
@@ -77,6 +75,11 @@ const SortingViz = () => {
           setArr(arrtemp);
         }, i * speed + speed);
     }
+  };
+
+  const changeSpeed = (e, v) => {
+    setSpeed(v);
+    console.log(arr);
   };
 
   async function animate(e, e2, t, i) {
@@ -113,10 +116,12 @@ const SortingViz = () => {
 
   function compare(e, e2, i) {
     return new Promise(() =>
-      setTimeout(() => {
-        e.backgroundColor = "blue";
-        e2.backgroundColor = "blue";
-      }, i * 1)
+      timeouts.push(
+        setTimeout(() => {
+          e.backgroundColor = "blue";
+          e2.backgroundColor = "blue";
+        }, i * speed)
+      )
     );
   }
 
@@ -137,6 +142,8 @@ const SortingViz = () => {
             onChange={handleAlgoSelect}
           >
             <MenuItem value={"Insertion"}>Insertion</MenuItem>
+            <MenuItem value={"Bubble"}>Bubble</MenuItem>
+            <MenuItem value={"Selection"}>Selection</MenuItem>
           </Select>
         </FormControl>
         <Button color="primary" variant="outlined" onClick={visualize}>
