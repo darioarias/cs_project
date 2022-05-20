@@ -136,32 +136,6 @@ export function SignForm() {
                 </div>
               )}
 
-              <div className="social-media">
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-google"></i>
-                </a>
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-              </div>
             </form>
             <form action="#" className="sign-up-form">
               <h2 className="title">Sign up</h2>
@@ -228,32 +202,6 @@ export function SignForm() {
                 </div>
               )}
 
-              <div className="social-media">
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-google"></i>
-                </a>
-                <a
-                  href="https://kit.fontawesome.com/64d58efce2.js"
-                  className="social-icon"
-                >
-                  <i className="fab fa-linkedin-in"></i>
-                </a>
-              </div>
             </form>
           </div>
         </div>
