@@ -26,8 +26,6 @@ class LinkedListpage extends React.Component {
         // console.log(response);
         // for now this is static prob use to store data from api, couldnt figure out a better way
         //courses shouldnt be deleted so the static aspect is fine
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[3].description] });
-        this.setState({ title: [...this.state.title, response.data[3].title] });
         this.setState({ courseDesc: [...this.state.courseDesc, response.data[4].description] });
         this.setState({ title: [...this.state.title, response.data[4].title] });
         this.setState({ courseDesc: [...this.state.courseDesc, response.data[5].description] });
@@ -42,6 +40,8 @@ class LinkedListpage extends React.Component {
         this.setState({ title: [...this.state.title, response.data[9].title] });
         this.setState({ courseDesc: [...this.state.courseDesc, response.data[10].description] });
         this.setState({ title: [...this.state.title, response.data[10].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[11].description] });
+        this.setState({ title: [...this.state.title, response.data[11].title] });
 
         // console.table(this.state.courseDesc);
       })

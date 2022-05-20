@@ -20,12 +20,12 @@ class Heappage extends React.Component {
         // console.log(response);
         // for now this is static prob use to store data from api, couldnt figure out a better way
         //courses shouldnt be deleted so the static aspect is fine
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[18].description] });
-        this.setState({ title: [...this.state.title, response.data[18].title] });
         this.setState({ courseDesc: [...this.state.courseDesc, response.data[19].description] });
         this.setState({ title: [...this.state.title, response.data[19].title] });
         this.setState({ courseDesc: [...this.state.courseDesc, response.data[20].description] });
         this.setState({ title: [...this.state.title, response.data[20].title] });
+        this.setState({ courseDesc: [...this.state.courseDesc, response.data[21].description] });
+        this.setState({ title: [...this.state.title, response.data[21].title] });
         // console.table(this.state.courseDesc);
       })
       .catch((error) => {
