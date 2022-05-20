@@ -11,6 +11,8 @@ import { updateUsername } from "../../redux_features/user/usernameSlice";
 
 import Cookies from "universal-cookie";
 import { Token } from "@mui/icons-material";
+import { useNavigate, Navigate } from "react-router-dom";
+
 export function SignForm() {
   const cookies = new Cookies();
   const [username, setUsername] = useState("");
@@ -21,9 +23,10 @@ export function SignForm() {
 
   const [showFlash, setShowFlash] = useState(false);
   const [feedback, setFeedback] = useState("");
+  const [authToken] = useState(useSelector((state) => state.authToken.value));
   // const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const signinOnSubmit = (e = new Event()) => {
     e.preventDefault();
     auth_instance()
@@ -32,6 +35,7 @@ export function SignForm() {
         // save token, maybe in cookie or redux
         dispatch(updateAuthToken(access_token));
         dispatch(updateUsername(username));
+        navigate("/");
         // cookies.set("token", access_token, {
         //   maxAge: process.env.REACT_APP_COOKIES_MAX_AGE,
         // });
@@ -86,6 +90,8 @@ export function SignForm() {
     useSelector((state) => state.authToken.value),
     useSelector((state) => state.username.value)
   );
+
+  if (authToken) return <Navigate to="/" />;
   return (
     <main>
       <div className="container">

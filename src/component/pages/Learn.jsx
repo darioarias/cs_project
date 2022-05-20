@@ -15,9 +15,9 @@ const Learn = () => {
   // username = useSelector((state) => state.username.value);
   return (
     <div>
-      {useSelector((state) => state.authToken.value) && (
+      {/* {useSelector((state) => state.authToken.value) && (
         <p>Welcome {username}</p>
-      )}
+      )} */}
       {showButtons ? (
         <Buttons
           setDataStructure={setDataStructure}

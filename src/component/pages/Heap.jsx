@@ -2,15 +2,23 @@ import React from "react";
 import Heap from "../visualizer/LearnHeap";
 import axios from "axios";
 import { connect } from "react-redux";
-import { enroll_post_instance } from "../../networking/axios";
+import {
+  enroll_post_instance,
+  challenges_get_instance,
+  attempt_post_instance,
+} from "../../networking/axios";
 
 class Heappage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: [], 
-      courseDesc: []
-    }
+      title: [],
+      courseDesc: [],
+      easy: [],
+      medium: [],
+      hard: [],
+    };
+    this.challengeInteraction = this.challengeInteraction.bind(this);
   }
 
   componentDidMount() {
@@ -20,17 +28,60 @@ class Heappage extends React.Component {
         // console.log(response);
         // for now this is static prob use to store data from api, couldnt figure out a better way
         //courses shouldnt be deleted so the static aspect is fine
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[18].description] });
-        this.setState({ title: [...this.state.title, response.data[18].title] });
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[19].description] });
-        this.setState({ title: [...this.state.title, response.data[19].title] });
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[20].description] });
-        this.setState({ title: [...this.state.title, response.data[20].title] });
+        this.setState({
+          courseDesc: [...this.state.courseDesc, response.data[18].description],
+        });
+        this.setState({
+          title: [...this.state.title, response.data[18].title],
+        });
+        this.setState({
+          courseDesc: [...this.state.courseDesc, response.data[19].description],
+        });
+        this.setState({
+          title: [...this.state.title, response.data[19].title],
+        });
+        this.setState({
+          courseDesc: [...this.state.courseDesc, response.data[20].description],
+        });
+        this.setState({
+          title: [...this.state.title, response.data[20].title],
+        });
         // console.table(this.state.courseDesc);
       })
       .catch((error) => {
         console.log(error);
       });
+
+    challenges_get_instance()
+      .get("/challenges/820139")
+      .then(({ data }) => {
+        // console.log(data);
+        const easy = [],
+          medium = [],
+          hard = [];
+
+        for (let record of data) {
+          switch (record.level) {
+            case 0:
+              easy.push(record);
+              break;
+            case 1:
+              medium.push(record);
+              break;
+            case 2:
+              hard.push(record);
+              break;
+            default:
+              console.log("unable to process course: ");
+          }
+        }
+        this.setState({ easy: easy });
+        this.setState({ medium: medium });
+        this.setState({ hard: hard });
+      })
+      .catch((error) => console.log(error));
+
+    this.enroll_user(this.props);
   }
 
   Insert() {
@@ -58,8 +109,31 @@ class Heappage extends React.Component {
     }
     console.log("user not signed in");
   }
+  challengeInteraction({ target }) {
+    // event.preventDefault();
+    // let target = event.target;
+    // console.log(this);
+    if (this.props.authToken.value) {
+      console.log("adding attempt");
+      //add attempt, or update attempt
+      attempt_post_instance()
+        .post("/attempts/", {
+          username: this.props.username.value,
+          challenge_id: target.id,
+        })
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => console.log(error));
+      return;
+    }
+    console.log("skipping attempt");
+    // console.log(event.target.id);
+    return;
+  }
   render() {
-    this.enroll_user(this.props);
+    const { easy, medium, hard } = this.state;
+
     return (
       <div className="shell">
         <header className="shell-header">
@@ -70,122 +144,55 @@ class Heappage extends React.Component {
         </main>
         <main className="shell-bodyII">
           <h2>{this.state.title[0]}</h2>
-          <p>
-            {this.state.courseDesc[0]}
-          </p>
+          <p>{this.state.courseDesc[0]}</p>
           <hr></hr>
           <h2>{this.state.title[1]}</h2>
-            {this.state.courseDesc[1]}
+          {this.state.courseDesc[1]}
           <p></p>
           <button onClick={() => this.Insert()}> Click here to Insert </button>
           <hr></hr>
           <h2>{this.state.title[2]}</h2>
-          <p>
-            {this.state.courseDesc[2]}
-          </p>
+          <p>{this.state.courseDesc[2]}</p>
           <button onClick={() => this.Remove()}> Click here to Remove </button>
           <hr></hr>
           <h2>Leetcode Challenges</h2>
           <ul>
             Leetcode Easy:
-            <li>
-              <a
-                href="https://leetcode.com/problems/kth-largest-element-in-a-stream/"
-                target="_blank"
-              >
-                Kth Largest Element in a Stream
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/largest-number-after-digit-swaps-by-parity/"
-                target="_blank"
-              >
-                Largest Number After Digit Swaps by Parity
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/relative-ranks/"
-                target="_blank"
-              >
-                Relative Ranks
-              </a>
-            </li>
+            {easy.length > 0
+              ? easy.map(({ id, course_id, title, url }) => {
+                  return (
+                    <li onClick={this.challengeInteraction} key={id}>
+                      <a href={url} target="_blank" id={id}>
+                        {title}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
             Leetcode Medium:
-            <li>
-              <a
-                href="https://leetcode.com/problems/reduce-array-size-to-the-half/"
-                target="_blank"
-              >
-                Reduce Array Size to The Half
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/sort-characters-by-frequency/"
-                target="_blank"
-              >
-                Sort Characters By Frequency
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/top-k-frequent-elements/"
-                target="_blank"
-              >
-                Top K Frequent Elements
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/kth-largest-element-in-an-array/"
-                target="_blank"
-              >
-                Kth Largest Element in an Array
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/longest-happy-string/"
-                target="_blank"
-              >
-                Longest Happy String
-              </a>
-            </li>
+            {medium.length > 0
+              ? medium.map(({ id, course_id, title, url }) => {
+                  return (
+                    <li onClick={this.challengeInteraction} key={id}>
+                      <a href={url} target="_blank" id={id}>
+                        {title}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
             Leetcode Hard:
-            <li>
-              <a
-                href="https://leetcode.com/problems/sequentially-ordinal-rank-tracker/"
-                target="_blank"
-              >
-                Sequentially Ordinal Rank Tracker
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/"
-                target="_blank"
-              >
-                Find the Kth Smallest Sum of a Matrix With Sorted Rows
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/swim-in-rising-water/"
-                target="_blank"
-              >
-                Swim in Rising Water
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/k-th-smallest-prime-fraction/"
-                target="_blank"
-              >
-                K-th Smallest Prime Fraction
-              </a>
-            </li>
+            {hard.length > 0
+              ? hard.map(({ id, course_id, title, url }) => {
+                  return (
+                    <li onClick={this.challengeInteraction} key={id}>
+                      <a href={url} target="_blank" id={id}>
+                        {title}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </main>
       </div>

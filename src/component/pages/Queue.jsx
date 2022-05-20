@@ -2,14 +2,22 @@ import React from "react";
 import axios from "axios";
 import Queue from "../visualizer/LearnQueue";
 import { connect } from "react-redux";
-import { enroll_post_instance } from "../../networking/axios";
+import {
+  enroll_post_instance,
+  challenges_get_instance,
+  attempt_post_instance,
+} from "../../networking/axios";
 class QueuePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: [], 
-      courseDesc: []
-    }
+      title: [],
+      courseDesc: [],
+      easy: [],
+      medium: [],
+      hard: [],
+    };
+    this.challengeInteraction = this.challengeInteraction.bind(this);
   }
 
   componentDidMount() {
@@ -19,17 +27,58 @@ class QueuePage extends React.Component {
         // console.log(response);
         // for now this is static prob use to store data from api, couldnt figure out a better way
         //courses shouldnt be deleted so the static aspect is fine
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[15].description] });
-        this.setState({ title: [...this.state.title, response.data[15].title] });
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[16].description] });
-        this.setState({ title: [...this.state.title, response.data[16].title] });
-        this.setState({ courseDesc: [...this.state.courseDesc, response.data[17].description] });
-        this.setState({ title: [...this.state.title, response.data[17].title] });
+        this.setState({
+          courseDesc: [...this.state.courseDesc, response.data[15].description],
+        });
+        this.setState({
+          title: [...this.state.title, response.data[15].title],
+        });
+        this.setState({
+          courseDesc: [...this.state.courseDesc, response.data[16].description],
+        });
+        this.setState({
+          title: [...this.state.title, response.data[16].title],
+        });
+        this.setState({
+          courseDesc: [...this.state.courseDesc, response.data[17].description],
+        });
+        this.setState({
+          title: [...this.state.title, response.data[17].title],
+        });
         // console.table(this.state.courseDesc);
       })
       .catch((error) => {
         console.log(error);
       });
+    challenges_get_instance()
+      .get("/challenges/820139")
+      .then(({ data }) => {
+        // console.log(data);
+        const easy = [],
+          medium = [],
+          hard = [];
+
+        for (let record of data) {
+          switch (record.level) {
+            case 0:
+              easy.push(record);
+              break;
+            case 1:
+              medium.push(record);
+              break;
+            case 2:
+              hard.push(record);
+              break;
+            default:
+              console.log("unable to process course: ");
+          }
+        }
+        this.setState({ easy: easy });
+        this.setState({ medium: medium });
+        this.setState({ hard: hard });
+      })
+      .catch((error) => console.log(error));
+    this.enroll_user(this.props);
   }
 
   Enqueue() {
@@ -57,8 +106,31 @@ class QueuePage extends React.Component {
     }
     console.log("user not signed in");
   }
+
+  challengeInteraction({ target }) {
+    // event.preventDefault();
+    // let target = event.target;
+    // console.log(this);
+    if (this.props.authToken.value) {
+      console.log("adding attempt");
+      //add attempt, or update attempt
+      attempt_post_instance()
+        .post("/attempts/", {
+          username: this.props.username.value,
+          challenge_id: target.id,
+        })
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((error) => console.log(error));
+      return;
+    }
+    console.log("skipping attempt");
+    // console.log(event.target.id);
+    return;
+  }
   render() {
-    this.enroll_user(this.props);
+    const { easy, medium, hard } = this.state;
     return (
       <div className="shell">
         <header className="shell-header">
@@ -69,9 +141,7 @@ class QueuePage extends React.Component {
         </main>
         <main className="shell-bodyII">
           <h2>{this.state.title[0]}</h2>
-          <p>
-            {this.state.courseDesc[0]}
-          </p>
+          <p>{this.state.courseDesc[0]}</p>
           <hr></hr>
           <h2>{this.state.title[1]}</h2>
           <p>
@@ -96,80 +166,41 @@ class QueuePage extends React.Component {
           <h2>Leetcode Challenges</h2>
           <ul>
             Leetcode Easy:
-            <li>
-              <a
-                href="https://leetcode.com/problems/number-of-recent-calls/"
-                target="_blank"
-              >
-                Number of Recent Calls
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/number-of-students-unable-to-eat-lunch/"
-                target="_blank"
-              >
-                Number of Students Unable to Eat Lunch
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/time-needed-to-buy-tickets/"
-                target="_blank"
-              >
-                Time Needed to Buy Tickets
-              </a>
-            </li>
+            {easy.length > 0
+              ? easy.map(({ id, course_id, title, url }) => {
+                  return (
+                    <li onClick={this.challengeInteraction} key={id}>
+                      <a href={url} target="_blank" id={id}>
+                        {title}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
             Leetcode Medium:
-            <li>
-              <a
-                href="https://leetcode.com/problems/reveal-cards-in-increasing-order/"
-                target="_blank"
-              >
-                Reveal Cards In Increasing Order
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/find-the-winner-of-the-circular-game/"
-                target="_blank"
-              >
-                Find the Winner of the Circular Game
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/flatten-nested-list-iterator/"
-                target="_blank"
-              >
-                Flatten Nested List Iterator
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/design-front-middle-back-queue/"
-                target="_blank"
-              >
-                Design Front Middle Back Queue
-              </a>
-            </li>
+            {medium.length > 0
+              ? medium.map(({ id, course_id, title, url }) => {
+                  return (
+                    <li onClick={this.challengeInteraction} key={id}>
+                      <a href={url} target="_blank" id={id}>
+                        {title}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
             Leetcode Hard:
-            <li>
-              <a
-                href="https://leetcode.com/problems/constrained-subsequence-sum/"
-                target="_blank"
-              >
-                Constrained Subsequence Sum
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://leetcode.com/problems/delivering-boxes-from-storage-to-ports/"
-                target="_blank"
-              >
-                Delivering Boxes from Storage to Ports
-              </a>
-            </li>
+            {hard.length > 0
+              ? hard.map(({ id, course_id, title, url }) => {
+                  return (
+                    <li onClick={this.challengeInteraction} key={id}>
+                      <a href={url} target="_blank" id={id}>
+                        {title}
+                      </a>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </main>
       </div>

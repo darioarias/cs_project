@@ -108,6 +108,70 @@ export const enroll_post_instance = (headers, timeout) => {
   return instance;
 };
 
+export const user_get_instance = (headers, timeout) => {
+  let instance = create_instance({
+    baseURL: process.env.REACT_APP_API_ROOT_URL,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${cookies.get("token")}`,
+      ...headers,
+    },
+    timeout,
+  });
+
+  // instance.interceptors.request.use((config) => {
+  //   let meets_reqs = check_required(config, new Set(["username"]));
+
+  //   if (meets_reqs.success) return config;
+  //   throw new axios.Cancel(meets_reqs.message);
+  // });
+
+  return instance;
+};
+
+export const challenges_get_instance = (headers, timeout) => {
+  let instance = create_instance({
+    baseURL: process.env.REACT_APP_API_ROOT_URL,
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    timeout,
+  });
+
+  // instance.interceptors.request.use((config) => {
+  //   let meets_reqs = check_required(config, new Set(["username"]));
+
+  //   if (meets_reqs.success) return config;
+  //   throw new axios.Cancel(meets_reqs.message);
+  // });
+
+  return instance;
+};
+
+export const attempt_post_instance = (headers, timeout) => {
+  let instance = create_instance({
+    baseURL: process.env.REACT_APP_API_ROOT_URL,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${cookies.get("token")}`,
+      ...headers,
+    },
+    timeout,
+  });
+
+  instance.interceptors.request.use((config) => {
+    let meets_reqs = check_required(
+      config,
+      new Set(["username", "challenge_id"])
+    );
+
+    if (meets_reqs.success) return config;
+    throw new axios.Cancel(meets_reqs.message);
+  });
+
+  return instance;
+};
 // export const
 
 // export const create_instance_ = () => {

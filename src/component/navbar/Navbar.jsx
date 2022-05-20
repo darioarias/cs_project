@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,6 +14,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeAuthToken } from "../../redux_features/user/authTokenSlice";
 import { removeUsername } from "../../redux_features/user/usernameSlice.js";
 
+import { useNavigate } from "react-router-dom";
 import Switch from "@mui/material/Switch";
 import styled from "@emotion/styled";
 import LoginIcon from "@mui/icons-material/Login";
@@ -21,9 +22,13 @@ import LockIcon from "@mui/icons-material/Lock";
 import SignForm from "../pages/Sign.jsx";
 import Cookies from "universal-cookie";
 const cookies = new Cookies();
-
 export default function NavBar({ toggleTheme, setTheme }) {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [authToken] = React.useState(
+    useSelector((state) => state.authToken.value)
+  );
+
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -45,7 +50,10 @@ export default function NavBar({ toggleTheme, setTheme }) {
     // cookies.remove("token");
     // cookies.remove("username");
     console.log("user has been signed out");
+    console.log(this.props);
+    navigate("/");
   };
+  if (!authToken) <Navigate to="/" />;
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -117,16 +125,18 @@ export default function NavBar({ toggleTheme, setTheme }) {
               <NavLink to="/sandbox">Sandbox</NavLink>
             </nav>
           </Button>
-          <Button color="inherit">
+          {/* <Button color="inherit">
             <nav>
               <NavLink to="/Users">Testing Users</NavLink>
             </nav>
-          </Button>
-          <Button color="inherit">
-            <nav>
-              <NavLink to="/Profile">Testing Profiles</NavLink>
-            </nav>
-          </Button>
+          </Button> */}
+          {useSelector((state) => state.authToken.value) && (
+            <Button color="inherit">
+              <nav>
+                <NavLink to="/Profile">Profile</NavLink>
+              </nav>
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </Box>
