@@ -28,12 +28,6 @@ class QueuePage extends React.Component {
         // for now this is static prob use to store data from api, couldnt figure out a better way
         //courses shouldnt be deleted so the static aspect is fine
         this.setState({
-          courseDesc: [...this.state.courseDesc, response.data[15].description],
-        });
-        this.setState({
-          title: [...this.state.title, response.data[15].title],
-        });
-        this.setState({
           courseDesc: [...this.state.courseDesc, response.data[16].description],
         });
         this.setState({
@@ -44,6 +38,12 @@ class QueuePage extends React.Component {
         });
         this.setState({
           title: [...this.state.title, response.data[17].title],
+        });
+        this.setState({
+          courseDesc: [...this.state.courseDesc, response.data[18].description],
+        });
+        this.setState({
+          title: [...this.state.title, response.data[18].title],
         });
         // console.table(this.state.courseDesc);
       })
