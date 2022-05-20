@@ -21,6 +21,7 @@ export const QueueContainer = styled.div`
     display: flex;
     padding: 15px;
     overflow: auto;
+    color: black;
 `
 export const CircleNode = styled.div`
     display: flex;
@@ -31,5 +32,6 @@ export const CircleNode = styled.div`
     width: 50px;
     height: 50px;
     flex-shrink: 0;
+    color: black;
 `
 

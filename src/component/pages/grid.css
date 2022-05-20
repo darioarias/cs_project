@@ -42,7 +42,6 @@
 }
 
 .shell-bodyII {
-  position: sticky;
   grid-row: 4 / 8;
   grid-column: 2 / 3; 
   min-height: 50vh;
@@ -50,7 +49,6 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
-  background-color: #FFF;
 }
 .shell-bodyII h2{
   /* font-family: "Bungee Inline"; */
@@ -75,7 +73,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
-  background-color: #FFF;
+  background-color: white;
   z-index: 1;
 }
 
@@ -87,7 +85,6 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow:  0px 0px 20px rgba(0, 0, 0, 0.25);
-  background-color: #FFF;
 }
 
 .stack-shell-footer {
